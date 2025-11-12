@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\proekt-office\\vozila\\VozilaNajava\\Vozila.ViewModels\\Vozila.ViewModels.csproj": {}
+    "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.ViewModels\\Vozila.ViewModels.csproj": {}
   },
   "projects": {
-    "D:\\proekt-office\\vozila\\VozilaNajava\\Vozila.ViewModels\\Vozila.ViewModels.csproj": {
+    "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.ViewModels\\Vozila.ViewModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\proekt-office\\vozila\\VozilaNajava\\Vozila.ViewModels\\Vozila.ViewModels.csproj",
+        "projectUniqueName": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.ViewModels\\Vozila.ViewModels.csproj",
         "projectName": "Vozila.ViewModels",
-        "projectPath": "D:\\proekt-office\\vozila\\VozilaNajava\\Vozila.ViewModels\\Vozila.ViewModels.csproj",
+        "projectPath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.ViewModels\\Vozila.ViewModels.csproj",
         "packagesPath": "C:\\Users\\Robertr2\\.nuget\\packages\\",
-        "outputPath": "D:\\proekt-office\\vozila\\VozilaNajava\\Vozila.ViewModels\\obj\\",
+        "outputPath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.ViewModels\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,7 +1,52 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\proekt-office\\vozila\\VozilaNajava\\",
-  "Documents": [],
+  "WorkspaceRootPath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.domain\\models\\city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|solutionrelative:vozila.domain\\models\\city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.dataaccess\\interfaces\\ipriceoilrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|solutionrelative:vozila.dataaccess\\interfaces\\ipriceoilrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.dataaccess\\interfaces\\icontractrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|solutionrelative:vozila.dataaccess\\interfaces\\icontractrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.dataaccess\\interfaces\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|solutionrelative:vozila.dataaccess\\interfaces\\iorderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.dataaccess\\implementations\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|solutionrelative:vozila.dataaccess\\implementations\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.dataaccess\\interfaces\\iconditionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|solutionrelative:vozila.dataaccess\\interfaces\\iconditionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.dataaccess\\interfaces\\idestinationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|solutionrelative:vozila.dataaccess\\interfaces\\idestinationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.dataaccess\\interfaces\\icityrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|solutionrelative:vozila.dataaccess\\interfaces\\icityrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.dataaccess\\interfaces\\icompanyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|solutionrelative:vozila.dataaccess\\interfaces\\icompanyrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.dataaccess\\interfaces\\itransporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|solutionrelative:vozila.dataaccess\\interfaces\\itransporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.dataaccess\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|solutionrelative:vozila.dataaccess\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +54,154 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "City.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\City.cs",
+              "RelativeDocumentMoniker": "Vozila.Domain\\Models\\City.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\City.cs",
+              "RelativeToolTip": "Vozila.Domain\\Models\\City.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-06T15:13:26.49Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "OrderRepository.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Implementations\\OrderRepository.cs",
+              "RelativeDocumentMoniker": "Vozila.DataAccess\\Implementations\\OrderRepository.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Implementations\\OrderRepository.cs",
+              "RelativeToolTip": "Vozila.DataAccess\\Implementations\\OrderRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-06T14:11:52.172Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IConditionRepository.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\IConditionRepository.cs",
+              "RelativeDocumentMoniker": "Vozila.DataAccess\\Interfaces\\IConditionRepository.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\IConditionRepository.cs",
+              "RelativeToolTip": "Vozila.DataAccess\\Interfaces\\IConditionRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T11:33:36.387Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IPriceOilRepository.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\IPriceOilRepository.cs",
+              "RelativeDocumentMoniker": "Vozila.DataAccess\\Interfaces\\IPriceOilRepository.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\IPriceOilRepository.cs",
+              "RelativeToolTip": "Vozila.DataAccess\\Interfaces\\IPriceOilRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T11:31:38.241Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IOrderRepository.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\IOrderRepository.cs",
+              "RelativeDocumentMoniker": "Vozila.DataAccess\\Interfaces\\IOrderRepository.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\IOrderRepository.cs",
+              "RelativeToolTip": "Vozila.DataAccess\\Interfaces\\IOrderRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAABFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T11:31:03.417Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "IDestinationRepository.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\IDestinationRepository.cs",
+              "RelativeDocumentMoniker": "Vozila.DataAccess\\Interfaces\\IDestinationRepository.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\IDestinationRepository.cs",
+              "RelativeToolTip": "Vozila.DataAccess\\Interfaces\\IDestinationRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T11:30:16.179Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ICityRepository.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\ICityRepository.cs",
+              "RelativeDocumentMoniker": "Vozila.DataAccess\\Interfaces\\ICityRepository.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\ICityRepository.cs",
+              "RelativeToolTip": "Vozila.DataAccess\\Interfaces\\ICityRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T11:29:32.524Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IContractRepository.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\IContractRepository.cs",
+              "RelativeDocumentMoniker": "Vozila.DataAccess\\Interfaces\\IContractRepository.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\IContractRepository.cs",
+              "RelativeToolTip": "Vozila.DataAccess\\Interfaces\\IContractRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T11:26:07.842Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "ICompanyRepository.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\ICompanyRepository.cs",
+              "RelativeDocumentMoniker": "Vozila.DataAccess\\Interfaces\\ICompanyRepository.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\ICompanyRepository.cs",
+              "RelativeToolTip": "Vozila.DataAccess\\Interfaces\\ICompanyRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T11:24:24.513Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ITransporter.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\ITransporter.cs",
+              "RelativeDocumentMoniker": "Vozila.DataAccess\\Interfaces\\ITransporter.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\ITransporter.cs",
+              "RelativeToolTip": "Vozila.DataAccess\\Interfaces\\ITransporter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T11:21:53.7Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IRepository.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\IRepository.cs",
+              "RelativeDocumentMoniker": "Vozila.DataAccess\\Interfaces\\IRepository.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\IRepository.cs",
+              "RelativeToolTip": "Vozila.DataAccess\\Interfaces\\IRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-04T11:22:56.307Z",
+              "EditorCaption": ""
             }
           ]
         }

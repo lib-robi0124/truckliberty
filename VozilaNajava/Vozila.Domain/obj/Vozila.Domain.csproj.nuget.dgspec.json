@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\proekt-office\\vozila\\VozilaNajava\\Vozila.Domain\\Vozila.Domain.csproj": {}
+    "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\Vozila.Domain.csproj": {}
   },
   "projects": {
-    "D:\\proekt-office\\vozila\\VozilaNajava\\Vozila.Domain\\Vozila.Domain.csproj": {
+    "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\Vozila.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\proekt-office\\vozila\\VozilaNajava\\Vozila.Domain\\Vozila.Domain.csproj",
+        "projectUniqueName": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\Vozila.Domain.csproj",
         "projectName": "Vozila.Domain",
-        "projectPath": "D:\\proekt-office\\vozila\\VozilaNajava\\Vozila.Domain\\Vozila.Domain.csproj",
+        "projectPath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\Vozila.Domain.csproj",
         "packagesPath": "C:\\Users\\Robertr2\\.nuget\\packages\\",
-        "outputPath": "D:\\proekt-office\\vozila\\VozilaNajava\\Vozila.Domain\\obj\\",
+        "outputPath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -1,0 +1,11 @@
+﻿using Vozila.Domain.Models;
+
+namespace Vozila.DataAccess.Interfaces
+{
+    public interface IPriceOilRepository : IRepository<PriceOil>
+    {
+        Task<PriceOil> GetCurrentOilPriceAsync();
+        Task<PriceOil> GetOilPriceByDateAsync(DateTime date);
+        Task UpdateCurrentOilPricesAsync(decimal newPrice);
+    }
+}
