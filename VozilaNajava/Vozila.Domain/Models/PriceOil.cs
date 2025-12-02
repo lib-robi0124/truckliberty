@@ -4,6 +4,6 @@
     {
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public decimal PricePerLiter { get; set; }
+        public decimal DailyPricePerLiter { get; set; }
     }
 }

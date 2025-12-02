@@ -5,25 +5,23 @@ namespace Vozila.Domain.Models
     public class Destination
     {
         public int Id { get; set; }
+        public City City { get; set; } // enum
+        public Country Country { get; set; } // enum
+        public decimal DestinationContractPrice { get; set; }
+        public decimal DailyPricePerLiter { get; set; }  
+        public decimal ContractOilPrice { get; set; }  
+        public decimal DestinationPriceFromFormula
+        {
+            get
+            {
+                if (ContractOilPrice == 0)
+                    return DestinationContractPrice;
 
-        // Relation to City
-        public int CityId { get; set; }
-        public City City { get; set; } = default!;
-
-        // Enum
-        public Country Country { get; set; }
-
-        // Distance
-        public decimal Km { get; set; }
-
-        // PriceOil.now - from last submitted oil price
-        public decimal CurrentOilPrice { get; set; }   // You will update this daily from PriceOil table
-
-        // PriceOil.contract - comes from Contract.Condition
-        public decimal ContractOilPrice { get; set; }
-
-        // Computed field (optional)
-        public decimal TransportFullPrice => Km * ContractOilPrice;
+                var priceDifference = DailyPricePerLiter - ContractOilPrice;
+                var adjustmentFactor = priceDifference / ContractOilPrice * 0.3m;
+                return DestinationContractPrice * (1 + adjustmentFactor);
+            }
+        }
         public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
     }
 }
