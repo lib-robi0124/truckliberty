@@ -8,9 +8,9 @@
         public int RoleId { get; set; }
         public Role Role { get; set; }
         public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
-        public bool IsActive { get; set; } = true; // For soft delete
-        public int? TransporterId { get; set; } // Link to Transporter if user is a transporter
-        public Transporter? Transporter { get; set; } // Navigation property
+        public bool IsActive { get; set; } = true;
+        public int? TransporterId { get; set; } 
+        public Transporter? Transporter { get; set; } 
         public ICollection<Order> Orders { get; set; } 
         public User()
         {

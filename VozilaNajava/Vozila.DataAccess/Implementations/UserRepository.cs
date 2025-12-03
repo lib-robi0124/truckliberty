@@ -11,110 +11,98 @@ namespace Vozila.DataAccess.Implementations
     public class UserRepository : Repository<User>, IUserRepository
     {
         public UserRepository(AppDbContext context) : base(context)   {  }
+        //public override async Task<User?> GetByIdAsync(int id)
+        //{
+        //    return await _entities
+        //        .Include(u => u.Role)
+        //        .FirstOrDefaultAsync(u => u.Id == id);
+        //}
+        //public override async Task<User?> GetActiveAsync(int id)
+        //{
+        //       return await GetByIdAsync(id);
+        //}
+        //public override async Task<IEnumerable<User>> GetAllAsync()
+        //{
+        //    return await _entities
+        //        .Include(u => u.Role)
+        //        .OrderBy(u => u.FullName)
+        //        .ToListAsync();
+        //}
+        //public override async Task<IEnumerable<User>> GetAllActiveAsync()
+        //{
+        //    return await GetAllAsync();
+        //}
+        //public override async Task<User> AddAsync(User entity)
+        //{
+        //    // Validate FullName uniqueness
+        //    var userExists = await _entities
+        //        .AnyAsync(u => u.FullName == entity.FullName);
 
-        // ========== CRUD Overrides ==========
+        //    if (userExists)
+        //        throw new InvalidOperationException($"User with full name '{entity.FullName}' already exists");
 
-        public override async Task<User?> GetByIdAsync(int id)
-        {
-            return await _entities
-                .Include(u => u.Role)
-                .FirstOrDefaultAsync(u => u.Id == id);
-        }
+        //    // Validate Role exists
+        //    var roleExists = await _context.Set<Role>()
+        //        .AnyAsync(r => r.Id == entity.RoleId);
 
-        public override async Task<User?> GetActiveAsync(int id)
-        {
-               return await GetByIdAsync(id);
-        }
+        //    if (!roleExists)
+        //        throw new InvalidOperationException($"Role {entity.RoleId} not found");
 
-        public override async Task<IEnumerable<User>> GetAllAsync()
-        {
-            return await _entities
-                .Include(u => u.Role)
-                .OrderBy(u => u.FullName)
-                .ToListAsync();
-        }
+        //    // Hash password before saving
+        //    entity.Password = HashPassword(entity.Password);
+        //    entity.CreatedDate = DateTime.UtcNow;
 
-        public override async Task<IEnumerable<User>> GetAllActiveAsync()
-        {
-            return await GetAllAsync();
-        }
+        //    return await base.AddAsync(entity);
+        //}
+        //public override async Task UpdateAsync(User entity)
+        //{
+        //    var existing = await GetByIdAsync(entity.Id);
+        //    if (existing == null)
+        //        throw new NotFoundException($"User {entity.Id} not found");
 
-        public override async Task<User> AddAsync(User entity)
-        {
-            // Validate FullName uniqueness
-            var userExists = await _entities
-                .AnyAsync(u => u.FullName == entity.FullName);
+        //    // Prevent changing certain properties
+        //    entity.CreatedDate = existing.CreatedDate;
+        //    entity.Password = existing.Password; // Password should be changed via ChangePasswordAsync
 
-            if (userExists)
-                throw new InvalidOperationException($"User with full name '{entity.FullName}' already exists");
+        //    // Validate FullName uniqueness (if changed)
+        //    if (entity.FullName != existing.FullName)
+        //    {
+        //        var userExists = await _entities
+        //            .AnyAsync(u => u.FullName == entity.FullName && u.Id != entity.Id);
 
-            // Validate Role exists
-            var roleExists = await _context.Set<Role>()
-                .AnyAsync(r => r.Id == entity.RoleId);
+        //        if (userExists)
+        //            throw new InvalidOperationException($"User with full name '{entity.FullName}' already exists");
+        //    }
 
-            if (!roleExists)
-                throw new InvalidOperationException($"Role {entity.RoleId} not found");
+        //    // Validate Role exists (if changed)
+        //    if (entity.RoleId != existing.RoleId)
+        //    {
+        //        var roleExists = await _context.Set<Role>()
+        //            .AnyAsync(r => r.Id == entity.RoleId);
 
-            // Hash password before saving
-            entity.Password = HashPassword(entity.Password);
-            entity.CreatedDate = DateTime.UtcNow;
+        //        if (!roleExists)
+        //            throw new InvalidOperationException($"Role {entity.RoleId} not found");
+        //    }
 
-            return await base.AddAsync(entity);
-        }
+        //    await base.UpdateAsync(entity);
+        //}
+        //public override async Task DeleteAsync(int id)
+        //{
+        //    var user = await GetByIdAsync(id);
+        //    if (user == null)
+        //        throw new NotFoundException($"User {id} not found");
 
-        public override async Task UpdateAsync(User entity)
-        {
-            var existing = await GetByIdAsync(entity.Id);
-            if (existing == null)
-                throw new NotFoundException($"User {entity.Id} not found");
+        //    // Check if user has associated orders
+        //    var hasOrders = await _context.Set<Order>()
+        //        .AnyAsync(o => EF.Property<int?>(o, "UserId") == id); // Assuming Order has UserId foreign key
 
-            // Prevent changing certain properties
-            entity.CreatedDate = existing.CreatedDate;
-            entity.Password = existing.Password; // Password should be changed via ChangePasswordAsync
+        //    if (hasOrders)
+        //    {
+        //        throw new InvalidOperationException($"Cannot delete user {id} because they have associated orders");
+        //    }
 
-            // Validate FullName uniqueness (if changed)
-            if (entity.FullName != existing.FullName)
-            {
-                var userExists = await _entities
-                    .AnyAsync(u => u.FullName == entity.FullName && u.Id != entity.Id);
-
-                if (userExists)
-                    throw new InvalidOperationException($"User with full name '{entity.FullName}' already exists");
-            }
-
-            // Validate Role exists (if changed)
-            if (entity.RoleId != existing.RoleId)
-            {
-                var roleExists = await _context.Set<Role>()
-                    .AnyAsync(r => r.Id == entity.RoleId);
-
-                if (!roleExists)
-                    throw new InvalidOperationException($"Role {entity.RoleId} not found");
-            }
-
-            await base.UpdateAsync(entity);
-        }
-
-        public override async Task DeleteAsync(int id)
-        {
-            var user = await GetByIdAsync(id);
-            if (user == null)
-                throw new NotFoundException($"User {id} not found");
-
-            // Check if user has associated orders
-            var hasOrders = await _context.Set<Order>()
-                .AnyAsync(o => EF.Property<int?>(o, "UserId") == id); // Assuming Order has UserId foreign key
-
-            if (hasOrders)
-            {
-                throw new InvalidOperationException($"Cannot delete user {id} because they have associated orders");
-            }
-
-            await base.DeleteAsync(id);
-        }
-
-        // ========== AUTHENTICATION METHODS ==========
-
+        //    await base.DeleteAsync(id);
+        //}
         public async Task<User?> AuthenticateAsync(string fullName, string password)
         {
             if (string.IsNullOrWhiteSpace(fullName) || string.IsNullOrWhiteSpace(password))
@@ -136,9 +124,6 @@ namespace Vozila.DataAccess.Implementations
 
             return user;
         }
-
-        // ========== USER-SPECIFIC QUERIES ==========
-
         public async Task<List<User>> GetAllUsersAsync()
         {
             return await _entities
@@ -147,14 +132,12 @@ namespace Vozila.DataAccess.Implementations
                 .OrderBy(u => u.FullName)
                 .ToListAsync();
         }
-
         public async Task<User?> GetUserWithRoleAsync(int userId)
         {
             return await _entities
                 .Include(u => u.Role)
                 .FirstOrDefaultAsync(u => u.Id == userId);
         }
-
         public async Task<User?> GetUserWithOrdersAsync(int userId)
         {
             return await _entities
@@ -165,7 +148,6 @@ namespace Vozila.DataAccess.Implementations
                     .ThenInclude(o => o.Transporter)
                 .FirstOrDefaultAsync(u => u.Id == userId);
         }
-
         public async Task<List<User>> GetUsersByRoleAsync(int roleId)
         {
             return await _entities
@@ -174,7 +156,6 @@ namespace Vozila.DataAccess.Implementations
                 .OrderBy(u => u.FullName)
                 .ToListAsync();
         }
-
         public async Task<List<User>> GetActiveUsersAsync()
         {
             // If implementing soft delete, add: .Where(u => u.IsActive)
@@ -183,27 +164,21 @@ namespace Vozila.DataAccess.Implementations
                 .OrderBy(u => u.FullName)
                 .ToListAsync();
         }
-
         public async Task<bool> UserExistsAsync(string fullName)
         {
             return await _entities
                 .AnyAsync(u => u.FullName == fullName);
         }
-
-        // ========== ROLE-BASED METHODS ==========
-
         public async Task<bool> IsUserAdminAsync(int userId)
         {
             var user = await GetUserWithRoleAsync(userId);
             return user?.Role?.Name == "Administrator";
         }
-
         public async Task<bool> IsUserTransporterAsync(int userId)
         {
             var user = await GetUserWithRoleAsync(userId);
             return user?.Role?.Name == "Transporter";
         }
-
         public async Task<int> GetUserTransporterIdAsync(int userId)
         {
              var user = await _entities
@@ -220,9 +195,6 @@ namespace Vozila.DataAccess.Implementations
                 .FirstOrDefaultAsync();
 
         }
-
-        // ========== PASSWORD MANAGEMENT ==========
-
         public async Task ChangePasswordAsync(int userId, string currentPassword, string newPassword)
         {
             var user = await GetByIdAsync(userId);
@@ -237,7 +209,6 @@ namespace Vozila.DataAccess.Implementations
             user.Password = HashPassword(newPassword);
             await UpdateAsync(user);
         }
-
         public async Task ResetPasswordAsync(int userId, string newPassword)
         {
             var user = await GetByIdAsync(userId);
@@ -248,7 +219,6 @@ namespace Vozila.DataAccess.Implementations
             user.Password = HashPassword(newPassword);
             await UpdateAsync(user);
         }
-
         public async Task UpdateLastLoginAsync(int userId)
         {
             var user = await GetByIdAsync(userId);

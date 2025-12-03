@@ -163,3 +163,4 @@ D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\obj\Debug\net8.0\refint
 D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\obj\Debug\net8.0\Vozila.pdb
 D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\obj\Debug\net8.0\Vozila.genruntimeconfig.cache
 D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\obj\Debug\net8.0\ref\Vozila.dll
+D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\bin\Debug\net8.0\Microsoft.AspNet.Identity.Core.dll

@@ -1,7 +1,32 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.dataaccess\\interfaces\\itransporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|solutionrelative:vozila.dataaccess\\interfaces\\itransporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C949D1B1-60FD-46B7-9C87-2242D4D84242}|Vozila.ViewModels\\Vozila.ViewModels.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.viewmodels\\models\\transporterlistvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C949D1B1-60FD-46B7-9C87-2242D4D84242}|Vozila.ViewModels\\Vozila.ViewModels.csproj|solutionrelative:vozila.viewmodels\\models\\transporterlistvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C949D1B1-60FD-46B7-9C87-2242D4D84242}|Vozila.ViewModels\\Vozila.ViewModels.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.viewmodels\\models\\transporterstatsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C949D1B1-60FD-46B7-9C87-2242D4D84242}|Vozila.ViewModels\\Vozila.ViewModels.csproj|solutionrelative:vozila.viewmodels\\models\\transporterstatsvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C949D1B1-60FD-46B7-9C87-2242D4D84242}|Vozila.ViewModels\\Vozila.ViewModels.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.viewmodels\\models\\transportervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C949D1B1-60FD-46B7-9C87-2242D4D84242}|Vozila.ViewModels\\Vozila.ViewModels.csproj|solutionrelative:vozila.viewmodels\\models\\transportervm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.domain\\models\\transporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|solutionrelative:vozila.domain\\models\\transporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.dataaccess\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|solutionrelative:vozila.dataaccess\\interfaces\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,8 +34,86 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ITransporter.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\ITransporter.cs",
+              "RelativeDocumentMoniker": "Vozila.DataAccess\\Interfaces\\ITransporter.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\ITransporter.cs",
+              "RelativeToolTip": "Vozila.DataAccess\\Interfaces\\ITransporter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T14:41:20.904Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "TransporterListVM.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.ViewModels\\Models\\TransporterListVM.cs",
+              "RelativeDocumentMoniker": "Vozila.ViewModels\\Models\\TransporterListVM.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.ViewModels\\Models\\TransporterListVM.cs",
+              "RelativeToolTip": "Vozila.ViewModels\\Models\\TransporterListVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T14:39:55.775Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TransporterStatsVM.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.ViewModels\\Models\\TransporterStatsVM.cs",
+              "RelativeDocumentMoniker": "Vozila.ViewModels\\Models\\TransporterStatsVM.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.ViewModels\\Models\\TransporterStatsVM.cs",
+              "RelativeToolTip": "Vozila.ViewModels\\Models\\TransporterStatsVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAADAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T14:39:41.15Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TransporterVM.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.ViewModels\\Models\\TransporterVM.cs",
+              "RelativeDocumentMoniker": "Vozila.ViewModels\\Models\\TransporterVM.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.ViewModels\\Models\\TransporterVM.cs",
+              "RelativeToolTip": "Vozila.ViewModels\\Models\\TransporterVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T14:39:11.14Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Transporter.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\Transporter.cs",
+              "RelativeDocumentMoniker": "Vozila.Domain\\Models\\Transporter.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\Transporter.cs",
+              "RelativeToolTip": "Vozila.Domain\\Models\\Transporter.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T13:02:14.786Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IRepository.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\IRepository.cs",
+              "RelativeDocumentMoniker": "Vozila.DataAccess\\Interfaces\\IRepository.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Interfaces\\IRepository.cs",
+              "RelativeToolTip": "Vozila.DataAccess\\Interfaces\\IRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-03T12:36:18.525Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
