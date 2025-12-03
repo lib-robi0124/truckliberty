@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "mSZgpqEp/mc=",
+  "dgSpecHash": "Qd38TwvclmM=",
   "success": true,
-  "projectFilePath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.ViewModels\\Vozila.ViewModels.csproj",
+  "projectFilePath": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila.ViewModels\\Vozila.ViewModels.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Robertr2\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
-    "C:\\Users\\Robertr2\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
+    "C:\\Users\\Administrator\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\Administrator\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

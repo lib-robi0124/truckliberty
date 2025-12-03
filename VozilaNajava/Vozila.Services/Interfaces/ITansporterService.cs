@@ -1,6 +1,13 @@
-﻿namespace Vozila.Services.Interfaces
+﻿using Vozila.ViewModels.Models;
+
+namespace Vozila.Services.Interfaces
 {
-    public class ITansporterService
+    public interface ITansporterService
     {
+        Task<TransporterVM?> LoginTransporterAsync(string email, string password);
+        Task<IEnumerable<TransporterListVM>> GetAllTransportersAsync();
+        Task<TransporterStatsVM> GetTransporterStatsAsync(int transporterId);
+        Task UpdateTruckPlateNoAsync(int orderId, string truckPlateNo);
+
     }
 }

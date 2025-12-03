@@ -9,6 +9,7 @@ namespace Vozila.Domain.Models
         public string ContactPerson { get; set; } = string.Empty;
         public string PhoneNumber { get; set; } = string.Empty;
         public string Email { get; set; } = string.Empty;
+        public string Password { get; set; } = string.Empty;
         public ICollection<Contract> Contracts { get; set; } = new HashSet<Contract>();
         public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
     }
