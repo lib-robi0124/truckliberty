@@ -1,32 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.domain\\models\\destination.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|solutionrelative:vozila.domain\\models\\destination.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.domain\\models\\condition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|solutionrelative:vozila.domain\\models\\condition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.domain\\models\\contract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|solutionrelative:vozila.domain\\models\\contract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.domain\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|solutionrelative:vozila.domain\\models\\order.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.domain\\models\\transporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|solutionrelative:vozila.domain\\models\\transporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.domain\\models\\priceoil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|solutionrelative:vozila.domain\\models\\priceoil.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -34,89 +9,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Transporter.cs",
-              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\Transporter.cs",
-              "RelativeDocumentMoniker": "Vozila.Domain\\Models\\Transporter.cs",
-              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\Transporter.cs",
-              "RelativeToolTip": "Vozila.Domain\\Models\\Transporter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T14:32:19.958Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "PriceOil.cs",
-              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\PriceOil.cs",
-              "RelativeDocumentMoniker": "Vozila.Domain\\Models\\PriceOil.cs",
-              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\PriceOil.cs",
-              "RelativeToolTip": "Vozila.Domain\\Models\\PriceOil.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T14:25:32.494Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Contract.cs",
-              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\Contract.cs",
-              "RelativeDocumentMoniker": "Vozila.Domain\\Models\\Contract.cs",
-              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\Contract.cs",
-              "RelativeToolTip": "Vozila.Domain\\Models\\Contract.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T13:20:31.603Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Destination.cs",
-              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\Destination.cs",
-              "RelativeDocumentMoniker": "Vozila.Domain\\Models\\Destination.cs",
-              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\Destination.cs",
-              "RelativeToolTip": "Vozila.Domain\\Models\\Destination.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAABMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-01T12:54:22.688Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Order.cs",
-              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\Order.cs",
-              "RelativeDocumentMoniker": "Vozila.Domain\\Models\\Order.cs",
-              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\Order.cs",
-              "RelativeToolTip": "Vozila.Domain\\Models\\Order.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-28T13:49:17.265Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Condition.cs",
-              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\Condition.cs",
-              "RelativeDocumentMoniker": "Vozila.Domain\\Models\\Condition.cs",
-              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\Condition.cs",
-              "RelativeToolTip": "Vozila.Domain\\Models\\Condition.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-28T13:43:18.985Z",
-              "EditorCaption": ""
             }
           ]
         }

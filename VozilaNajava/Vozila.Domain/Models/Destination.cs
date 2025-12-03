@@ -8,8 +8,10 @@ namespace Vozila.Domain.Models
         public City City { get; set; } // enum
         public Country Country { get; set; } // enum
         public decimal DestinationContractPrice { get; set; }
-        public decimal DailyPricePerLiter { get; set; }  
-        public decimal ContractOilPrice { get; set; }  
+        public decimal DailyPricePerLiter { get; set; }
+        public int ConditionId { get; set; }
+        public Condition Condition { get; set; }
+        public decimal ContractOilPrice => Condition?.ContractOilPrice ?? 0;
         public decimal DestinationPriceFromFormula
         {
             get
@@ -23,5 +25,6 @@ namespace Vozila.Domain.Models
             }
         }
         public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
+        
     }
 }

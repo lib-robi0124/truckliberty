@@ -6,6 +6,7 @@ namespace Vozila.DataAccess.Interfaces
     {
         Task<PriceOil> GetCurrentOilPriceAsync();
         Task<PriceOil> GetOilPriceByDateAsync(DateTime date);
-        Task UpdateCurrentOilPricesAsync(decimal newPrice);
+        Task<PriceOil> UpdateCurrentOilPricesAsync(decimal newPrice);
+        Task<PriceOil?> GetLatestPriceAsync();
     }
 }

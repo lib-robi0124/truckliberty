@@ -11,6 +11,5 @@
         public DateTime ValidUntil { get; set; } = DateTime.Now.AddYears(1);
         public ICollection<Condition> Conditions { get; set; } = new List<Condition>();
         public ICollection<Destination> Destinations { get; set; } = new List<Destination>(); 
-
     }
 }

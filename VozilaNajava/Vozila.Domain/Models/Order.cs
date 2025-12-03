@@ -17,7 +17,11 @@ namespace Vozila.Domain.Models
         public decimal ContractOilPrice { get; set; }
         public OrderStatus Status { get; set; } = OrderStatus.Pending;
         public DateTime CreatedDate { get; set; } = DateTime.Now;
-        public DateTime? ApprovedDate { get; set; }
-        public DateTime? FinishedDate { get; set; }
+        public DateTime? TruckSubmittedDate { get; set; } // When Transporter submits TruckPlateNo
+        public DateTime? FinishedDate { get; set; } // When admin marks as Finished
+        public DateTime? CancelledDate { get; set; } // When cancelled
+        public string? CancelledReason { get; set; } // Reason for cancellation
+        public int? CancelledByUserId { get; set; } // Who cancelled the order
+        public User? CancelledByUser { get; set; }
     }
 }

@@ -14,30 +14,37 @@ namespace Vozila.DataAccess.Implementations
             _context = context;
             _entities = context.Set<T>();
         }
-
+        public virtual async Task<T?> GetByIdAsync(int id) 
+            => await _entities.FindAsync(id);
         public virtual async Task<T> GetActiveAsync(int id)
             => await _entities.FindAsync(id);
-
+        public virtual async Task<IEnumerable<T>> GetAllActiveAsync()
+            => await GetAllAsync();
         public virtual async Task<IEnumerable<T>> GetAllAsync()
             => await _entities.ToListAsync();
-
         public virtual async Task<T> AddAsync(T entity)
         {
             await _entities.AddAsync(entity);
             await _context.SaveChangesAsync();
             return entity;
         }
-
-        public virtual async Task Update(T entity)
+        public virtual async Task UpdateAsync(T entity)
         {
             _entities.Update(entity);
             await _context.SaveChangesAsync();
         }
-
-        public virtual async Task Remove(T entity)
+        public virtual async Task DeleteAsync(int id)
         {
-            _entities.Remove(entity);
-            await _context.SaveChangesAsync();
+            var entity = await GetByIdAsync(id);
+            if (entity != null)
+            {
+                _entities.Remove(entity);
+                await _context.SaveChangesAsync();
+            }
+        }
+        public virtual async Task<bool> ExistsAsync(int id)
+        {
+            return await _entities.FindAsync(id) != null;
         }
     }
 }
