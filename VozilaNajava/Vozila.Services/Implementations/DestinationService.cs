@@ -10,22 +10,13 @@ namespace Vozila.Services.Implementations
     public class DestinationService : IDestinationService
     {
         private readonly IDestinationRepository _destinationRepo;
-        private readonly IRepository<Condition> _conditionRepo;
-        private readonly IRepository<Contract> _contractRepo;
-        private readonly IRepository<Transporter> _transporterRepo;
+        
 
         public DestinationService(
-            IDestinationRepository destinationRepo,
-            IRepository<Condition> conditionRepo,
-            IRepository<Contract> contractRepo,
-            IRepository<Transporter> transporterRepo)
+            IDestinationRepository destinationRepo)
         {
             _destinationRepo = destinationRepo;
-            _conditionRepo = conditionRepo;
-            _contractRepo = contractRepo;
-            _transporterRepo = transporterRepo;
         }
-
         // ------------------------------------------------------------
         // LIST ALL
         // ------------------------------------------------------------
@@ -43,11 +34,10 @@ namespace Vozila.Services.Implementations
                 OrderCount = d.Orders?.Count ?? 0
             });
         }
-        
         // ------------------------------------------------------------
         // BY CONDITION
         // ------------------------------------------------------------
-        public async Task<IEnumerable<DestinationListVM>> GetByConditionAsync(int conditionId)
+        public async Task<IEnumerable<DestinationListVM>> GetDestinationsByConditionAsync(int conditionId)
         {
             var list = await _destinationRepo.GetActiveDestinationsByContractAsync(conditionId);
 
@@ -61,7 +51,6 @@ namespace Vozila.Services.Implementations
                 OrderCount = d.Orders?.Count ?? 0
             });
         }
-
         // ------------------------------------------------------------
         // BY CONTRACT
         // ------------------------------------------------------------
@@ -79,7 +68,6 @@ namespace Vozila.Services.Implementations
                 OrderCount = d.Orders?.Count ?? 0
             });
         }
-
         // ------------------------------------------------------------
         // BY TRANSPORTER
         // ------------------------------------------------------------
@@ -97,7 +85,6 @@ namespace Vozila.Services.Implementations
                 OrderCount = d.Orders?.Count ?? 0
             });
         }
-
         // ------------------------------------------------------------
         // DETAILS (Using FullDetails repo method)
         // ------------------------------------------------------------
@@ -127,7 +114,7 @@ namespace Vozila.Services.Implementations
         // ------------------------------------------------------------
         // GET SIMPLE VM
         // ------------------------------------------------------------
-        public async Task<DestinationVM?> GetByIdAsync(int id)
+        public async Task<DestinationVM?> GetDestinationByIdAsync(int id)
         {
             var dest = await _destinationRepo.GetByIdAsync(id);
             if (dest == null) return null;
@@ -150,7 +137,7 @@ namespace Vozila.Services.Implementations
         // ------------------------------------------------------------
         // CREATE
         // ------------------------------------------------------------
-        public async Task<DestinationVM> CreateAsync(DestinationVM model)
+        public async Task<DestinationVM> CreateDestinationAsync(DestinationVM model)
         {
             var entity = new Destination
             {
@@ -172,7 +159,7 @@ namespace Vozila.Services.Implementations
         // ------------------------------------------------------------
         // UPDATE
         // ------------------------------------------------------------
-        public async Task UpdateAsync(DestinationVM model)
+        public async Task UpdateDestinationAsync(DestinationVM model)
         {
             var entity = await _destinationRepo.GetByIdAsync(model.Id);
             if (entity == null) return;
@@ -189,7 +176,7 @@ namespace Vozila.Services.Implementations
         // ------------------------------------------------------------
         // DELETE
         // ------------------------------------------------------------
-        public async Task DeleteAsync(int id)
+        public async Task DeleteDestinationAsync(int id)
         {
             await _destinationRepo.DeleteAsync(id);
         }

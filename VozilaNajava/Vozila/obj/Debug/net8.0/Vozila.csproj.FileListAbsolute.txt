@@ -12,6 +12,7 @@ D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\bin\Debug\net8.0\AutoMa
 D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\bin\Debug\net8.0\Azure.Core.dll
 D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\bin\Debug\net8.0\Azure.Identity.dll
 D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\bin\Debug\net8.0\Humanizer.dll
+D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\bin\Debug\net8.0\Microsoft.AspNet.Identity.Core.dll
 D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
 D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
@@ -156,11 +157,9 @@ D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\obj\Debug\net8.0\static
 D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\obj\Debug\net8.0\staticwebassets.build.json.cache
 D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\obj\Debug\net8.0\staticwebassets.development.json
 D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\obj\Debug\net8.0\Vozila.csproj.Up2Date
 D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\obj\Debug\net8.0\Vozila.dll
 D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\obj\Debug\net8.0\refint\Vozila.dll
 D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\obj\Debug\net8.0\Vozila.pdb
 D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\obj\Debug\net8.0\Vozila.genruntimeconfig.cache
 D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\obj\Debug\net8.0\ref\Vozila.dll
-D:\proekt-office\vozila\truckliberty\VozilaNajava\Vozila\bin\Debug\net8.0\Microsoft.AspNet.Identity.Core.dll

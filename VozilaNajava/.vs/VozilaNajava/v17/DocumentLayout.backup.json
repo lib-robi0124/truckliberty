@@ -1,30 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\qinshift\\truckliberty\\VozilaNajava\\",
+  "WorkspaceRootPath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EC3E60CD-2BB9-4736-8A9C-271F86ECBA8B}|Vozila.Services\\Vozila.Services.csproj|c:\\qinshift\\truckliberty\\vozilanajava\\vozila.services\\implementations\\destinationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC3E60CD-2BB9-4736-8A9C-271F86ECBA8B}|Vozila.Services\\Vozila.Services.csproj|solutionrelative:vozila.services\\implementations\\destinationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EC3E60CD-2BB9-4736-8A9C-271F86ECBA8B}|Vozila.Services\\Vozila.Services.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.services\\implementations\\priceoilservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC3E60CD-2BB9-4736-8A9C-271F86ECBA8B}|Vozila.Services\\Vozila.Services.csproj|solutionrelative:vozila.services\\implementations\\priceoilservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC3E60CD-2BB9-4736-8A9C-271F86ECBA8B}|Vozila.Services\\Vozila.Services.csproj|c:\\qinshift\\truckliberty\\vozilanajava\\vozila.services\\interfaces\\idestinationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC3E60CD-2BB9-4736-8A9C-271F86ECBA8B}|Vozila.Services\\Vozila.Services.csproj|solutionrelative:vozila.services\\interfaces\\idestinationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|c:\\qinshift\\truckliberty\\vozilanajava\\vozila.domain\\models\\contract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|solutionrelative:vozila.domain\\models\\contract.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|c:\\qinshift\\truckliberty\\vozilanajava\\vozila.dataaccess\\implementations\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|solutionrelative:vozila.dataaccess\\implementations\\orderrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|c:\\qinshift\\truckliberty\\vozilanajava\\vozila.domain\\models\\condition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|solutionrelative:vozila.domain\\models\\condition.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|c:\\qinshift\\truckliberty\\vozilanajava\\vozila.domain\\models\\transporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2CD216D3-4C14-46D0-A323-6C621A3A26C8}|Vozila.Domain\\Vozila.Domain.csproj|solutionrelative:vozila.domain\\models\\transporter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EC3E60CD-2BB9-4736-8A9C-271F86ECBA8B}|Vozila.Services\\Vozila.Services.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.services\\interfaces\\ipriceoilservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC3E60CD-2BB9-4736-8A9C-271F86ECBA8B}|Vozila.Services\\Vozila.Services.csproj|solutionrelative:vozila.services\\interfaces\\ipriceoilservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,80 +26,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "OrderRepository.cs",
-              "DocumentMoniker": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Implementations\\OrderRepository.cs",
-              "RelativeDocumentMoniker": "Vozila.DataAccess\\Implementations\\OrderRepository.cs",
-              "ToolTip": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Implementations\\OrderRepository.cs",
-              "RelativeToolTip": "Vozila.DataAccess\\Implementations\\OrderRepository.cs",
-              "ViewState": "AgIAAKQBAAAAAAAAAAAgwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-03T21:30:05.797Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Contract.cs",
-              "DocumentMoniker": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\Contract.cs",
-              "RelativeDocumentMoniker": "Vozila.Domain\\Models\\Contract.cs",
-              "ToolTip": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\Contract.cs",
-              "RelativeToolTip": "Vozila.Domain\\Models\\Contract.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAiAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-03T21:23:05.22Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Transporter.cs",
-              "DocumentMoniker": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\Transporter.cs",
-              "RelativeDocumentMoniker": "Vozila.Domain\\Models\\Transporter.cs",
-              "ToolTip": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\Transporter.cs",
-              "RelativeToolTip": "Vozila.Domain\\Models\\Transporter.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-03T21:22:08.413Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Condition.cs",
-              "DocumentMoniker": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\Condition.cs",
-              "RelativeDocumentMoniker": "Vozila.Domain\\Models\\Condition.cs",
-              "ToolTip": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila.Domain\\Models\\Condition.cs",
-              "RelativeToolTip": "Vozila.Domain\\Models\\Condition.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-03T21:20:14.325Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DestinationService.cs",
-              "DocumentMoniker": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila.Services\\Implementations\\DestinationService.cs",
-              "RelativeDocumentMoniker": "Vozila.Services\\Implementations\\DestinationService.cs",
-              "ToolTip": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila.Services\\Implementations\\DestinationService.cs",
-              "RelativeToolTip": "Vozila.Services\\Implementations\\DestinationService.cs",
-              "ViewState": "AgIAAIEAAAAAAAAAAIA2wJQAAAAAAAAAAAAAAA==",
+              "Title": "PriceOilService.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Services\\Implementations\\PriceOilService.cs",
+              "RelativeDocumentMoniker": "Vozila.Services\\Implementations\\PriceOilService.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Services\\Implementations\\PriceOilService.cs",
+              "RelativeToolTip": "Vozila.Services\\Implementations\\PriceOilService.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAywF4AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-03T21:07:36.377Z",
+              "WhenOpened": "2025-12-04T13:57:53.517Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "IDestinationService.cs",
-              "DocumentMoniker": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila.Services\\Interfaces\\IDestinationService.cs",
-              "RelativeDocumentMoniker": "Vozila.Services\\Interfaces\\IDestinationService.cs",
-              "ToolTip": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila.Services\\Interfaces\\IDestinationService.cs",
-              "RelativeToolTip": "Vozila.Services\\Interfaces\\IDestinationService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAuAAAAAAAAAA==",
+              "Title": "IPriceOilService.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Services\\Interfaces\\IPriceOilService.cs",
+              "RelativeDocumentMoniker": "Vozila.Services\\Interfaces\\IPriceOilService.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Services\\Interfaces\\IPriceOilService.cs",
+              "RelativeToolTip": "Vozila.Services\\Interfaces\\IPriceOilService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-03T21:06:27.428Z",
+              "WhenOpened": "2025-12-04T13:40:48.587Z",
               "EditorCaption": ""
             }
           ]

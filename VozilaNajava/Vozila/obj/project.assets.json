@@ -4455,23 +4455,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
+    "C:\\Users\\Robertr2\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila\\Vozila.csproj",
+      "projectUniqueName": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila\\Vozila.csproj",
       "projectName": "Vozila",
-      "projectPath": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila\\Vozila.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila\\obj\\",
+      "projectPath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila\\Vozila.csproj",
+      "packagesPath": "C:\\Users\\Robertr2\\.nuget\\packages\\",
+      "outputPath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Robertr2\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -4486,11 +4486,11 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Vozila.DataAccess.csproj": {
-              "projectPath": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Vozila.DataAccess.csproj"
+            "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Vozila.DataAccess.csproj": {
+              "projectPath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Vozila.DataAccess.csproj"
             },
-            "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila.Services\\Vozila.Services.csproj": {
-              "projectPath": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila.Services\\Vozila.Services.csproj"
+            "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Services\\Vozila.Services.csproj": {
+              "projectPath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Services\\Vozila.Services.csproj"
             }
           }
         }
