@@ -1,14 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\",
+  "WorkspaceRootPath": "C:\\qinshift\\truckliberty\\VozilaNajava\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EC3E60CD-2BB9-4736-8A9C-271F86ECBA8B}|Vozila.Services\\Vozila.Services.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.services\\implementations\\priceoilservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC3E60CD-2BB9-4736-8A9C-271F86ECBA8B}|Vozila.Services\\Vozila.Services.csproj|solutionrelative:vozila.services\\implementations\\priceoilservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C949D1B1-60FD-46B7-9C87-2242D4D84242}|Vozila.ViewModels\\Vozila.ViewModels.csproj|c:\\qinshift\\truckliberty\\vozilanajava\\vozila.viewmodels\\models\\submittruckvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C949D1B1-60FD-46B7-9C87-2242D4D84242}|Vozila.ViewModels\\Vozila.ViewModels.csproj|solutionrelative:vozila.viewmodels\\models\\submittruckvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EC3E60CD-2BB9-4736-8A9C-271F86ECBA8B}|Vozila.Services\\Vozila.Services.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.services\\interfaces\\ipriceoilservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC3E60CD-2BB9-4736-8A9C-271F86ECBA8B}|Vozila.Services\\Vozila.Services.csproj|solutionrelative:vozila.services\\interfaces\\ipriceoilservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3221AD96-E6EF-4C3C-9C71-51C60505F305}|Vozila\\Vozila.csproj|c:\\qinshift\\truckliberty\\vozilanajava\\vozila\\controllers\\transportercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3221AD96-E6EF-4C3C-9C71-51C60505F305}|Vozila\\Vozila.csproj|solutionrelative:vozila\\controllers\\transportercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3221AD96-E6EF-4C3C-9C71-51C60505F305}|Vozila\\Vozila.csproj|c:\\qinshift\\truckliberty\\vozilanajava\\vozila\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3221AD96-E6EF-4C3C-9C71-51C60505F305}|Vozila\\Vozila.csproj|solutionrelative:vozila\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3221AD96-E6EF-4C3C-9C71-51C60505F305}|Vozila\\Vozila.csproj|c:\\qinshift\\truckliberty\\vozilanajava\\vozila\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3221AD96-E6EF-4C3C-9C71-51C60505F305}|Vozila\\Vozila.csproj|solutionrelative:vozila\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3221AD96-E6EF-4C3C-9C71-51C60505F305}|Vozila\\Vozila.csproj|c:\\qinshift\\truckliberty\\vozilanajava\\vozila\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3221AD96-E6EF-4C3C-9C71-51C60505F305}|Vozila\\Vozila.csproj|solutionrelative:vozila\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -27,27 +39,66 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PriceOilService.cs",
-              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Services\\Implementations\\PriceOilService.cs",
-              "RelativeDocumentMoniker": "Vozila.Services\\Implementations\\PriceOilService.cs",
-              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Services\\Implementations\\PriceOilService.cs",
-              "RelativeToolTip": "Vozila.Services\\Implementations\\PriceOilService.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAywF4AAAAFAAAAAAAAAA==",
+              "Title": "SubmitTruckVM.cs",
+              "DocumentMoniker": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila.ViewModels\\Models\\SubmitTruckVM.cs",
+              "RelativeDocumentMoniker": "Vozila.ViewModels\\Models\\SubmitTruckVM.cs",
+              "ToolTip": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila.ViewModels\\Models\\SubmitTruckVM.cs",
+              "RelativeToolTip": "Vozila.ViewModels\\Models\\SubmitTruckVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-04T13:57:53.517Z",
+              "WhenOpened": "2025-12-04T22:30:58.504Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Vozila\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Vozila\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T22:22:28.706Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ReportController.cs",
+              "DocumentMoniker": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila\\Controllers\\ReportController.cs",
+              "RelativeDocumentMoniker": "Vozila\\Controllers\\ReportController.cs",
+              "ToolTip": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila\\Controllers\\ReportController.cs",
+              "RelativeToolTip": "Vozila\\Controllers\\ReportController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T21:56:58.887Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "IPriceOilService.cs",
-              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Services\\Interfaces\\IPriceOilService.cs",
-              "RelativeDocumentMoniker": "Vozila.Services\\Interfaces\\IPriceOilService.cs",
-              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Services\\Interfaces\\IPriceOilService.cs",
-              "RelativeToolTip": "Vozila.Services\\Interfaces\\IPriceOilService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Title": "TransporterController.cs",
+              "DocumentMoniker": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila\\Controllers\\TransporterController.cs",
+              "RelativeDocumentMoniker": "Vozila\\Controllers\\TransporterController.cs",
+              "ToolTip": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila\\Controllers\\TransporterController.cs",
+              "RelativeToolTip": "Vozila\\Controllers\\TransporterController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAgwCIAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-04T13:40:48.587Z",
+              "WhenOpened": "2025-12-04T21:56:44.322Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Vozila\\Controllers\\AdminController.cs",
+              "ToolTip": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Vozila\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwDsAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-04T21:56:20.271Z",
               "EditorCaption": ""
             }
           ]

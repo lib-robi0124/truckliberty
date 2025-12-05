@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Identity;
+using Vozila.DataAccess.DataContext;
 using Vozila.Services.AutoMappers;
 using Vozila.Services.Extensions;
 
@@ -8,6 +10,16 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+// Use AddIdentity instead of AddDefaultIdentity
+builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+{
+    options.SignIn.RequireConfirmedAccount = false;
+    options.Password.RequireDigit = true;
+    options.Password.RequiredLength = 6;
+})
+.AddEntityFrameworkStores<AppDbContext>()
+.AddDefaultTokenProviders();
+
 
 // Configure DbContext
 builder.Services.InjectDbContext(connectionString);
