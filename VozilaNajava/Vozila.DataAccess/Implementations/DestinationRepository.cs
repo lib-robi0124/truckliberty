@@ -16,10 +16,8 @@ namespace Vozila.DataAccess.Implementations
         public override async Task<Destination?> GetByIdAsync(int id)
         {
             return await _entities
-                .Include(d => d.Condition)
-                    .ThenInclude(c => c.Contract)
-                .Include(d => d.City)
-                .Include(d => d.Country)
+                .Include(d => d.Contract)
+                    .ThenInclude(c => c.Transporter)
                 .FirstOrDefaultAsync(d => d.Id == id);
         }
         public override async Task<Destination?> GetActiveAsync(int id)
@@ -27,22 +25,18 @@ namespace Vozila.DataAccess.Implementations
             var currentDate = DateTime.Now;
 
             return await _entities
-                .Include(d => d.Condition)
-                    .ThenInclude(c => c.Contract)
-                .Include(d => d.City)
-                .Include(d => d.Country)
+                .Include(d => d.Contract)
+                    .ThenInclude(c => c.Transporter)
                 .Where(d => d.Id == id &&
-                       d.Condition.Contract.ValidUntil > currentDate)
+                       d.Contract.ValidUntil > currentDate)
                 .FirstOrDefaultAsync();
         }
         public override async Task<IEnumerable<Destination>> GetAllAsync()
         {
             return await _entities
-                .Include(d => d.Condition)
-                    .ThenInclude(c => c.Contract)
-                .Include(d => d.City)
-                .Include(d => d.Country)
-                .OrderBy(d => d.City.ToString())
+                .Include(d => d.Contract)
+                    .ThenInclude(c => c.Transporter)
+                .OrderBy(d => d.City)
                 .ToListAsync();
         }
 
@@ -51,36 +45,32 @@ namespace Vozila.DataAccess.Implementations
             var currentDate = DateTime.Now;
 
             return await _entities
-                .Include(d => d.Condition)
-                    .ThenInclude(c => c.Contract)
-                .Include(d => d.City)
-                .Include(d => d.Country)
-                .Where(d => d.Condition.Contract.ValidUntil > currentDate)
-                .OrderBy(d => d.City.ToString())
+                .Include(d => d.Contract)
+                    .ThenInclude(c => c.Transporter)
+                .Where(d => d.Contract.ValidUntil > currentDate)
+                .OrderBy(d => d.City)
                 .ToListAsync();
         }
 
         public override async Task<Destination> AddAsync(Destination entity)
         {
-            // Validate that Condition exists
-            var condition = await _context.Conditions
-                .Include(c => c.Contract)
-                .FirstOrDefaultAsync(c => c.Id == entity.ConditionId);
+            // Validate that Contract exists
+            var contract = await _context.Contracts
+                .FirstOrDefaultAsync(c => c.Id == entity.ContractId);
 
-            if (condition == null)
-                throw new InvalidOperationException("Condition not found");
+            if (contract == null)
+                throw new InvalidOperationException("Contract not found");
 
             // Check if destination already exists for this city in the same contract
             var existingDestination = await _entities
-                .Include(d => d.Condition)
                 .FirstOrDefaultAsync(d =>
                     d.City == entity.City &&
-                    d.Condition.ContractId == condition.ContractId);
+                    d.ContractId == entity.ContractId);
 
             if (existingDestination != null)
             {
                 throw new InvalidOperationException(
-                    $"Destination for city {entity.City} already exists in contract {condition.ContractId}");
+                    $"Destination for city {entity.City} already exists in contract {entity.ContractId}");
             }
 
             // Set initial daily price from latest oil price
@@ -98,7 +88,7 @@ namespace Vozila.DataAccess.Implementations
 
             // Preserve immutable properties
             entity.DailyPricePerLiter = existing.DailyPricePerLiter;
-            entity.ConditionId = existing.ConditionId;
+            entity.ContractId = existing.ContractId;
 
             await base.UpdateAsync(entity);
         }
@@ -112,8 +102,8 @@ namespace Vozila.DataAccess.Implementations
             if (destination == null)
                 throw new NotFoundException($"Destination {destinationId} not found");
 
-            if (destination.Condition == null)
-                throw new InvalidOperationException($"Destination {destinationId} has no associated condition");
+            if (destination.Contract == null)
+                throw new InvalidOperationException($"Destination {destinationId} has no associated contract");
 
             var latestOilPrice = await GetLatestOilPriceAsync();
             destination.DailyPricePerLiter = latestOilPrice;
@@ -131,8 +121,7 @@ namespace Vozila.DataAccess.Implementations
             var latestOilPrice = await GetLatestOilPriceAsync();
 
             var destinations = await _entities
-                .Include(d => d.Condition)
-                .Where(d => d.Condition.ContractId == contractId)
+                .Where(d => d.ContractId == contractId)
                 .ToListAsync();
 
             var result = new Dictionary<int, decimal>();
@@ -179,8 +168,7 @@ namespace Vozila.DataAccess.Implementations
             await CreatePriceOilRecordAsync(newDailyPrice);
 
             var destinations = await _entities
-                .Include(d => d.Condition)
-                .Where(d => d.Condition.ContractId == contractId)
+                .Where(d => d.ContractId == contractId)
                 .ToListAsync();
 
             foreach (var destination in destinations)
@@ -211,11 +199,8 @@ namespace Vozila.DataAccess.Implementations
         public async Task<Destination?> GetWithFullDetailsAsync(int destinationId)
         {
             return await _entities
-                .Include(d => d.Condition)
-                    .ThenInclude(c => c.Contract)
-                        .ThenInclude(contract => contract.Transporter)
-                .Include(d => d.City)
-                .Include(d => d.Country)
+                .Include(d => d.Contract)
+                    .ThenInclude(c => c.Transporter)
                 .Include(d => d.Orders)
                 .FirstOrDefaultAsync(d => d.Id == destinationId);
         }
@@ -228,36 +213,30 @@ namespace Vozila.DataAccess.Implementations
         public async Task<IEnumerable<Destination>> GetByContractIdAsync(int contractId)
         {
             return await _entities
-                .Include(d => d.Condition)
-                    .ThenInclude(c => c.Contract)
-                .Include(d => d.City)
-                .Include(d => d.Country)
-                .Where(d => d.Condition.ContractId == contractId)
-                .OrderBy(d => d.City.ToString())
+                .Include(d => d.Contract)
+                    .ThenInclude(c => c.Transporter)
+                .Where(d => d.ContractId == contractId)
+                .OrderBy(d => d.City)
                 .ToListAsync();
         }
 
         public async Task<IEnumerable<Destination>> GetByTransporterIdAsync(int transporterId)
         {
             return await _entities
-                .Include(d => d.Condition)
-                    .ThenInclude(c => c.Contract)
-                .Include(d => d.City)
-                .Include(d => d.Country)
-                .Where(d => d.Condition.Contract.TransporterId == transporterId)
-                .OrderBy(d => d.City.ToString())
+                .Include(d => d.Contract)
+                    .ThenInclude(c => c.Transporter)
+                .Where(d => d.Contract.TransporterId == transporterId)
+                .OrderBy(d => d.City)
                 .ToListAsync();
         }
 
         public async Task<IEnumerable<Destination>> GetByCityIdAsync(int cityId)
         {
             return await _entities
-                .Include(d => d.Condition)
-                    .ThenInclude(c => c.Contract)
-                        .ThenInclude(contract => contract.Transporter)
-                .Include(d => d.Country)
+                .Include(d => d.Contract)
+                    .ThenInclude(c => c.Transporter)
                 .Where(d => (int)d.City == cityId)
-                .OrderByDescending(d => d.Condition.Contract.ValidUntil)
+                .OrderByDescending(d => d.Contract.ValidUntil)
                 .ToListAsync();
         }
 
@@ -268,15 +247,14 @@ namespace Vozila.DataAccess.Implementations
             var currentDate = DateTime.Now;
 
             var destination = await _entities
-                .Include(d => d.Condition)
-                    .ThenInclude(c => c.Contract)
-                        .ThenInclude(contract => contract.Transporter)
+                .Include(d => d.Contract)
+                    .ThenInclude(c => c.Transporter)
                 .Where(d => (int)d.City == cityId &&
-                       d.Condition.Contract.ValidUntil > currentDate)
-                .OrderByDescending(d => d.Condition.Contract.ValidUntil)
+                       d.Contract.ValidUntil > currentDate)
+                .OrderByDescending(d => d.Contract.ValidUntil)
                 .FirstOrDefaultAsync();
 
-            return destination?.Condition?.Contract?.Transporter;
+            return destination?.Contract?.Transporter;
         }
 
         public async Task<bool> ValidateDestinationForOrderAsync(int destinationId)
@@ -284,10 +262,9 @@ namespace Vozila.DataAccess.Implementations
             var currentDate = DateTime.Now;
 
             return await _entities
-                .Include(d => d.Condition)
-                    .ThenInclude(c => c.Contract)
+                .Include(d => d.Contract)
                 .AnyAsync(d => d.Id == destinationId &&
-                          d.Condition.Contract.ValidUntil > currentDate);
+                          d.Contract.ValidUntil > currentDate);
         }
 
         // ========== ADDITIONAL METHODS ==========
@@ -297,13 +274,11 @@ namespace Vozila.DataAccess.Implementations
             var currentDate = DateTime.Now;
 
             return await _entities
-                .Include(d => d.Condition)
-                    .ThenInclude(c => c.Contract)
-                .Include(d => d.City)
-                .Include(d => d.Country)
-                .Where(d => d.Condition.ContractId == contractId &&
-                       d.Condition.Contract.ValidUntil > currentDate)
-                .OrderBy(d => d.City.ToString())
+                .Include(d => d.Contract)
+                    .ThenInclude(c => c.Transporter)
+                .Where(d => d.ContractId == contractId &&
+                       d.Contract.ValidUntil > currentDate)
+                .OrderBy(d => d.City)
                 .ToListAsync();
         }
 
@@ -316,8 +291,7 @@ namespace Vozila.DataAccess.Implementations
 
             // Get destinations where the daily price was last updated before the latest oil price update
             return await _entities
-                .Include(d => d.Condition)
-                    .ThenInclude(c => c.Contract)
+                .Include(d => d.Contract)
                 .Where(d => d.DailyPricePerLiter == 0 ||
                        (latestOilPriceDate > sinceDate &&
                         EF.Property<DateTime>(d, "ModifiedDate") < latestOilPriceDate))
@@ -333,29 +307,18 @@ namespace Vozila.DataAccess.Implementations
             int? countryId = null)
         {
             var query = _entities
-                .Include(d => d.Condition)
-                    .ThenInclude(c => c.Contract)
-                        .ThenInclude(contract => contract.Transporter)
-                .Include(d => d.City)
-                .Include(d => d.Country)
+                .Include(d => d.Contract)
+                    .ThenInclude(c => c.Transporter)
                 .AsQueryable();
-
-            if (!string.IsNullOrWhiteSpace(searchTerm))
-            {
-                searchTerm = searchTerm.ToLower();
-                query = query.Where(d =>
-                    d.City.ToString().ToLower().Contains(searchTerm) ||
-                    d.Country.ToString().ToLower().Contains(searchTerm));
-            }
 
             if (contractId.HasValue)
             {
-                query = query.Where(d => d.Condition.ContractId == contractId.Value);
+                query = query.Where(d => d.ContractId == contractId.Value);
             }
 
             if (transporterId.HasValue)
             {
-                query = query.Where(d => d.Condition.Contract.TransporterId == transporterId.Value);
+                query = query.Where(d => d.Contract.TransporterId == transporterId.Value);
             }
 
             if (countryId.HasValue)
@@ -363,9 +326,19 @@ namespace Vozila.DataAccess.Implementations
                 query = query.Where(d => (int)d.Country == countryId.Value);
             }
 
-            return await query
-                .OrderBy(d => d.City.ToString())
-                .ToListAsync();
+            var results = await query.OrderBy(d => d.City).ToListAsync();
+
+            // Apply search term filter in memory if provided
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                searchTerm = searchTerm.ToLower();
+                results = results.Where(d =>
+                    d.City.ToString().ToLower().Contains(searchTerm) ||
+                    d.Country.ToString().ToLower().Contains(searchTerm))
+                    .ToList();
+            }
+
+            return results;
         }
 
         public async Task<decimal> GetAverageDestinationPriceByContractAsync(int contractId)
@@ -373,8 +346,7 @@ namespace Vozila.DataAccess.Implementations
             var latestOilPrice = await GetLatestOilPriceAsync();
 
             var destinations = await _entities
-                .Include(d => d.Condition)
-                .Where(d => d.Condition.ContractId == contractId)
+                .Where(d => d.ContractId == contractId)
                 .ToListAsync();
 
             if (!destinations.Any())

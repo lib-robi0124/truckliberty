@@ -21,7 +21,7 @@ namespace Vozila.Services.AutoMappers
                 .ForMember(dest => dest.ActiveContracts, opt => opt.MapFrom(src =>
                     src.Contracts.Count(c => c.ValidUntil > DateTime.Now)))
                 .ForMember(dest => dest.TotalContractValue, opt => opt.MapFrom(src =>
-                    src.Contracts.Where(c => c.ValidUntil > DateTime.Now).Sum(c => c.ValueEUR)))
+                    src.Contracts.Where(c => c.ValidUntil > DateTime.Now).Sum(c => c.ContractOilPrice)))
                 .ForMember(dest => dest.PendingOrders, opt => opt.MapFrom(src =>
                     src.Orders.Count(o => o.Status == Domain.Enums.OrderStatus.Pending)))
                 .ForMember(dest => dest.ApprovedOrders, opt => opt.MapFrom(src =>

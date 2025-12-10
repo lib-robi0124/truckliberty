@@ -5,7 +5,7 @@ namespace Vozila.Services.Interfaces
 {
     public interface IUserService
     {
-        Task<UserVM?> AuthenticateAsync(string fullName, string password);
+        Task<UserVM?> ValidateUser(LoginViewModel loginViewModel);
         Task<UserVM> CreateUserAsync(User user, int performedByUserId);
         Task<UserVM> UpdateUserAsync(User user, int performedByUserId);
         Task<bool> DeleteUserAsync(int userId, int performedByUserId);
@@ -19,8 +19,6 @@ namespace Vozila.Services.Interfaces
         Task UpdateContractAsync(Contract contract);
         Task<Destination> CreateDestinationAsync(Destination destination);
         Task UpdateDestinationAsync(Destination destination);
-        Task<Condition> CreateConditionAsync(Condition condition);
-        Task UpdateConditionAsync(Condition condition);
         Task<Order> CreateOrderAsync(Order order);
         Task UpdateOrderAsync(Order order);
         Task<Order?> GetOrderWithUserAsync(int orderId);

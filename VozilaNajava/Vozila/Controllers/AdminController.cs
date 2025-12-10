@@ -1,21 +1,55 @@
-﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Vozila.Filters;
 using Vozila.Services.Interfaces;
 using Vozila.ViewModels.Models;
 
 namespace Vozila.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [SessionAuthorize(RequiredRole = "Admin")]
     public class AdminController : Controller
     {
         private readonly IOrderService _orderService;
         private readonly IContractService _contractService;
+        private readonly ICompanyService _companyService;
+        private readonly IDestinationService _destinationService;
+        private readonly ITansporterService _transporterService;
 
-        public AdminController(IOrderService orderService, IContractService contractService)
+        public AdminController(
+            IOrderService orderService, 
+            IContractService contractService,
+            ICompanyService companyService,
+            IDestinationService destinationService,
+            ITansporterService transporterService)
         {
             _orderService = orderService;
             _contractService = contractService;
+            _companyService = companyService;
+            _destinationService = destinationService;
+            _transporterService = transporterService;
         }
+
+        public async Task<IActionResult> Index()
+        {
+            var model = new AdminDashboardVM
+            {
+                Companies = (await _companyService.GetAllCompaniesAsync()).ToList(),
+                Destinations = (await _destinationService.GetAllActiveDestinationsAsync())
+                    .Select(d => new DestinationVM 
+                    { 
+                        Id = d.Id, 
+                        CityName = d.CityName 
+                    }).ToList(),
+                Transporters = (await _transporterService.GetAllTransportersAsync())
+                    .Select(t => new TransporterVM 
+                    { 
+                        Id = t.Id, 
+                        CompanyName = t.CompanyName 
+                    }).ToList()
+            };
+            return View(model);
+        }
+
         public IActionResult Dashboard()
         {
             return View();

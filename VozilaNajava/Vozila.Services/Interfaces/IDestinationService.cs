@@ -5,7 +5,6 @@ namespace Vozila.Services.Interfaces
     public interface IDestinationService
     {
         Task<IEnumerable<DestinationListVM>> GetAllActiveDestinationsAsync();
-        Task<IEnumerable<DestinationListVM>> GetDestinationsByConditionAsync(int conditionId);
         Task<IEnumerable<DestinationListVM>> GetByContractAsync(int contractId);
         Task<IEnumerable<DestinationListVM>> GetByTransporterAsync(int transporterId);
         Task<DestinationDetailsVM?> GetDestinationDetailsAsync(int id);

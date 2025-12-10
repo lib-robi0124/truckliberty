@@ -10,6 +10,6 @@
         public DateTime CreatedDate { get; set; }
         public DateTime ValidUntil { get; set; }
         public bool IsActive { get; set; }
-        public List<ConditionVM> Conditions { get; set; } = new();
+        public List<DestinationVM> Destinations { get; set; } = new();
     }
 }

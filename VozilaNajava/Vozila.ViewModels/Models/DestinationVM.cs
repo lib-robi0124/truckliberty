@@ -11,7 +11,7 @@ namespace Vozila.ViewModels.Models
         public string CountryName { get; set; } = string.Empty;
         public decimal DestinationContractPrice { get; set; }
         public decimal DailyPricePerLiter { get; set; }
-        public int ConditionId { get; set; }
+        public int ContractId { get; set; }
         public decimal ContractOilPrice { get; set; }
         public decimal CalculatedPrice { get; set; }
     }

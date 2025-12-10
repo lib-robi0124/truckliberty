@@ -17,13 +17,15 @@ namespace Vozila.Services.AutoMappers
             CreateMap<Contract, ContractListVM>()
                 .ForMember(dest => dest.TransporterName, opt => opt.MapFrom(src => src.Transporter.CompanyName))
                 .ForMember(dest => dest.IsActive, opt => opt.MapFrom(src => src.ValidUntil > DateTime.Now))
-                .ForMember(dest => dest.ConditionCount, opt => opt.MapFrom(src => src.Conditions.Count));
+                .ForMember(dest => dest.ContractNumber, opt => opt.MapFrom(src => src.Contract.ContractNumber))
+                .ForMember(dest => dest.DestinationCount, opt => opt.MapFrom(src => src.Destinations.Count));
 
             CreateMap<Contract, ContractDetailsVM>()
                 .ForMember(dest => dest.TransporterName, opt => opt.MapFrom(src => src.Transporter.CompanyName))
                 .ForMember(dest => dest.TransporterEmail, opt => opt.MapFrom(src => src.Transporter.Email))
+                .ForMember(dest => dest.ContractNumber, opt => opt.MapFrom(src => src.Contract.ContractNumber))
                 .ForMember(dest => dest.IsActive, opt => opt.MapFrom(src => src.ValidUntil > DateTime.Now))
-                .ForMember(dest => dest.Conditions, opt => opt.MapFrom(src => src.Conditions));
+                .ForMember(dest => dest.Destination, opt => opt.MapFrom(src => src.Destinations));
         }
     }
 }

@@ -21,9 +21,9 @@ namespace Vozila.DataAccess.Extensions
             );
 
             modelBuilder.Entity<Transporter>().HasData(
-             new Transporter { Id = 1, CompanyName = "TransLogistika DOOEL", ContactPerson = "Petar Petrovski", PhoneNumber = "+389 70 123 456", Email = "info@translogistika.mk" },
-             new Transporter { Id = 2, CompanyName = "Balkan Transport Group", ContactPerson = "Milan Jovanovic", PhoneNumber = "+381 64 987 6543", Email = "office@balkantransport.rs" },
-             new Transporter { Id = 3, CompanyName = "EuroCargo Solutions", ContactPerson = "Ivan Petrović", PhoneNumber = "+385 91 332 4422", Email = "contact@eurocargo.hr" }
+             new Transporter { Id = 1, CompanyName = "TransLogistika DOOEL", ContactPerson = "Petar Petrovski", PhoneNumber = "+389 70 123 456", Email = "info@translogistika.mk", Password = "trans123" },
+             new Transporter { Id = 2, CompanyName = "Balkan Transport Group", ContactPerson = "Milan Jovanovic", PhoneNumber = "+381 64 987 6543", Email = "office@balkantransport.rs", Password = "trans123" },
+             new Transporter { Id = 3, CompanyName = "EuroCargo Solutions", ContactPerson = "Ivan Petrović", PhoneNumber = "+385 91 332 4422", Email = "contact@eurocargo.hr", Password = "trans123" }
             );
 
             modelBuilder.Entity<PriceOil>().HasData(
@@ -33,34 +33,27 @@ namespace Vozila.DataAccess.Extensions
 
             // 2. Seed Users (depends on Role and Transporter)
             modelBuilder.Entity<User>().HasData(
-                new User { Id = 1, FullName = "System Admin", Password = "admin123", RoleId = 1, IsActive = true, CreatedDate = new DateTime(2025, 1, 1, 10, 0, 0), TransporterId = null },
-                new User { Id = 2, FullName = "Transporter User", Password = "trans123", RoleId = 2, IsActive = true, CreatedDate = new DateTime(2025, 1, 2, 12, 0, 0), TransporterId = 1 }
+                new User { Id = 1, FullName = "System Admin", Email = "admin@liberty.com", Password = "admin123", RoleId = 1, IsActive = true, CreatedDate = new DateTime(2025, 1, 1, 10, 0, 0), TransporterId = null },
+                new User { Id = 2, FullName = "Transporter User", Email = "transporter@liberty.com", Password = "trans123", RoleId = 2, IsActive = true, CreatedDate = new DateTime(2025, 1, 2, 12, 0, 0), TransporterId = 1 }
             );
 
             // 3. Seed Contracts (depends on Transporter)
             modelBuilder.Entity<Contract>().HasData(
-                new Contract { Id = 1, ContractNumber = "CTR-2025-001", TransporterId = 1, ValueEUR = 15000.00m, CreatedDate = new DateTime(2025, 1, 1, 10, 0, 0), ValidUntil = new DateTime(2026, 1, 1, 0, 0, 0) },
-                new Contract { Id = 2, ContractNumber = "CTR-2025-002", TransporterId = 2, ValueEUR = 12000.00m, CreatedDate = new DateTime(2025, 1, 2, 10, 0, 0), ValidUntil = new DateTime(2026, 1, 2, 0, 0, 0) },
-                new Contract { Id = 3, ContractNumber = "CTR-2025-003", TransporterId = 3, ValueEUR = 18000.00m, CreatedDate = new DateTime(2025, 1, 3, 10, 0, 0), ValidUntil = new DateTime(2026, 1, 3, 0, 0, 0) }
+                new Contract { Id = 1, ContractNumber = "CTR-2025-001", TransporterId = 1, ValueEUR = 50000.00m, ContractOilPrice = 1.50m, CreatedDate = new DateTime(2025, 1, 1, 10, 0, 0), ValidUntil = new DateTime(2026, 1, 1, 0, 0, 0) },
+                new Contract { Id = 2, ContractNumber = "CTR-2025-002", TransporterId = 2, ValueEUR = 40000.00m, ContractOilPrice = 1.45m, CreatedDate = new DateTime(2025, 1, 2, 10, 0, 0), ValidUntil = new DateTime(2026, 1, 2, 0, 0, 0) },
+                new Contract { Id = 3, ContractNumber = "CTR-2025-003", TransporterId = 3, ValueEUR = 60000.00m, ContractOilPrice = 1.55m, CreatedDate = new DateTime(2025, 1, 3, 10, 0, 0), ValidUntil = new DateTime(2026, 1, 3, 0, 0, 0) }
             );
 
-            // 4. Seed Conditions (depends on Contract)
-            modelBuilder.Entity<Condition>().HasData(
-                new Condition { Id = 1, ContractId = 1, ContractOilPrice = 70.5m },
-                new Condition { Id = 2, ContractId = 2, ContractOilPrice = 69.0m },
-                new Condition { Id = 3, ContractId = 3, ContractOilPrice = 71.2m }
-            );
-
-            // 5. Seed Destinations (depends on Condition)
+            // 5. Seed Destinations (depends on Contract)
             modelBuilder.Entity<Destination>().HasData(
-               new Destination { Id = 1, City = City.Ljubljana, Country = Country.Slo, DestinationContractPrice = 150m, ConditionId = 1, DailyPricePerLiter = 70.0m },
-               new Destination { Id = 2, City = City.Zagreb, Country = Country.HR, DestinationContractPrice = 120m, ConditionId = 1, DailyPricePerLiter = 70.0m },
-               new Destination { Id = 3, City = City.Belgrade, Country = Country.SRB, DestinationContractPrice = 180m, ConditionId = 2, DailyPricePerLiter = 68.5m },
-               new Destination { Id = 4, City = City.Bucharest, Country = Country.RO, DestinationContractPrice = 200m, ConditionId = 2, DailyPricePerLiter = 68.5m },
-               new Destination { Id = 5, City = City.Sofia, Country = Country.BG, DestinationContractPrice = 175m, ConditionId = 3, DailyPricePerLiter = 71.0m },
-               new Destination { Id = 6, City = City.Thessaloniki, Country = Country.GR, DestinationContractPrice = 220m, ConditionId = 3, DailyPricePerLiter = 71.0m },
-               new Destination { Id = 7, City = City.Prishtina, Country = Country.RKS, DestinationContractPrice = 160m, ConditionId = 1, DailyPricePerLiter = 70.0m },
-               new Destination { Id = 8, City = City.Skopje, Country = Country.MK, DestinationContractPrice = 155m, ConditionId = 2, DailyPricePerLiter = 68.5m }
+               new Destination { Id = 1, City = City.Ljubljana, Country = Country.Slo, DestinationContractPrice = 150m, ContractId = 1, DailyPricePerLiter = 70.0m },
+               new Destination { Id = 2, City = City.Zagreb, Country = Country.HR, DestinationContractPrice = 120m, ContractId = 1, DailyPricePerLiter = 70.0m },
+               new Destination { Id = 3, City = City.Belgrade, Country = Country.SRB, DestinationContractPrice = 180m, ContractId = 2, DailyPricePerLiter = 68.5m },
+               new Destination { Id = 4, City = City.Bucharest, Country = Country.RO, DestinationContractPrice = 200m, ContractId = 2, DailyPricePerLiter = 68.5m },
+               new Destination { Id = 5, City = City.Sofia, Country = Country.BG, DestinationContractPrice = 175m, ContractId = 3, DailyPricePerLiter = 71.0m },
+               new Destination { Id = 6, City = City.Thessaloniki, Country = Country.GR, DestinationContractPrice = 220m, ContractId = 3, DailyPricePerLiter = 71.0m },
+               new Destination { Id = 7, City = City.Prishtina, Country = Country.RKS, DestinationContractPrice = 160m, ContractId = 1, DailyPricePerLiter = 70.0m },
+               new Destination { Id = 8, City = City.Skopje, Country = Country.MK, DestinationContractPrice = 155m, ContractId = 2, DailyPricePerLiter = 68.5m }
            );
 
             // 6. Seed Orders (depends on Company, Transporter, Destination)

@@ -1,10 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\qinshift\\truckliberty\\VozilaNajava\\",
+  "WorkspaceRootPath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3221AD96-E6EF-4C3C-9C71-51C60505F305}|Vozila\\Vozila.csproj|c:\\qinshift\\truckliberty\\vozilanajava\\vozila\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3221AD96-E6EF-4C3C-9C71-51C60505F305}|Vozila\\Vozila.csproj|solutionrelative:vozila\\controllers\\reportcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{EC3E60CD-2BB9-4736-8A9C-271F86ECBA8B}|Vozila.Services\\Vozila.Services.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.services\\automappers\\contractmappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC3E60CD-2BB9-4736-8A9C-271F86ECBA8B}|Vozila.Services\\Vozila.Services.csproj|solutionrelative:vozila.services\\automappers\\contractmappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{EC3E60CD-2BB9-4736-8A9C-271F86ECBA8B}|Vozila.Services\\Vozila.Services.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.services\\automappers\\destinationmappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC3E60CD-2BB9-4736-8A9C-271F86ECBA8B}|Vozila.Services\\Vozila.Services.csproj|solutionrelative:vozila.services\\automappers\\destinationmappingprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilanajava\\vozila.dataaccess\\implementations\\destinationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{17864B05-945C-4291-A012-81C5A8984E9E}|Vozila.DataAccess\\Vozila.DataAccess.csproj|solutionrelative:vozila.dataaccess\\implementations\\destinationrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,14 +31,40 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ReportController.cs",
-              "DocumentMoniker": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila\\Controllers\\ReportController.cs",
-              "RelativeDocumentMoniker": "Vozila\\Controllers\\ReportController.cs",
-              "ToolTip": "C:\\qinshift\\truckliberty\\VozilaNajava\\Vozila\\Controllers\\ReportController.cs",
-              "RelativeToolTip": "Vozila\\Controllers\\ReportController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Title": "ContractMappingProfile.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Services\\AutoMappers\\ContractMappingProfile.cs",
+              "RelativeDocumentMoniker": "Vozila.Services\\AutoMappers\\ContractMappingProfile.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Services\\AutoMappers\\ContractMappingProfile.cs",
+              "RelativeToolTip": "Vozila.Services\\AutoMappers\\ContractMappingProfile.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-04T21:56:58.887Z",
+              "WhenOpened": "2025-12-10T14:44:54.599Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DestinationMappingProfile.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Services\\AutoMappers\\DestinationMappingProfile.cs",
+              "RelativeDocumentMoniker": "Vozila.Services\\AutoMappers\\DestinationMappingProfile.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.Services\\AutoMappers\\DestinationMappingProfile.cs",
+              "RelativeToolTip": "Vozila.Services\\AutoMappers\\DestinationMappingProfile.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T14:44:44.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "DestinationRepository.cs",
+              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Implementations\\DestinationRepository.cs",
+              "RelativeDocumentMoniker": "Vozila.DataAccess\\Implementations\\DestinationRepository.cs",
+              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaNajava\\Vozila.DataAccess\\Implementations\\DestinationRepository.cs",
+              "RelativeToolTip": "Vozila.DataAccess\\Implementations\\DestinationRepository.cs",
+              "ViewState": "AgIAAF4AAAAAAAAAAAAwwBYAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-10T14:41:18.371Z",
               "EditorCaption": ""
             }
           ]
