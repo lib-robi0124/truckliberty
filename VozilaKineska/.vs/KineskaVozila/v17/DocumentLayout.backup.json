@@ -1,25 +1,29 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaKineska\\",
+  "WorkspaceRootPath": "C:\\qinshift\\truckliberty\\VozilaKineska\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3221AD96-E6EF-4C3C-9C71-51C60505F305}|Vozila\\Vozila.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilakineska\\vozila\\views\\order\\adminorderdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{3221AD96-E6EF-4C3C-9C71-51C60505F305}|Vozila\\Vozila.csproj|c:\\qinshift\\truckliberty\\vozilakineska\\vozila\\views\\order\\adminorderdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{3221AD96-E6EF-4C3C-9C71-51C60505F305}|Vozila\\Vozila.csproj|solutionrelative:vozila\\views\\order\\adminorderdashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3221AD96-E6EF-4C3C-9C71-51C60505F305}|Vozila\\Vozila.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilakineska\\vozila\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3221AD96-E6EF-4C3C-9C71-51C60505F305}|Vozila\\Vozila.csproj|solutionrelative:vozila\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{EC3E60CD-2BB9-4736-8A9C-271F86ECBA8B}|Vozila.Services\\Vozila.Services.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilakineska\\vozila.services\\interfaces\\iorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{EC3E60CD-2BB9-4736-8A9C-271F86ECBA8B}|Vozila.Services\\Vozila.Services.csproj|solutionrelative:vozila.services\\interfaces\\iorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C949D1B1-60FD-46B7-9C87-2242D4D84242}|Vozila.ViewModels\\Vozila.ViewModels.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilakineska\\vozila.viewmodels\\models\\adminorderdashboardvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{C949D1B1-60FD-46B7-9C87-2242D4D84242}|Vozila.ViewModels\\Vozila.ViewModels.csproj|c:\\qinshift\\truckliberty\\vozilakineska\\vozila.viewmodels\\models\\adminorderdashboardvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C949D1B1-60FD-46B7-9C87-2242D4D84242}|Vozila.ViewModels\\Vozila.ViewModels.csproj|solutionrelative:vozila.viewmodels\\models\\adminorderdashboardvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C949D1B1-60FD-46B7-9C87-2242D4D84242}|Vozila.ViewModels\\Vozila.ViewModels.csproj|d:\\proekt-office\\vozila\\truckliberty\\vozilakineska\\vozila.viewmodels\\modelsorder\\orderlistvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EC3E60CD-2BB9-4736-8A9C-271F86ECBA8B}|Vozila.Services\\Vozila.Services.csproj|c:\\qinshift\\truckliberty\\vozilakineska\\vozila.services\\interfaces\\iorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{EC3E60CD-2BB9-4736-8A9C-271F86ECBA8B}|Vozila.Services\\Vozila.Services.csproj|solutionrelative:vozila.services\\interfaces\\iorderservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3221AD96-E6EF-4C3C-9C71-51C60505F305}|Vozila\\Vozila.csproj|c:\\qinshift\\truckliberty\\vozilakineska\\vozila\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3221AD96-E6EF-4C3C-9C71-51C60505F305}|Vozila\\Vozila.csproj|solutionrelative:vozila\\controllers\\ordercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3221AD96-E6EF-4C3C-9C71-51C60505F305}|Vozila\\Vozila.csproj|c:\\qinshift\\truckliberty\\vozilakineska\\vozila\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3221AD96-E6EF-4C3C-9C71-51C60505F305}|Vozila\\Vozila.csproj|solutionrelative:vozila\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C949D1B1-60FD-46B7-9C87-2242D4D84242}|Vozila.ViewModels\\Vozila.ViewModels.csproj|c:\\qinshift\\truckliberty\\vozilakineska\\vozila.viewmodels\\modelsorder\\orderlistvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C949D1B1-60FD-46B7-9C87-2242D4D84242}|Vozila.ViewModels\\Vozila.ViewModels.csproj|solutionrelative:vozila.viewmodels\\modelsorder\\orderlistvm.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -30,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -38,39 +42,52 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "OrderListVM.cs",
+              "DocumentMoniker": "C:\\qinshift\\truckliberty\\VozilaKineska\\Vozila.ViewModels\\ModelsOrder\\OrderListVM.cs",
+              "RelativeDocumentMoniker": "Vozila.ViewModels\\ModelsOrder\\OrderListVM.cs",
+              "ToolTip": "C:\\qinshift\\truckliberty\\VozilaKineska\\Vozila.ViewModels\\ModelsOrder\\OrderListVM.cs",
+              "RelativeToolTip": "Vozila.ViewModels\\ModelsOrder\\OrderListVM.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-11T18:06:10.057Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\qinshift\\truckliberty\\VozilaKineska\\Vozila\\Views\\Admin\\Index.cshtml",
+              "RelativeDocumentMoniker": "Vozila\\Views\\Admin\\Index.cshtml",
+              "ToolTip": "C:\\qinshift\\truckliberty\\VozilaKineska\\Vozila\\Views\\Admin\\Index.cshtml",
+              "RelativeToolTip": "Vozila\\Views\\Admin\\Index.cshtml",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAYwH0AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-11T17:54:15.05Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "AdminOrderDashboard.cshtml",
-              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaKineska\\Vozila\\Views\\Order\\AdminOrderDashboard.cshtml",
+              "DocumentMoniker": "C:\\qinshift\\truckliberty\\VozilaKineska\\Vozila\\Views\\Order\\AdminOrderDashboard.cshtml",
               "RelativeDocumentMoniker": "Vozila\\Views\\Order\\AdminOrderDashboard.cshtml",
-              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaKineska\\Vozila\\Views\\Order\\AdminOrderDashboard.cshtml",
+              "ToolTip": "C:\\qinshift\\truckliberty\\VozilaKineska\\Vozila\\Views\\Order\\AdminOrderDashboard.cshtml",
               "RelativeToolTip": "Vozila\\Views\\Order\\AdminOrderDashboard.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAHgBAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAIIAAAAAAAAAAAAcwHsBAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-12-11T15:57:47.824Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "OrderListVM.cs",
-              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaKineska\\Vozila.ViewModels\\ModelsOrder\\OrderListVM.cs",
-              "RelativeDocumentMoniker": "Vozila.ViewModels\\ModelsOrder\\OrderListVM.cs",
-              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaKineska\\Vozila.ViewModels\\ModelsOrder\\OrderListVM.cs",
-              "RelativeToolTip": "Vozila.ViewModels\\ModelsOrder\\OrderListVM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-11T15:44:56.194Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "AdminOrderDashboardVM.cs",
-              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaKineska\\Vozila.ViewModels\\Models\\AdminOrderDashboardVM.cs",
+              "DocumentMoniker": "C:\\qinshift\\truckliberty\\VozilaKineska\\Vozila.ViewModels\\Models\\AdminOrderDashboardVM.cs",
               "RelativeDocumentMoniker": "Vozila.ViewModels\\Models\\AdminOrderDashboardVM.cs",
-              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaKineska\\Vozila.ViewModels\\Models\\AdminOrderDashboardVM.cs",
+              "ToolTip": "C:\\qinshift\\truckliberty\\VozilaKineska\\Vozila.ViewModels\\Models\\AdminOrderDashboardVM.cs",
               "RelativeToolTip": "Vozila.ViewModels\\Models\\AdminOrderDashboardVM.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-11T15:44:26.473Z",
               "EditorCaption": ""
@@ -79,9 +96,9 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "IOrderService.cs",
-              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaKineska\\Vozila.Services\\Interfaces\\IOrderService.cs",
+              "DocumentMoniker": "C:\\qinshift\\truckliberty\\VozilaKineska\\Vozila.Services\\Interfaces\\IOrderService.cs",
               "RelativeDocumentMoniker": "Vozila.Services\\Interfaces\\IOrderService.cs",
-              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaKineska\\Vozila.Services\\Interfaces\\IOrderService.cs",
+              "ToolTip": "C:\\qinshift\\truckliberty\\VozilaKineska\\Vozila.Services\\Interfaces\\IOrderService.cs",
               "RelativeToolTip": "Vozila.Services\\Interfaces\\IOrderService.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAEwA8AAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -90,13 +107,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "OrderController.cs",
-              "DocumentMoniker": "D:\\proekt-office\\vozila\\truckliberty\\VozilaKineska\\Vozila\\Controllers\\OrderController.cs",
+              "DocumentMoniker": "C:\\qinshift\\truckliberty\\VozilaKineska\\Vozila\\Controllers\\OrderController.cs",
               "RelativeDocumentMoniker": "Vozila\\Controllers\\OrderController.cs",
-              "ToolTip": "D:\\proekt-office\\vozila\\truckliberty\\VozilaKineska\\Vozila\\Controllers\\OrderController.cs",
+              "ToolTip": "C:\\qinshift\\truckliberty\\VozilaKineska\\Vozila\\Controllers\\OrderController.cs",
               "RelativeToolTip": "Vozila\\Controllers\\OrderController.cs",
-              "ViewState": "AgIAALIAAAAAAAAAAAAjwAYBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAALQAAAAAAAAAAAAwwJMBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-12-11T15:16:46.4Z",
               "EditorCaption": ""

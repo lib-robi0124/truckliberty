@@ -8,23 +8,23 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Robertr2\\.nuget\\packages\\": {},
+    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\proekt-office\\vozila\\truckliberty\\VozilaKineska\\Vozila.Domain\\Vozila.Domain.csproj",
+      "projectUniqueName": "C:\\qinshift\\truckliberty\\VozilaKineska\\Vozila.Domain\\Vozila.Domain.csproj",
       "projectName": "Vozila.Domain",
-      "projectPath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaKineska\\Vozila.Domain\\Vozila.Domain.csproj",
-      "packagesPath": "C:\\Users\\Robertr2\\.nuget\\packages\\",
-      "outputPath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaKineska\\Vozila.Domain\\obj\\",
+      "projectPath": "C:\\qinshift\\truckliberty\\VozilaKineska\\Vozila.Domain\\Vozila.Domain.csproj",
+      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
+      "outputPath": "C:\\qinshift\\truckliberty\\VozilaKineska\\Vozila.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Robertr2\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

@@ -213,31 +213,81 @@ namespace Vozila.Controllers
                 return View("OrderEditTransporter", limitedModel);
             }
 
-            // For admin, full access
-            var currentUserId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value);
-            var adminOrder = await _orderService.GetOrderDetailsAsync(id, userId);
+                // For admin, full access
+                var currentUserId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value);
+                var adminOrder = await _orderService.GetOrderDetailsAsync(id, userId);
 
-            if (adminOrder == null)
-                return NotFound();
+                if (adminOrder == null)
+                    return NotFound();
 
-            var model = new EditOrderVM
-            {
-                Id = adminOrder.Id,
-                CompanyId = adminOrder.CompanyId,
-                TransporterId = adminOrder.TransporterId,
-                DestinationId = adminOrder.DestinationId,
-                DateForLoadingFrom = adminOrder.DateForLoadingFrom,
-                DateForLoadingTo = adminOrder.DateForLoadingTo,
-                ContractOilPrice = adminOrder.ContractOilPrice,
-                Status = adminOrder.Status,
-                TruckPlateNo = adminOrder.TruckPlateNo
-            };
+                var model = new EditOrderVM
+                {
+                    Id = adminOrder.Id,
+                    CompanyId = adminOrder.CompanyId,
+                    TransporterId = adminOrder.TransporterId,
+                    DestinationId = adminOrder.DestinationId,
+                    DateForLoadingFrom = adminOrder.DateForLoadingFrom,
+                    DateForLoadingTo = adminOrder.DateForLoadingTo,
+                    ContractOilPrice = adminOrder.ContractOilPrice,
+                    Status = adminOrder.Status,
+                    TruckPlateNo = adminOrder.TruckPlateNo
+                };
 
-            await PopulateOrderDropdowns(model.CompanyId, model.TransporterId, model.DestinationId);
-            ViewBag.IsTransporter = false;
-            return View("OrderEdit", model);
+                await PopulateOrderDropdowns(model.CompanyId, model.TransporterId, model.DestinationId);
+                ViewBag.IsTransporter = false;
+                return View("OrderEdit", model);
         }
+        // In OrderController.cs
+        [HttpGet]
+        public async Task<IActionResult> ManageOrder(string status = null, string company = null,
+            DateTime? dateFrom = null, DateTime? dateTo = null)
+        {
+            var userRole = HttpContext.Session.GetString("Role");
+            var userType = HttpContext.Session.GetString("UserType");
 
+            if (userRole != "Admin" && userType != "Admin")
+            {
+                TempData["ErrorMessage"] = "Access denied. Admin role required.";
+                return RedirectToAction("Index", "Home");
+            }
+
+            var orders = await _orderService.GetAllOrdersForAdminAsync();
+
+            // Apply filters if provided
+            // Try to parse the string to OrderStatus enum
+            if (Enum.TryParse<OrderStatus>(status, out var statusEnum))
+            {
+                orders = orders.Where(o => o.Status == statusEnum);
+            }
+            else
+            {
+                // If parsing fails, you might want to handle this case
+                // For now, we'll just skip the status filter
+                ModelState.AddModelError("status", "Invalid status value");
+            }
+
+            if (!string.IsNullOrEmpty(company))
+            {
+                orders = orders.Where(o => o.CompanyName.Contains(company, StringComparison.OrdinalIgnoreCase));
+            }
+
+            if (dateFrom.HasValue)
+            {
+                orders = orders.Where(o => o.DateForLoadingFrom >= dateFrom.Value);
+            }
+
+            if (dateTo.HasValue)
+            {
+                orders = orders.Where(o => o.DateForLoadingFrom <= dateTo.Value);
+            }
+
+            ViewBag.StatusFilter = status;
+            ViewBag.CompanyFilter = company;
+            ViewBag.DateFromFilter = dateFrom;
+            ViewBag.DateToFilter = dateTo;
+
+            return View(orders);
+        }
         // POST: Order/Edit - Different handling for Admin vs Transporter
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -393,32 +443,46 @@ namespace Vozila.Controllers
         // Helper method to populate dropdowns
         private async Task PopulateOrderDropdowns(int? selectedCompanyId = null, int? selectedTransporterId = null, int? selectedDestinationId = null)
         {
-            // Companies: All companies that exist in database are considered active
-            var companies = await _context.Companies
-                .Select(c => new { c.Id, c.CustomerName })
-                .OrderBy(c => c.CustomerName)
-                .ToListAsync();
+            // Get data safely
+            var companies = await _context.Companies.ToListAsync();
+            var transporters = await _context.Transporters.ToListAsync();
+            var destinations = await _context.Destinations.ToListAsync();
 
-            // Transporters: Only those with active contracts
-            var transporters = await _context.Transporters
-                .Where(t => t.Contracts.Any(c => c.ValidUntil >= DateTime.Now))
-                .Select(t => new { t.Id, t.CompanyName })
-                .OrderBy(t => t.CompanyName)
-                .ToListAsync();
-
-            // Destinations: All destinations are active, with current price
-            var destinations = await _context.Destinations
-                .Select(d => new
+            // Create SelectListItems manually
+            var companyItems = companies
+                .Select(c => new SelectListItem
                 {
-                    d.Id,
-                    Name = $"{d.City}, {d.Country} "
+                    Value = c.Id.ToString(),
+                    Text = c.CustomerName,
+                    Selected = c.Id == selectedCompanyId
                 })
-                .OrderBy(d => d.Name)
-                .ToListAsync();
+                .OrderBy(c => c.Text)
+                .ToList();
 
-            ViewBag.Companies = new SelectList(companies, "Id", "Name", selectedCompanyId);
-            ViewBag.Transporters = new SelectList(transporters, "Id", "Name", selectedTransporterId);
-            ViewBag.Destinations = new SelectList(destinations, "Id", "Name", selectedDestinationId);
+            var transporterItems = transporters
+                .Where(t => t.Contracts?.Any(c => c.ValidUntil >= DateTime.Now) ?? false)
+                .Select(t => new SelectListItem
+                {
+                    Value = t.Id.ToString(),
+                    Text = t.CompanyName,
+                    Selected = t.Id == selectedTransporterId
+                })
+                .OrderBy(t => t.Text)
+                .ToList();
+
+            var destinationItems = destinations
+                .Select(d => new SelectListItem
+                {
+                    Value = d.Id.ToString(),
+                    Text = $"{d.City}, {d.Country}",
+                    Selected = d.Id == selectedDestinationId
+                })
+                .OrderBy(d => d.Text)
+                .ToList();
+
+            ViewBag.Companies = companyItems;
+            ViewBag.Transporters = transporterItems;
+            ViewBag.Destinations = destinationItems;
         }
     }
 }

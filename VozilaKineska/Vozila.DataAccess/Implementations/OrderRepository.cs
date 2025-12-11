@@ -43,7 +43,6 @@ namespace Vozila.DataAccess.Implementations
                 .Include(o => o.Company)
                 .Include(o => o.Transporter)
                 .Include(o => o.Destination)
-                    .ThenInclude(d => d.City)
                 .OrderByDescending(o => o.CreatedDate)
                 .ToListAsync();
         }

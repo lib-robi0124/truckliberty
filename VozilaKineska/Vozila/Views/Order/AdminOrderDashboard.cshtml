@@ -1,4 +1,5 @@
-﻿@model Vozila.ViewModels.ModelsOrder.AdminOrderDashboardVM
+﻿@using Vozila.Domain.Enums
+@model AdminOrderDashboardVM
 @{
     ViewData["Title"] = "Order Dashboard";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -64,7 +65,7 @@
                             <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
                                 In Progress
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.InProgressOrders</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.PendingOrders</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-truck-loading fa-2x text-gray-300"></i>
@@ -83,7 +84,7 @@
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Completed
                             </div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CompletedOrders</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.FinishedOrders</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-check-circle fa-2x text-gray-300"></i>
@@ -172,27 +173,31 @@
                                     <td>@order.DateForLoadingFrom.ToString("dd/MM/yyyy")</td>
                                     <td>
                                         <span class="badge badge-@GetStatusBadgeClass(order.Status)">
-                                            @order.Status
+                                            @order.Status.ToString()
                                         </span>
                                     </td>
                                     <td>
-                                        <div class="btn-group btn-group-sm">
+                                    <td>
+                                        <div class="d-flex flex-column" style="min-width: 90px;">
                                             <a asp-action="Details" asp-route-id="@order.Id"
-                                               class="btn btn-info" title="View Details">
-                                                <i class="fas fa-eye"></i>
+                                               class="btn btn-info btn-sm mb-1 text-left"
+                                               title="View Details">
+                                                <i class="fas fa-eye mr-1"></i>Details
                                             </a>
                                             <a asp-action="Edit" asp-route-id="@order.Id"
-                                               class="btn btn-warning" title="Edit">
-                                                <i class="fas fa-edit"></i>
+                                               class="btn btn-warning btn-sm mb-1 text-left"
+                                               title="Edit">
+                                                <i class="fas fa-edit mr-1"></i>Edit
                                             </a>
-                                            @if (order.Status == "Pending" || order.Status == "In Progress")
+                                            @if (order.Status == OrderStatus.Pending || order.Status == OrderStatus.Approved)
                                             {
-                                                <button type="button" class="btn btn-danger"
+                                                <button type="button" class="btn btn-danger btn-sm text-left"
                                                         title="Cancel" onclick="showCancelModal(@order.Id)">
-                                                    <i class="fas fa-times"></i>
+                                                    <i class="fas fa-times mr-1"></i>Cancel
                                                 </button>
                                             }
                                         </div>
+                                    </td>
                                     </td>
                                 </tr>
                             }
@@ -315,8 +320,8 @@
                         <select class="form-control" id="searchStatus" name="status">
                             <option value="">All Statuses</option>
                             <option value="Pending">Pending</option>
-                            <option value="In Progress">In Progress</option>
-                            <option value="Completed">Completed</option>
+                            <option value="In Progress">Approved</option>
+                            <option value="Completed">Finished</option>
                             <option value="Cancelled">Cancelled</option>
                         </select>
                     </div>
@@ -342,36 +347,48 @@
         </div>
     </div>
 </div>
+<script>
+    function showCancelModal(orderId) {
+        $('#cancelOrderId').val(orderId);
+        $('#cancelReason').val('');
+        $('#cancelOrderModal').modal('show');
+    }
 
-@section Scripts {
-    <script>
-        function showCancelModal(orderId) {
-            $('#cancelOrderId').val(orderId);
-            $('#cancelReason').val('');
-            $('#cancelOrderModal').modal('show');
-        }
-
-        // Initialize DataTable for recent orders
-        $(document).ready(function() {
-            $('#recentOrdersTable').DataTable({
-                pageLength: 5,
-                lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
-                order: [[0, 'desc']]
-            });
+    // Initialize DataTable for recent orders
+    $(document).ready(function() {
+        $('#recentOrdersTable').DataTable({
+            pageLength: 5,
+            lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+            order: [[0, 'desc']]
         });
-    </script>
-}
+    });
+</script>
 
 @functions {
-    public string GetStatusBadgeClass(string status)
+    public string GetStatusBadgeClass(OrderStatus status)
     {
-        return status switch
+        switch (status)
         {
-            "Pending" => "warning",
-            "In Progress" => "info",
-            "Completed" => "success",
-            "Cancelled" => "danger",
-            _ => "secondary"
-        };
+            case OrderStatus.Pending:
+                return "warning";
+            case OrderStatus.Approved:
+                return "info";
+            case OrderStatus.Finished:
+                return "success";
+            case OrderStatus.Cancelled:
+                return "danger";
+            default:
+                return "secondary";
+        }
     }
 }
+<style>
+    .action-buttons .btn {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.8rem;
+    }
+
+        .action-buttons .btn i {
+            margin-right: 3px;
+        }
+</style>

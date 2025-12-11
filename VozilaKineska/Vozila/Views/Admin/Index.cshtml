@@ -108,6 +108,22 @@
                     <i class="fas fa-truck"></i> Order
                 </a>
             </div>
+            <div class="header-tabs">
+                <a href="@Url.Action("Index", "PriceOil")" class="action-btn btn-info">
+                    <i class="fa-solid fa-gas-pump"></i>
+                    <span>PriceOil</span>
+                </a>
+
+                <a href="@Url.Action("Index", "Contract")" class="action-btn btn-info">
+                    <i class="fa-solid fa-file-contract"></i>
+                    <span>Contract</span>
+                </a>
+
+                <a href="@Url.Action("Index", "Order")" class="action-btn btn-info">
+                    <i class="fas fa-truck"></i>
+                    <span>Order</span>
+                </a>
+            </div>
 
             <!-- Logout Button -->
             <form asp-controller="Home" asp-action="Logout" method="post" class="logout-form">

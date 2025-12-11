@@ -22,3 +22,15 @@ D:\proekt-office\vozila\truckliberty\VozilaKineska\Vozila.Domain\obj\Debug\net8.
 D:\proekt-office\vozila\truckliberty\VozilaKineska\Vozila.Domain\obj\Debug\net8.0\refint\Vozila.Domain.dll
 D:\proekt-office\vozila\truckliberty\VozilaKineska\Vozila.Domain\obj\Debug\net8.0\Vozila.Domain.pdb
 D:\proekt-office\vozila\truckliberty\VozilaKineska\Vozila.Domain\obj\Debug\net8.0\ref\Vozila.Domain.dll
+C:\qinshift\truckliberty\VozilaKineska\Vozila.Domain\bin\Debug\net8.0\Vozila.Domain.deps.json
+C:\qinshift\truckliberty\VozilaKineska\Vozila.Domain\bin\Debug\net8.0\Vozila.Domain.dll
+C:\qinshift\truckliberty\VozilaKineska\Vozila.Domain\bin\Debug\net8.0\Vozila.Domain.pdb
+C:\qinshift\truckliberty\VozilaKineska\Vozila.Domain\obj\Debug\net8.0\Vozila.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\qinshift\truckliberty\VozilaKineska\Vozila.Domain\obj\Debug\net8.0\Vozila.Domain.AssemblyInfoInputs.cache
+C:\qinshift\truckliberty\VozilaKineska\Vozila.Domain\obj\Debug\net8.0\Vozila.Domain.AssemblyInfo.cs
+C:\qinshift\truckliberty\VozilaKineska\Vozila.Domain\obj\Debug\net8.0\Vozila.Domain.csproj.CoreCompileInputs.cache
+C:\qinshift\truckliberty\VozilaKineska\Vozila.Domain\obj\Debug\net8.0\Vozila.Domain.sourcelink.json
+C:\qinshift\truckliberty\VozilaKineska\Vozila.Domain\obj\Debug\net8.0\Vozila.Domain.dll
+C:\qinshift\truckliberty\VozilaKineska\Vozila.Domain\obj\Debug\net8.0\refint\Vozila.Domain.dll
+C:\qinshift\truckliberty\VozilaKineska\Vozila.Domain\obj\Debug\net8.0\Vozila.Domain.pdb
+C:\qinshift\truckliberty\VozilaKineska\Vozila.Domain\obj\Debug\net8.0\ref\Vozila.Domain.dll
