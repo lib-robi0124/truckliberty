@@ -1,9 +1,7 @@
 ﻿@model AdminDashboardVM
 @{
     ViewData["Title"] = "Admin Dashboard";
-
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,75 +17,150 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="dashboard-container">
-
+<div class="dashboard-container">
         <!-- LEFT SIDEBAR -->
         <div class="sidebar">
             <h2>Admin Menu</h2>
 
-            <h3>Companies</h3>
-            <div class="dropdown-menu-item">
-                <select>
-                    <option>Select company...</option>
-                    @foreach (var c in Model.Companies)
-                    {
-                        <option value="@c.Id">@c.CustomerName</option>
-                    }
-                </select>
-            </div>
+                <!-- Companies -->
+                <h3>Companies</h3>
+                <div class="dropdown-menu-item">
+                    <select id="companySelect" class="form-select" onchange="filterByCompany()">
+                        <option value="">Select company...</option>
+                        @foreach (var c in Model.Companies)
+                        {
+                            <option value="@c.Id">@c.CustomerName</option>
+                        }
+                    </select>
+                    <div class="action-buttons mt-2">
+                        <button class="btn btn-primary" onclick="createNew('company')">New</button>
+                        <button class="btn btn-warning" onclick="editSelected('company')">Edit</button>
+                        <button class="btn btn-danger" onclick="deleteSelected('company')">Delete</button>
+                    </div>
+                </div>
 
-            <h3>Destinations</h3>
-            <div class="dropdown-menu-item">
-                <select>
-                    <option>Select destination...</option>
-                    @foreach (var d in Model.Destinations)
-                    {
-                        <option value="@d.Id">@d.CityName</option>
-                    }
-                </select>
-            </div>
+                <!-- Destinations -->
+                <h3>Destinations</h3>
+                <div class="dropdown-menu-item">
+                    <select id="destinationSelect" class="form-select" onchange="filterByDestination()">
+                        <option value="">Select destination...</option>
+                        @foreach (var d in Model.Destinations)
+                        {
+                            <option value="@d.Id">@d.CityName</option>
+                        }
+                    </select>
+                    <div class="action-buttons mt-2">
+                        <button class="btn btn-primary" onclick="createNew('destination')">New</button>
+                        <button class="btn btn-warning" onclick="editSelected('destination')">Edit</button>
+                        <button class="btn btn-danger" onclick="deleteSelected('destination')">Delete</button>
+                    </div>
+                </div>
 
-            <h3>Transporters</h3>
-            <div class="dropdown-menu-item">
-                <select>
-                    <option>Select transporter...</option>
-                    @foreach (var t in Model.Transporters)
-                    {
-                        <option value="@t.Id">@t.CompanyName</option>
-                    }
-                </select>
-            </div>
+                <!-- Transporters -->
+                <h3>Transporters</h3>
+                <div class="dropdown-menu-item">
+                    <select id="transporterSelect" class="form-select" onchange="filterByTransporter()">
+                        <option value="">Select transporter...</option>
+                        @foreach (var t in Model.Transporters)
+                        {
+                            <option value="@t.Id">@t.CompanyName</option>
+                        }
+                    </select>
+                    <div class="action-buttons mt-2">
+                        <button class="btn btn-primary" onclick="createNew('transporter')">New</button>
+                        <button class="btn btn-warning" onclick="editSelected('transporter')">Edit</button>
+                        <button class="btn btn-danger" onclick="deleteSelected('transporter')">Delete</button>
+                    </div>
+                </div>
         </div>
 
-        <!-- MAIN CONTENT AREA -->
-        <div class="main-content">
+        <!-- HEADER AREA WITH TABS + LOGOUT -->
+        <div class="header-bar d-flex justify-content-between align-items-center">
+                <div class="header-tabs">
+                    <a class="tab-btn" asp-controller="PriceOil" asp-action="Index">
+                        <i class="fa-solid fa-gas-pump"></i> PriceOil
+                    </a>
+                    <a class="tab-btn" asp-controller="Contract" asp-action="Index">
+                        <i class="fa-solid fa-file-contract"></i> Contract
+                    </a>
+                    <a class="tab-btn" asp-controller="Order" asp-action="Index">
+                        <i class="fa-solid fa-truck"></i> Order
+                    </a>
+                </div>
 
-            <!-- TABS / HEADER BUTTONS -->
-            <div class="header-tabs">
-                <a asp-controller="PriceOil" asp-action="Index">
-                    <i class="fa-solid fa-gas-pump"></i> PriceOil
-                </a>
-
-                <a asp-controller="Contract" asp-action="Index">
-                    <i class="fa-solid fa-file-contract"></i> Contract
-                </a>
-
-                <a asp-controller="Order" asp-action="Index">
-                    <i class="fa-solid fa-truck"></i> Order
-                </a>
-            </div>
-
-            <h1>Welcome to Admin Dashboard</h1>
-            <p>Choose items from the menu or tabs above.</p>
-
-        </div>
+                <!-- Quick Actions -->
+                <div class="admin-actions">
+                    <a href="@Url.Action("ManagePriceOil", "Admin")" class="action-btn btn-primary">
+                        <i class="fas fa-edit"></i> PriceOil
+                    </a>
+                    <a href="@Url.Action("ManageContract", "Admin")" class="action-btn btn-success">
+                        <i class="fas fa-clipboard"></i> Contract
+                    </a>
+                    <a href="@Url.Action("ManageOrder", "Admin")" class="action-btn btn-info">
+                        <i class="fas fa-user-cog"></i> Order
+                    </a>
+                </div>
+            <form asp-controller="Account" asp-action="Logout" method="post">
+                @Html.AntiForgeryToken()
+                <button type="submit" class="btn btn-danger">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </form>
+            <h1>🚀 Admin Dashboard</h1>
+            <p>Select an item from the menu or use the header buttons.</p>
     </div>
+</div>
 </body>
+
+    <script>
+        function filterByCompany() {
+            const companyId = document.getElementById('companySelect').value;
+            console.log('Filter by company:', companyId);
+            // TODO: AJAX call to fetch filtered data
+        }
+
+        function filterByDestination() {
+            const destinationId = document.getElementById('destinationSelect').value;
+            console.log('Filter by destination:', destinationId);
+            // TODO: AJAX call to fetch filtered data
+        }
+
+        function filterByTransporter() {
+            const transporterId = document.getElementById('transporterSelect').value;
+            console.log('Filter by transporter:', transporterId);
+            // TODO: AJAX call to fetch filtered data
+        }
+
+        function createNew(type) {
+            console.log('Create new', type);
+            // TODO: redirect to create page based on type
+        }
+
+        function editSelected(type) {
+            console.log('Edit selected', type);
+            // TODO: get selected ID and redirect to edit page
+        }
+
+        function deleteSelected(type) {
+            console.log('Delete selected', type);
+            // TODO: get selected ID and perform delete action
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const currentPath = window.location.pathname;
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                if (btn.href.includes(currentPath.split('/')[1])) {
+                    btn.classList.add('active');
+                }
+            });
+        });
+</script>
+
 <style>
     .dashboard-container {
         display: flex;
         height: 100vh;
-        font-family: Arial;
+        font-family: Arial, sans-serif;
     }
 
     /* Sidebar */
@@ -96,27 +169,49 @@
         background: #2c3e50;
         color: white;
         padding: 20px;
+        display: flex;
+        flex-direction: column;
     }
+
+        .sidebar h2 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
 
         .sidebar h3 {
             margin-top: 20px;
             color: #ecf0f1;
             border-bottom: 1px solid #7f8c8d;
             padding-bottom: 8px;
+            font-size: 1rem;
         }
 
     .dropdown-menu-item {
         margin: 10px 0;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
     }
 
     select {
         width: 100%;
-        padding: 6px;
+        padding: 6px 10px;
         border-radius: 5px;
         border: none;
     }
 
-    /* Main */
+    .action-buttons {
+        display: flex;
+        gap: 5px;
+        justify-content: flex-start;
+    }
+
+        .action-buttons .btn {
+            padding: 4px 8px;
+            font-size: 0.85rem;
+        }
+
+    /* Main content */
     .main-content {
         flex: 1;
         background: #f4f6f7;
@@ -124,25 +219,48 @@
     }
 
     /* Header tabs */
-    .header-tabs {
+    .header-bar {
         display: flex;
-        gap: 15px;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #ccc;
         margin-bottom: 20px;
     }
 
+    .header-tabs {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
         .header-tabs a {
-            padding: 10px 20px;
+            padding: 8px 15px;
             background: #3498db;
             color: white;
-            border-radius: 25px;
+            border-radius: 20px;
             text-decoration: none;
             font-weight: bold;
+            font-size: 0.9rem;
             transition: 0.3s;
         }
 
-            .header-tabs a:hover {
+            .header-tabs a:hover,
+            .header-tabs a.active {
                 background: #1f78b4;
             }
 
+    .admin-actions a {
+        margin-right: 8px;
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
+
+    form button {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+    }
 </style>
+
 </html>

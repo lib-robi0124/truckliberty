@@ -19,8 +19,6 @@ namespace Vozila.Services.Interfaces
         Task UpdateContractAsync(Contract contract);
         Task<Destination> CreateDestinationAsync(Destination destination);
         Task UpdateDestinationAsync(Destination destination);
-        Task<Condition> CreateConditionAsync(Condition condition);
-        Task UpdateConditionAsync(Condition condition);
         Task<Order> CreateOrderAsync(Order order);
         Task UpdateOrderAsync(Order order);
         Task<Order?> GetOrderWithUserAsync(int orderId);

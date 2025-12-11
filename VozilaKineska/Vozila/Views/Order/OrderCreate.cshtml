@@ -1,0 +1,105 @@
+﻿@model CreateOrderVM
+
+@{
+    ViewData["Title"] = "Create New Order";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Create New Order</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="OrderCreate" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="CompanyId" class="control-label"></label>
+                                    <select asp-for="CompanyId" asp-items="ViewBag.Companies" class="form-control">
+                                        <option value="">-- Select Company --</option>
+                                    </select>
+                                    <span asp-validation-for="CompanyId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="TransporterId" class="control-label"></label>
+                                    <select asp-for="TransporterId" asp-items="ViewBag.Transporters" class="form-control">
+                                        <option value="">-- Select Transporter --</option>
+                                    </select>
+                                    <span asp-validation-for="TransporterId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="DestinationId" class="control-label"></label>
+                                    <select asp-for="DestinationId" asp-items="ViewBag.Destinations" class="form-control">
+                                        <option value="">-- Select Destination --</option>
+                                    </select>
+                                    <span asp-validation-for="DestinationId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="ContractOilPrice" class="control-label"></label>
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">$</span>
+                                        </div>
+                                        <input asp-for="ContractOilPrice" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="ContractOilPrice" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="DateForLoadingFrom" class="control-label"></label>
+                                    <input asp-for="DateForLoadingFrom" class="form-control" type="datetime-local" />
+                                    <span asp-validation-for="DateForLoadingFrom" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="DateForLoadingTo" class="control-label"></label>
+                                    <input asp-for="DateForLoadingTo" class="form-control" type="datetime-local" />
+                                    <span asp-validation-for="DateForLoadingTo" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="TruckPlateNo" class="control-label"></label>
+                            <input asp-for="TruckPlateNo" class="form-control" />
+                            <span asp-validation-for="TruckPlateNo" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <a href="@Url.Action("ManageOrder", "Admin")" class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Back to List
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Create Order
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

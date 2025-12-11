@@ -113,7 +113,7 @@ namespace Vozila.DataAccess.Extensions
             int contractId)
         {
             return await context.Destinations
-                .Where(d => d.Condition.ContractId == contractId)
+                .Where(d => d.ContractId == contractId)
                 .ProjectTo<DestinationListVM>(mapper.ConfigurationProvider)
                 .OrderBy(d => d.CityName)
                 .ToListAsync();

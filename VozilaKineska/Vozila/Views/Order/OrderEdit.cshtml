@@ -1,0 +1,66 @@
+﻿@model EditOrderVM
+
+@{
+    ViewData["Title"] = "Edit Order";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Edit Order #@Model.Id</h3>
+                </div>
+                <div class="card-body">
+                    <form asp-action="OrderEdit" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="Id" />
+
+                        <!-- Same form fields as Create, plus Status field -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="CompanyId" class="control-label"></label>
+                                    <select asp-for="CompanyId" asp-items="ViewBag.Companies" class="form-control">
+                                        <option value="">-- Select Company --</option>
+                                    </select>
+                                    <span asp-validation-for="CompanyId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Status" class="control-label"></label>
+                                    <select asp-for="Status" class="form-control">
+                                        <option value="0">Pending</option>
+                                        <option value="1">InProgress</option>
+                                        <option value="2">Completed</option>
+                                        <option value="3">Cancelled</option>
+                                    </select>
+                                    <span asp-validation-for="Status" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Rest of form fields (same as Create) -->
+
+                        <div class="form-group mt-4">
+                            <a href="@Url.Action("OrderDetails", "Admin", new { id = Model.Id })"
+                               class="btn btn-secondary">
+                                <i class="fas fa-arrow-left"></i> Cancel
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Update Order
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

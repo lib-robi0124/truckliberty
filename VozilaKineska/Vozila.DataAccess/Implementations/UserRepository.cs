@@ -81,7 +81,7 @@ namespace Vozila.DataAccess.Implementations
         public async Task<bool> IsUserAdminAsync(int userId)
         {
             var user = await GetUserWithRoleAsync(userId);
-            return user?.Role?.Name == "Administrator";
+            return user?.Role?.Name == "Admin";
         }
         public async Task<bool> IsUserTransporterAsync(int userId)
         {

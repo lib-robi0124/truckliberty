@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Vozila.Domain.Models;
-using Vozila.ViewModels.Models;
+using Vozila.ViewModels.ModelsOrder;
 
 namespace Vozila.Services.AutoMappers
 {

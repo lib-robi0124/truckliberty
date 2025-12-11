@@ -11,6 +11,7 @@ namespace Vozila.Domain.Models
         public string Email { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
         public ICollection<Contract> Contracts { get; set; } = new HashSet<Contract>();
+        public ICollection<Destination> Destinations { get; set; } = new HashSet<Destination>();
         public ICollection<Order> Orders { get; set; } = new HashSet<Order>();
     }
 }

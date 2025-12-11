@@ -1,9 +1,14 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using Vozila.DataAccess.DataContext;
 using Vozila.Filters;
 using Vozila.Services.Interfaces;
 using Vozila.ViewModels.Models;
 using Vozila.ViewModels.ModelsContract;
+using Vozila.ViewModels.ModelsDestination;
+using Vozila.ViewModels.ModelsOrder;
+using Vozila.ViewModels.ModelsTransporter;
 
 namespace Vozila.Controllers
 {
@@ -15,19 +20,28 @@ namespace Vozila.Controllers
         private readonly ICompanyService _companyService;
         private readonly IDestinationService _destinationService;
         private readonly ITansporterService _transporterService;
+        private readonly IPriceOilService _priceOilService;
+        private readonly AppDbContext _context;
+        private readonly ILogger<AdminController> _logger;
 
         public AdminController(
             IOrderService orderService, 
             IContractService contractService,
             ICompanyService companyService,
             IDestinationService destinationService,
-            ITansporterService transporterService)
+            ITansporterService transporterService,
+            IPriceOilService priceOilService,
+            AppDbContext context,
+            ILogger<AdminController> logger)
         {
             _orderService = orderService;
             _contractService = contractService;
             _companyService = companyService;
             _destinationService = destinationService;
             _transporterService = transporterService;
+            _priceOilService = priceOilService;
+            _context = context;
+            _logger = logger;
         }
 
         public async Task<IActionResult> Index()
@@ -55,21 +69,33 @@ namespace Vozila.Controllers
         {
             return View();
         }
-        // ------------------- ORDER CREATE -------------------
+        // ------------------- ORDER CRUD -------------------
+        [HttpGet]
+        public IActionResult ManageOrder()
+        {
+            // Route to OrderController's Index/Manage action
+            return RedirectToAction("Index", "Order");
+        }
+
+        [HttpGet]
+        public IActionResult OrderDetails(int orderId, int userId)
+        {
+            // Route to OrderController's Details action
+            return RedirectToAction("Details", "Order", new { id = orderId, userId = userId });
+        }
+
         [HttpGet]
         public IActionResult OrderCreate()
         {
-            return View(new CreateOrderVM());
+            // Route to OrderController's Create action
+            return RedirectToAction("Create", "Order");
         }
 
-        [HttpPost]
-        public async Task<IActionResult> OrderCreate(CreateOrderVM model)
+        [HttpGet]
+        public IActionResult OrderEdit(int orderId, int userId)
         {
-            if (!ModelState.IsValid)
-                return View(model);
-
-            int orderId = await _orderService.CreateOrderAsync(model);
-            return RedirectToAction("Details", "Order", new { id = orderId });
+            // Route to OrderController's Edit action
+            return RedirectToAction("Edit", "Order", new { id = orderId, userId = userId });
         }
         // ------------------- CONTRACT CREATE -------------------
         [HttpGet]

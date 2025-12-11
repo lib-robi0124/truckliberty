@@ -2,8 +2,8 @@
 using Vozila.Domain.Enums;
 using Vozila.Domain.Models;
 using Vozila.Services.Interfaces;
-using Vozila.ViewModels.Models;
 using Vozila.ViewModels.ModelsContract;
+using Vozila.ViewModels.ModelsDestination;
 
 namespace Vozila.Services.Implementations
 {
@@ -11,16 +11,16 @@ namespace Vozila.Services.Implementations
     {
         private readonly IContractRepository _contractRepository;
         private readonly ITransporterRepository _transporterRepository;
-        private readonly IConditionRepository _conditionRepository;
+        private readonly IDestinationRepository _destinationRepository;
 
         public ContractService(
             IContractRepository contractRepository,
             ITransporterRepository transporterRepository,
-            IConditionRepository conditionRepository)
+            IDestinationRepository destinationRepository)
         {
             _contractRepository = contractRepository;
             _transporterRepository = transporterRepository;
-            _conditionRepository = conditionRepository;
+            _destinationRepository = destinationRepository;
         }
 
         // --------------------------------------------------------
@@ -34,7 +34,6 @@ namespace Vozila.Services.Implementations
                 ContractNumber = c.ContractNumber,
                 TransporterId = c.TransporterId,
                 TransporterName = c.Transporter?.CompanyName ?? "",
-                ValueEUR = c.ValueEUR,
                 CreatedDate = c.CreatedDate,
                 ValidUntil = c.ValidUntil,
                 DaysUntilExpiry = (c.ValidUntil - DateTime.Now).Days,
@@ -49,11 +48,10 @@ namespace Vozila.Services.Implementations
                 Id = c.Id,
                 ContractNumber = c.ContractNumber,
                 TransporterName = c.Transporter?.CompanyName ?? "",
-                ValueEUR = c.ValueEUR,
                 CreatedDate = c.CreatedDate,
                 ValidUntil = c.ValidUntil,
                 IsActive = c.ValidUntil > DateTime.Now,
-                ConditionCount = c.Conditions?.Count ?? 0
+                DestrinationCount = c.Destinations != null ? c.Destinations.Count : 0
             };
         }
 
@@ -65,17 +63,16 @@ namespace Vozila.Services.Implementations
                 ContractNumber = contract.ContractNumber,
                 TransporterName = contract.Transporter?.CompanyName ?? "",
                 TransporterEmail = contract.Transporter?.ContactPerson ?? "",
-                ValueEUR = contract.ValueEUR,
                 CreatedDate = contract.CreatedDate,
                 ValidUntil = contract.ValidUntil,
                 IsActive = contract.ValidUntil > DateTime.Now,
-                Conditions = contract.Conditions
-                    .Select(c => new ConditionVM
+                Destinations = contract.Destinations?
+                    .Select(c => new DestinationVM
                     {
                         Id = c.Id,
                         ContractId = contract.Id,
                         ContractOilPrice = c.ContractOilPrice,
-                        DestinationCount = c.Destinations?.Count ?? 0
+                        DestinationCount = c.Contract.Destinations?.Count ?? 0
                     })
                     .ToList()
             };
@@ -99,7 +96,7 @@ namespace Vozila.Services.Implementations
 
         public async Task<ContractDetailsVM?> GetDetailsAsync(int id)
         {
-            var contract = await _contractRepository.GetContractWithConditionsAsync(id);
+            var contract = await _contractRepository.GetContractWithDestinationsAsync(id);
             if (contract == null) return null;
             return MapToDetailsVM(contract);
         }
@@ -115,7 +112,6 @@ namespace Vozila.Services.Implementations
             {
                 ContractNumber = model.ContractNumber,
                 TransporterId = model.TransporterId,
-                ValueEUR = model.ValueEUR,
                 CreatedDate = DateTime.Now,
                 ValidUntil = DateTime.Now.AddYears(1)
             };
@@ -130,7 +126,6 @@ namespace Vozila.Services.Implementations
                 ?? throw new Exception("Contract not found");
 
             contract.ContractNumber = model.ContractNumber;
-            contract.ValueEUR = model.ValueEUR;
             contract.ValidUntil = model.ValidUntil;
 
             await _contractRepository.UpdateAsync(contract);
@@ -167,26 +162,26 @@ namespace Vozila.Services.Implementations
         // --------------------------------------------------------
         // CONDITION LOGIC  (One Condition per Contract)
         // --------------------------------------------------------
-        public async Task<Condition?> GetConditionForContractAsync(int contractId)
+        public async Task<Destination?> GetDestinationForContractAsync(int contractId)
         {
-            var contract = await _contractRepository.GetContractWithConditionsAsync(contractId);
-            return contract?.Conditions?.FirstOrDefault();
+            var contract = await _contractRepository.GetContractWithDestinationsAsync(contractId);
+            return contract?.Destinations?.FirstOrDefault();
         }
 
-        public async Task AssignConditionToContractAsync(int contractId, Condition condition)
+        public async Task AssignDestinationToContractAsync(int contractId, Destination destination)
         {
-            var contract = await _contractRepository.GetContractWithConditionsAsync(contractId)
+            var contract = await _contractRepository.GetContractWithDestinationsAsync(contractId)
                 ?? throw new Exception("Contract not found");
 
             // Business rule: Only one Condition allowed
-            if (contract.Conditions.Any())
-                throw new InvalidOperationException("Contract already has a Condition.");
+            if (contract.Destinations.Any())
+                throw new InvalidOperationException("Contract already has a Destination.");
 
-            condition.ContractId = contractId;  // FK assignment
-            await _conditionRepository.AddAsync(condition);
+            destination.ContractId = contractId;  // FK assignment
+            await _destinationRepository.AddAsync(destination);
         }
         // Contract Price Retrieval based on Destination
-        public async Task<decimal?> GetPriceForDestinationAsync(int contractId, int cityId, string conditionType)
+        public async Task<decimal?> GetPriceForDestinationAsync(int contractId, int cityId, string destinationType)
         {
             // Convert int to City enum
             if (!Enum.IsDefined(typeof(City), cityId))
@@ -194,17 +189,14 @@ namespace Vozila.Services.Implementations
 
             var city = (City)cityId;
 
-            var contract = await _contractRepository.GetContractWithConditionsAsync(contractId);
+            var contract = await _contractRepository.GetContractWithDestinationsAsync(contractId);
             if (contract == null || contract.ValidUntil < DateTime.Now)
                 return null;
 
             // Since there's only one condition per contract, get the first one
-            var condition = contract.Conditions.FirstOrDefault();
-            if (condition == null)
+            var destination = contract.Destinations.FirstOrDefault(d => d.City == city);
+            if (destination == null)
                 return null;
-
-            var destination = condition.Destinations
-                .FirstOrDefault(d => d.City == city);
 
             return destination?.DestinationContractPrice;
         }

@@ -18,11 +18,9 @@ namespace Vozila.DataAccess.Implementations
         {
             return await _entities
                 .Include(c => c.Transporter)
-                .Include(c => c.Conditions)
-                    .ThenInclude(cond => cond.Destinations)
+                .Include(cond => cond.Destinations)
                         .ThenInclude(dest => dest.City)
-                .Include(c => c.Conditions)
-                    .ThenInclude(cond => cond.Destinations)
+                .Include(cond => cond.Destinations)
                         .ThenInclude(dest => dest.Country)
                 .Include(c => c.Destinations)
                 .FirstOrDefaultAsync(c => c.Id == id);
@@ -34,8 +32,6 @@ namespace Vozila.DataAccess.Implementations
 
             return await _entities
                 .Include(c => c.Transporter)
-                .Include(c => c.Conditions)
-                    .ThenInclude(cond => cond.Destinations)
                 .Include(c => c.Destinations)
                 .Where(c => c.Id == id && c.ValidUntil > currentDate)
                 .FirstOrDefaultAsync();
@@ -45,8 +41,7 @@ namespace Vozila.DataAccess.Implementations
         {
             return await _entities
                 .Include(c => c.Transporter)
-                .Include(c => c.Conditions)
-                    .ThenInclude(cond => cond.Destinations)
+                .Include(cond => cond.Destinations)
                 .OrderByDescending(c => c.CreatedDate)
                 .ToListAsync();
         }
@@ -57,8 +52,7 @@ namespace Vozila.DataAccess.Implementations
 
             return await _entities
                 .Include(c => c.Transporter)
-                .Include(c => c.Conditions)
-                    .ThenInclude(cond => cond.Destinations)
+                .Include(cond => cond.Destinations)
                 .Where(c => c.ValidUntil > currentDate)
                 .OrderByDescending(c => c.ValidUntil)
                 .ToListAsync();
@@ -119,13 +113,6 @@ namespace Vozila.DataAccess.Implementations
             if (contract == null)
                 throw new NotFoundException($"Contract {id} not found");
 
-            // Check if contract has associated conditions
-            if (contract.Conditions != null && contract.Conditions.Any())
-            {
-                throw new InvalidOperationException(
-                    $"Cannot delete contract {id} because it has {contract.Conditions.Count} conditions. Delete conditions first.");
-            }
-
             // Check if contract has associated destinations
             if (contract.Destinations != null && contract.Destinations.Any())
             {
@@ -138,15 +125,13 @@ namespace Vozila.DataAccess.Implementations
 
         // ========== CONTRACT-SPECIFIC QUERIES ==========
 
-        public async Task<Contract?> GetContractWithConditionsAsync(int contractId)
+        public async Task<Contract?> GetContractWithDestinationsAsync(int contractId)
         {
             return await _entities
                 .Include(c => c.Transporter)
-                .Include(c => c.Conditions)
-                    .ThenInclude(cond => cond.Destinations)
+                .Include(cond => cond.Destinations)
                         .ThenInclude(dest => dest.City)
-                .Include(c => c.Conditions)
-                    .ThenInclude(cond => cond.Destinations)
+                .Include(cond => cond.Destinations)
                         .ThenInclude(dest => dest.Country)
                 .FirstOrDefaultAsync(c => c.Id == contractId);
         }
@@ -155,7 +140,6 @@ namespace Vozila.DataAccess.Implementations
         {
             return await _entities
                 .Include(c => c.Transporter)
-                .Include(c => c.Conditions)
                 .Include(c => c.Destinations)
                 .FirstOrDefaultAsync(c => c.Id == contractId);
         }
@@ -166,8 +150,7 @@ namespace Vozila.DataAccess.Implementations
 
             return await _entities
                 .Include(c => c.Transporter)
-                .Include(c => c.Conditions)
-                    .ThenInclude(cond => cond.Destinations)
+                .Include(cond => cond.Destinations)
                 .Where(c => c.ValidUntil > currentDate)
                 .OrderByDescending(c => c.ValidUntil)
                 .ThenBy(c => c.ContractNumber)
@@ -180,8 +163,7 @@ namespace Vozila.DataAccess.Implementations
 
             return await _entities
                 .Include(c => c.Transporter)
-                .Include(c => c.Conditions)
-                    .ThenInclude(cond => cond.Destinations)
+                .Include(cond => cond.Destinations)
                 .Where(c => c.TransporterId == transporterId && c.ValidUntil > currentDate)
                 .OrderByDescending(c => c.ValidUntil)
                 .ThenBy(c => c.ContractNumber)
@@ -192,20 +174,12 @@ namespace Vozila.DataAccess.Implementations
         {
             return await _entities
                 .Include(c => c.Transporter)
-                .Include(c => c.Conditions)
+                .Include(c => c.Destinations)
                 .Where(c => c.ValidUntil <= thresholdDate && c.ValidUntil > DateTime.Now)
                 .OrderBy(c => c.ValidUntil)
                 .ToListAsync();
         }
 
-        public async Task<decimal> GetTotalContractValueByTransporterAsync(int transporterId)
-        {
-            var currentDate = DateTime.Now;
-
-            return await _entities
-                .Where(c => c.TransporterId == transporterId && c.ValidUntil > currentDate)
-                .SumAsync(c => c.ValueEUR);
-        }
 
         // ========== ADDITIONAL BUSINESS METHODS ==========
 
@@ -227,26 +201,13 @@ namespace Vozila.DataAccess.Implementations
 
             return await _entities
                 .Include(c => c.Transporter)
-                .Include(c => c.Conditions)
-                    .ThenInclude(cond => cond.Destinations)
+                .Include(cond => cond.Destinations)
                 .Where(c => c.ValidUntil <= warningDate && c.ValidUntil > DateTime.Now)
                 .OrderBy(c => c.ValidUntil)
                 .ToListAsync();
         }
 
-        public async Task<Dictionary<int, decimal>> GetContractValuesByTransporterAsync()
-        {
-            var currentDate = DateTime.Now;
-
-            return await _entities
-                .Include(c => c.Transporter)
-                .Where(c => c.ValidUntil > currentDate)
-                .GroupBy(c => c.TransporterId)
-                .Select(g => new { TransporterId = g.Key, TotalValue = g.Sum(c => c.ValueEUR) })
-                .ToDictionaryAsync(x => x.TransporterId, x => x.TotalValue);
-        }
-
-        public async Task<int> GetActiveContractCountByTransporterAsync(int transporterId)
+       public async Task<int> GetActiveContractCountByTransporterAsync(int transporterId)
         {
             var currentDate = DateTime.Now;
 
@@ -258,19 +219,12 @@ namespace Vozila.DataAccess.Implementations
         {
             return await _entities
                 .Include(c => c.Transporter)
-                .Include(c => c.Conditions)
-                    .ThenInclude(cond => cond.Destinations)
+                .Include(cond => cond.Destinations)
                         .ThenInclude(dest => dest.City)
-                .Include(c => c.Conditions)
-                    .ThenInclude(cond => cond.Destinations)
+                .Include(cond => cond.Destinations)
                         .ThenInclude(dest => dest.Country)
-                .Include(c => c.Conditions)
-                    .ThenInclude(cond => cond.Destinations)
+                .Include(cond => cond.Destinations)
                         .ThenInclude(dest => dest.Orders)
-                .Include(c => c.Destinations)
-                    .ThenInclude(dest => dest.City)
-                .Include(c => c.Destinations)
-                    .ThenInclude(dest => dest.Country)
                 .FirstOrDefaultAsync(c => c.Id == contractId);
         }
 
@@ -296,7 +250,6 @@ namespace Vozila.DataAccess.Implementations
             {
                 ContractNumber = await GenerateRenewalContractNumberAsync(contract.ContractNumber),
                 TransporterId = contract.TransporterId,
-                ValueEUR = contract.ValueEUR,
                 CreatedDate = DateTime.Now,
                 ValidUntil = DateTime.Now.AddYears(extensionYears)
             };
@@ -328,13 +281,11 @@ namespace Vozila.DataAccess.Implementations
             int? transporterId = null,
             DateTime? fromDate = null,
             DateTime? toDate = null,
-            decimal? minValue = null,
-            decimal? maxValue = null,
             bool? activeOnly = true)
         {
             var query = _entities
                 .Include(c => c.Transporter)
-                .Include(c => c.Conditions)
+                .Include(c => c.Destinations)
                 .AsQueryable();
 
             if (activeOnly.HasValue && activeOnly.Value)
@@ -364,16 +315,6 @@ namespace Vozila.DataAccess.Implementations
             if (toDate.HasValue)
             {
                 query = query.Where(c => c.CreatedDate <= toDate.Value);
-            }
-
-            if (minValue.HasValue)
-            {
-                query = query.Where(c => c.ValueEUR >= minValue.Value);
-            }
-
-            if (maxValue.HasValue)
-            {
-                query = query.Where(c => c.ValueEUR <= maxValue.Value);
             }
 
             return await query

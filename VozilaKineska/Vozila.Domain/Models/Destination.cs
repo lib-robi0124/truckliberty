@@ -9,9 +9,9 @@ namespace Vozila.Domain.Models
         public Country Country { get; set; } // enum
         public decimal DestinationContractPrice { get; set; }
         public decimal DailyPricePerLiter { get; set; }
-        public int ConditionId { get; set; }
-        public Condition Condition { get; set; }
-        public decimal ContractOilPrice => Condition?.ContractOilPrice ?? 0;
+        public int ContractId { get; set; }
+        public Contract Contract { get; set; } = default!;
+        public decimal ContractOilPrice => Contract?.ContractOilPrice ?? 0;
         public decimal DestinationPriceFromFormula
         {
             get

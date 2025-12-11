@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Vozila.Services")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f63020c25107d6524f81ccbb069b12691f09d6f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b0fbd696e124cb23d62690b87188080288d061de")]
 [assembly: System.Reflection.AssemblyProductAttribute("Vozila.Services")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Vozila.Services")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

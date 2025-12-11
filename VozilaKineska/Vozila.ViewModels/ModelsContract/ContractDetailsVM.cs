@@ -1,4 +1,4 @@
-﻿using Vozila.ViewModels.Models;
+﻿using Vozila.ViewModels.ModelsDestination;
 
 namespace Vozila.ViewModels.ModelsContract
 {
@@ -8,10 +8,9 @@ namespace Vozila.ViewModels.ModelsContract
         public string ContractNumber { get; set; } = string.Empty;
         public string TransporterName { get; set; } = string.Empty;
         public string TransporterEmail { get; set; } = string.Empty;
-        public decimal ValueEUR { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime ValidUntil { get; set; }
         public bool IsActive { get; set; }
-        public List<ConditionVM> Conditions { get; set; } = new();
+        public List<DestinationVM> Destinations { get; set; } = new();
     }
 }

@@ -24,6 +24,14 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Admin/ManageContract.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFuYWdlQ29udHJhY3QuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Admin/ManagePriceOil.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFuYWdlUHJpY2VPaWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -34,6 +42,26 @@ build_metadata.AdditionalFiles.CssScope =
 
 [D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Order/AdminOrderDashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcQWRtaW5PcmRlckRhc2hib2FyZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Order/ManageOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcTWFuYWdlT3JkZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Order/OrderCreate.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcT3JkZXJDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Order/OrderDetails.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcT3JkZXJEZXRhaWxzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Order/OrderEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcT3JkZXJFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Report/Index.cshtml]

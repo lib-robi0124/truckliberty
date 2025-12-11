@@ -1,0 +1,136 @@
+﻿@using Vozila.Domain.Enums
+@model OrderDetailsVM
+
+@{
+    ViewData["Title"] = $"Order #{Model.Id} Details";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h3>Order #@Model.Id Details</h3>
+                    <span class="badge @GetStatusBadgeClass(Model.Status)">@Model.StatusName</span>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <dl class="row">
+                                <dt class="col-sm-4">Company:</dt>
+                                <dd class="col-sm-8">@Model.CompanyName</dd>
+
+                                <dt class="col-sm-4">Transporter:</dt>
+                                <dd class="col-sm-8">@Model.TransporterName</dd>
+
+                                <dt class="col-sm-4">Destination:</dt>
+                                <dd class="col-sm-8">@Model.DestinationCity, @Model.DestinationCountry</dd>
+
+                                <dt class="col-sm-4">Truck Plate:</dt>
+                                <dd class="col-sm-8">@(Model.TruckPlateNo ?? "Not assigned")</dd>
+                            </dl>
+                        </div>
+                        <div class="col-md-6">
+                            <dl class="row">
+                                <dt class="col-sm-4">Loading From:</dt>
+                                <dd class="col-sm-8">@Model.DateForLoadingFrom.ToString("MMM dd, yyyy HH:mm")</dd>
+
+                                <dt class="col-sm-4">Loading To:</dt>
+                                <dd class="col-sm-8">@Model.DateForLoadingTo.ToString("MMM dd, yyyy HH:mm")</dd>
+
+                                <dt class="col-sm-4">Contract Price:</dt>
+                                <dd class="col-sm-8">$@Model.ContractOilPrice.ToString("N2")</dd>
+
+                                <dt class="col-sm-4">Created:</dt>
+                                <dd class="col-sm-8">@Model.CreatedDate.ToString("MMM dd, yyyy HH:mm")</dd>
+                            </dl>
+                        </div>
+                    </div>
+
+                    @if (!string.IsNullOrEmpty(Model.CancelledReason))
+                    {
+                        <div class="alert alert-danger mt-3">
+                            <h5>Cancellation Details</h5>
+                            <p><strong>Reason:</strong> @Model.CancelledReason</p>
+                            <p><strong>Cancelled By:</strong> @Model.CancelledByUserName</p>
+                            <p><strong>Cancelled Date:</strong> @Model.CancelledDate?.ToString("MMM dd, yyyy HH:mm")</p>
+                        </div>
+                    }
+                </div>
+                <div class="card-footer">
+                    <div class="btn-group">
+                        <a href="@Url.Action("ManageOrder", "Admin")" class="btn btn-secondary">
+                            <i class="fas fa-arrow-left"></i> Back to List
+                        </a>
+                        <a href="@Url.Action("OrderEdit", "Admin", new { id = Model.Id })" class="btn btn-warning">
+                            <i class="fas fa-edit"></i> Edit
+                        </a>
+
+                        @if (Model.CanCancel)
+                        {
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#cancelModal">
+                                <i class="fas fa-ban"></i> Cancel Order
+                            </button>
+                        }
+
+                        @if (Model.CanFinish)
+                        {
+                            <form method="post" action="@Url.Action("OrderFinish", "Admin")" style="display:inline">
+                                <input type="hidden" name="id" value="@Model.Id" />
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-success"
+                                        onclick="return confirm('Mark this order as finished?')">
+                                    <i class="fas fa-check-circle"></i> Mark as Finished
+                                </button>
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cancel Order Modal -->
+<div class="modal fade" id="cancelModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Cancel Order #@Model.Id</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span>&times;</span>
+                </button>
+            </div>
+            <form method="post" action="@Url.Action("OrderCancel", "Admin")">
+                <input type="hidden" name="id" value="@Model.Id" />
+                @Html.AntiForgeryToken()
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="reason">Reason for cancellation:</label>
+                        <textarea name="reason" class="form-control" rows="3" required
+                                  placeholder="Enter reason for cancellation..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Confirm Cancellation</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@functions {
+    string GetStatusBadgeClass(OrderStatus status)
+    {
+        return status switch
+        {
+            OrderStatus.Pending => "badge-warning",
+            OrderStatus.Approved => "badge-info",
+            OrderStatus.Finished => "badge-success",
+            OrderStatus.Cancelled => "badge-danger",
+            _ => "badge-secondary"
+        };
+    }
+}

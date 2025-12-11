@@ -6,7 +6,6 @@
         public string ContractNumber { get; set; } = string.Empty;
         public string TransporterName { get; set; } = string.Empty;
         public string TransporterEmail { get; set; } = string.Empty;
-        public decimal ValueEUR { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime ValidUntil { get; set; }
         public bool IsActive { get; set; }

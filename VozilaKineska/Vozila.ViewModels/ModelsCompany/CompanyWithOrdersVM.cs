@@ -1,4 +1,4 @@
-﻿using Vozila.ViewModels.Models;
+﻿using Vozila.ViewModels.ModelsOrder;
 
 namespace Vozila.ViewModels.ModelsCompany
 {

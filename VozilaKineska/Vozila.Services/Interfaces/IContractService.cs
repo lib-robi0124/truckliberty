@@ -15,8 +15,8 @@ namespace Vozila.Services.Interfaces
         Task<IEnumerable<ContractListVM>> GetExpiringContractsAsync(int daysThreshold);
         Task<bool> TransporterHasContractAsync(int transporterId);
         // Condition logic:
-        Task<Condition?> GetConditionForContractAsync(int contractId);
-        Task AssignConditionToContractAsync(int contractId, Condition condition);
+        Task<Destination?> GetDestinationForContractAsync(int destinationId);
+        Task AssignDestinationToContractAsync(int contractId, Destination destination);
         Task<decimal?> GetPriceForDestinationAsync(int contractId, int cityId, string conditionType);
     }
 }

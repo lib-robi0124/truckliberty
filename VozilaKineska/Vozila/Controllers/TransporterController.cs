@@ -1,8 +1,7 @@
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Vozila.Filters;
 using Vozila.Services.Interfaces;
-using Vozila.ViewModels.Models;
+using Vozila.ViewModels.ModelsOrder;
 
 namespace Vozila.Controllers
 {

@@ -22,7 +22,6 @@ namespace Vozila.Services.Extensions
             services.AddScoped<ITransporterRepository, TransporterRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IContractRepository, ContractRepository>();
-            services.AddScoped<IConditionRepository, ConditionRepository>();
             services.AddScoped<IDestinationRepository, DestinationRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IPriceOilRepository, PriceOilRepository>();
@@ -34,7 +33,6 @@ namespace Vozila.Services.Extensions
             services.AddScoped<Interfaces.IContractService, Implementations.ContractService>();
             services.AddScoped<Interfaces.ICompanyService, Implementations.CompanyService>();
             services.AddScoped<Interfaces.IDestinationService, Implementations.DestinationService>();
-            services.AddScoped<Interfaces.IConditionService, Implementations.ConditionService>();
             services.AddScoped<Interfaces.ITansporterService, Implementations.TransporterService>();
             services.AddScoped<Interfaces.IPriceOilService, Implementations.PriceOilService>();
         }

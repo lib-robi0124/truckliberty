@@ -1,5 +1,4 @@
-﻿using Vozila.Domain.Enums;
-using Vozila.Domain.Models;
+﻿using Vozila.Domain.Models;
 
 namespace Vozila.DataAccess.Interfaces
 {

@@ -11,7 +11,6 @@ namespace Vozila.DataAccess.DataContext
         public DbSet<User> Users { get; set; } = default!;
         public DbSet<Role> Roles { get; set; } = default!;
         public DbSet<Contract> Contracts { get; set; } = default!;
-        public DbSet<Condition> Conditions { get; set; } = default!;
         public DbSet<Destination> Destinations { get; set; } = default!;
         public DbSet<Order> Orders { get; set; } = default!;
         public DbSet<Transporter> Transporters { get; set; } = default!;
@@ -95,12 +94,6 @@ namespace Vozila.DataAccess.DataContext
             modelBuilder.Entity<Transporter>()
                 .Property(x => x.Email)
                 .HasMaxLength(150);
-
-            modelBuilder.Entity<Transporter>()
-               .HasMany(t => t.Contracts)
-               .WithOne(c => c.Transporter)
-               .HasForeignKey(c => c.TransporterId)
-               .OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<Transporter>()
                 .HasMany(t => t.Orders)
                 .WithOne(o => o.Transporter)
@@ -113,7 +106,7 @@ namespace Vozila.DataAccess.DataContext
                 .IsRequired()
                 .HasMaxLength(100);
             modelBuilder.Entity<Contract>()
-                .Property(x => x.ValueEUR)
+                .Property(x => x.ContractOilPrice)
                 .HasPrecision(18, 2);
             modelBuilder.Entity<Contract>()
                 .Property(x => x.CreatedDate)
@@ -122,36 +115,16 @@ namespace Vozila.DataAccess.DataContext
                 .Property(x => x.ValidUntil)
                 .HasColumnType("datetime2");
             modelBuilder.Entity<Contract>()
-                .HasOne(x => x.Transporter)
-                .WithMany(t => t.Contracts)
-                .HasForeignKey(x => x.TransporterId)
+                .HasOne(c => c.Transporter)
+                .WithMany(t => t.Contracts)   // you need to add ICollection<Contract> to Transporter
+                .HasForeignKey(c => c.TransporterId)
                 .OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<Contract>()
-                .HasMany(c => c.Conditions)
-                .WithOne(c => c.Contract)
-                .HasForeignKey(c => c.ContractId)
-                .OnDelete(DeleteBehavior.Cascade);
-            modelBuilder.Entity<Contract>()
                 .HasMany(c => c.Destinations)
-                .WithOne()
-                .HasForeignKey("ContractId")
+                .WithOne(d => d.Contract)
+                .HasForeignKey(d => d.ContractId)
                 .OnDelete(DeleteBehavior.NoAction)
                 .IsRequired(false);
-
-            // ===== Condition Configuration =====
-            modelBuilder.Entity<Condition>()
-                .HasOne(c => c.Contract)
-                .WithMany(c => c.Conditions)
-                .HasForeignKey(c => c.ContractId)
-                .OnDelete(DeleteBehavior.Cascade);
-            modelBuilder.Entity<Condition>()
-                .Property(x => x.ContractOilPrice)
-                .HasPrecision(18, 4);
-            modelBuilder.Entity<Condition>()
-                .HasMany(c => c.Destinations)
-                .WithOne(d => d.Condition)
-                .HasForeignKey(d => d.ConditionId)
-                .OnDelete(DeleteBehavior.Cascade);
 
             // ===== Destination Configuration =====
             modelBuilder.Entity<Destination>()
@@ -174,12 +147,7 @@ namespace Vozila.DataAccess.DataContext
                 .Ignore(x => x.ContractOilPrice);
             modelBuilder.Entity<Destination>()
                 .Ignore(x => x.DestinationPriceFromFormula);
-            modelBuilder.Entity<Destination>()
-                .HasOne(d => d.Condition)
-                .WithMany(c => c.Destinations)
-                .HasForeignKey(d => d.ConditionId)
-                .OnDelete(DeleteBehavior.Cascade);
-
+            
             // ===== Order Configuration =====
             modelBuilder.Entity<Order>()
                 .Property(x => x.TruckPlateNo)

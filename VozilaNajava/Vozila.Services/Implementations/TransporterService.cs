@@ -57,7 +57,7 @@ namespace Vozila.Services.Implementations
                 CompanyName = t.CompanyName,
                 ContactPerson = t.ContactPerson,
                 Email = t.Email,
-                ContractCount = t.Contracts.Count,
+                DestinationCount = t.Destinations.Count,
                 ActiveOrderCount = t.Orders.Count(o => o.Status == OrderStatus.Approved)
             });
         }
@@ -70,9 +70,8 @@ namespace Vozila.Services.Implementations
             if (transporter == null)
                 throw new Exception($"Transporter with Id {transporterId} not found.");
 
-            var totalContracts = transporter.Contracts.Count;
-            var totalContractValue = transporter.Contracts.Sum(c => c.ValueEUR);  // assuming Value property
-            var pendingOrders = transporter.Orders.Count(o => o.Status == OrderStatus.Pending); // enum assumed
+            var totalDestinations = transporter.Destinations.Count;
+            var pendingOrders = transporter.Orders.Count(o => o.Status == OrderStatus.Pending); 
             var approvedOrders = transporter.Orders.Count(o => o.Status == OrderStatus.Approved);
             var finishedOrders = transporter.Orders.Count(o => o.Status == OrderStatus.Finished);
 
@@ -80,8 +79,7 @@ namespace Vozila.Services.Implementations
             {
                 Id = transporter.Id,
                 CompanyName = transporter.CompanyName,
-                TotalContracts = totalContracts,
-                TotalContractValue = totalContractValue,
+                TotalDestinations = totalDestinations,
                 PendingOrders = pendingOrders,
                 ApprovedOrders = approvedOrders,
                 FinishedOrders = finishedOrders

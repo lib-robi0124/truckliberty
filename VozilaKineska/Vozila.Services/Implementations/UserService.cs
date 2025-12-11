@@ -11,7 +11,6 @@ namespace Vozila.Services.Implementations
         private readonly IUserRepository _userRepository;
         private readonly IRepository<Contract> _contractRepository;
         private readonly IRepository<Destination> _destinationRepository;
-        private readonly IRepository<Condition> _conditionRepository;
         private readonly IRepository<Order> _orderRepository;
         private readonly IRepository<PriceOil> _priceOilRepository;
         private readonly IMapper _mapper;
@@ -20,7 +19,6 @@ namespace Vozila.Services.Implementations
             IUserRepository userRepository,
             IRepository<Contract> contractRepository,
             IRepository<Destination> destinationRepository,
-            IRepository<Condition> conditionRepository,
             IRepository<Order> orderRepository,
             IRepository<PriceOil> priceOilRepository,
             IMapper mapper)
@@ -28,7 +26,6 @@ namespace Vozila.Services.Implementations
             _userRepository = userRepository;
             _contractRepository = contractRepository;
             _destinationRepository = destinationRepository;
-            _conditionRepository = conditionRepository;
             _orderRepository = orderRepository;
             _priceOilRepository = priceOilRepository;
             _mapper = mapper;
@@ -151,7 +148,7 @@ namespace Vozila.Services.Implementations
 
             return true;
         }
-        // ADMIN: CRUD Contract, Condition, Destination (assuming Admin role check in controller)
+        // ADMIN: CRUD Contract, Destination (assuming Admin role check in controller)
         public async Task<Contract> CreateContractAsync(Contract contract)
         {
             return await _contractRepository.AddAsync(contract);
@@ -170,16 +167,6 @@ namespace Vozila.Services.Implementations
         public async Task UpdateDestinationAsync(Destination destination)
         {
             await _destinationRepository.UpdateAsync(destination);
-        }
-
-        public async Task<Condition> CreateConditionAsync(Condition condition)
-        {
-            return await _conditionRepository.AddAsync(condition);
-        }
-
-        public async Task UpdateConditionAsync(Condition condition)
-        {
-            await _conditionRepository.UpdateAsync(condition);
         }
         // ADMIN: CRUD Order
         public async Task<Order> CreateOrderAsync(Order order)

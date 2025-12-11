@@ -94,12 +94,6 @@ namespace Vozila.DataAccess.DataContext
             modelBuilder.Entity<Transporter>()
                 .Property(x => x.Email)
                 .HasMaxLength(150);
-
-            modelBuilder.Entity<Transporter>()
-               .HasMany(t => t.Contracts)
-               .WithOne(c => c.Transporter)
-               .HasForeignKey(c => c.TransporterId)
-               .OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<Transporter>()
                 .HasMany(t => t.Orders)
                 .WithOne(o => o.Transporter)
@@ -121,14 +115,14 @@ namespace Vozila.DataAccess.DataContext
                 .Property(x => x.ValidUntil)
                 .HasColumnType("datetime2");
             modelBuilder.Entity<Contract>()
-                .HasOne(x => x.Transporter)
-                .WithMany(t => t.Contracts)
-                .HasForeignKey(x => x.TransporterId)
+                .HasOne(c => c.Transporter)
+                .WithMany(t => t.Contracts)   // you need to add ICollection<Contract> to Transporter
+                .HasForeignKey(c => c.TransporterId)
                 .OnDelete(DeleteBehavior.Restrict);
             modelBuilder.Entity<Contract>()
                 .HasMany(c => c.Destinations)
-                .WithOne()
-                .HasForeignKey("ContractNumber")
+                .WithOne(d => d.Contract)
+                .HasForeignKey(d => d.ContractId)
                 .OnDelete(DeleteBehavior.NoAction)
                 .IsRequired(false);
 

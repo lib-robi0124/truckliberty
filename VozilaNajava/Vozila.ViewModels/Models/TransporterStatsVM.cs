@@ -4,9 +4,8 @@
     {
         public int Id { get; set; }
         public string CompanyName { get; set; } = string.Empty;
-        public int TotalContracts { get; set; }
+        public int TotalDestinations { get; set; }
         public int ActiveContracts { get; set; }
-        public decimal TotalContractValue { get; set; }
         public int PendingOrders { get; set; }
         public int ApprovedOrders { get; set; }
         public int FinishedOrders { get; set; }

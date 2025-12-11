@@ -1,0 +1,377 @@
+﻿@model Vozila.ViewModels.ModelsOrder.AdminOrderDashboardVM
+@{
+    ViewData["Title"] = "Order Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <!-- Page Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-truck mr-2"></i>Order Dashboard
+        </h1>
+        <a asp-action="Create" class="btn btn-primary">
+            <i class="fas fa-plus-circle mr-2"></i>Create New Order
+        </a>
+    </div>
+
+    <!-- Statistics Cards -->
+    <div class="row mb-4">
+        <!-- Total Orders -->
+        <div class="col-xl-2 col-md-4 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Total Orders
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.TotalOrders</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pending Orders -->
+        <div class="col-xl-2 col-md-4 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Pending
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.PendingOrders</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clock fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- In Progress -->
+        <div class="col-xl-2 col-md-4 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                In Progress
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.InProgressOrders</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-truck-loading fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Completed -->
+        <div class="col-xl-2 col-md-4 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Completed
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CompletedOrders</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-check-circle fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cancelled -->
+        <div class="col-xl-2 col-md-4 mb-4">
+            <div class="card border-left-danger shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                Cancelled
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">@Model.CancelledOrders</div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-ban fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="col-xl-2 col-md-4 mb-4">
+            <div class="card border-left-secondary shadow h-100 py-2">
+                <div class="card-body text-center">
+                    <div class="text-xs font-weight-bold text-secondary text-uppercase mb-2">
+                        Quick Actions
+                    </div>
+                    <div class="btn-group-vertical w-100">
+                        <a asp-action="ManageOrder" class="btn btn-sm btn-outline-primary mb-1">
+                            <i class="fas fa-list mr-1"></i>View All Orders
+                        </a>
+                        <a asp-action="Create" class="btn btn-sm btn-outline-success mb-1">
+                            <i class="fas fa-plus mr-1"></i>New Order
+                        </a>
+                        <a href="#" class="btn btn-sm btn-outline-info mb-1" data-toggle="modal" data-target="#searchModal">
+                            <i class="fas fa-search mr-1"></i>Search Orders
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Orders Table -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <h6 class="m-0 font-weight-bold text-primary">
+                <i class="fas fa-history mr-2"></i>Recent Orders
+            </h6>
+            <a asp-action="ManageOrder" class="btn btn-sm btn-primary">
+                View All <i class="fas fa-arrow-right ml-1"></i>
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="recentOrdersTable" width="100%" cellspacing="0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Company</th>
+                            <th>Transporter</th>
+                            <th>Destination</th>
+                            <th>Loading Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.RecentOrders.Any())
+                        {
+                            foreach (var order in Model.RecentOrders)
+                            {
+                                <tr>
+                                    <td>#@order.Id</td>
+                                    <td>@order.CompanyName</td>
+                                    <td>@order.TransporterName</td>
+                                    <td>@order.DestinationCity</td>
+                                    <td>@order.DateForLoadingFrom.ToString("dd/MM/yyyy")</td>
+                                    <td>
+                                        <span class="badge badge-@GetStatusBadgeClass(order.Status)">
+                                            @order.Status
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="btn-group btn-group-sm">
+                                            <a asp-action="Details" asp-route-id="@order.Id"
+                                               class="btn btn-info" title="View Details">
+                                                <i class="fas fa-eye"></i>
+                                            </a>
+                                            <a asp-action="Edit" asp-route-id="@order.Id"
+                                               class="btn btn-warning" title="Edit">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            @if (order.Status == "Pending" || order.Status == "In Progress")
+                                            {
+                                                <button type="button" class="btn btn-danger"
+                                                        title="Cancel" onclick="showCancelModal(@order.Id)">
+                                                    <i class="fas fa-times"></i>
+                                                </button>
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="7" class="text-center">No recent orders found</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick Action Cards -->
+    <div class="row">
+        <!-- Create Order Card -->
+        <div class="col-lg-4 mb-4">
+            <div class="card border-left-success shadow h-100">
+                <div class="card-header bg-success text-white">
+                    <h6 class="m-0 font-weight-bold">
+                        <i class="fas fa-plus-circle mr-2"></i>Create New Order
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <p>Create a new transportation order with all necessary details.</p>
+                    <div class="text-center mt-4">
+                        <a asp-action="Create" class="btn btn-success btn-lg">
+                            <i class="fas fa-plus mr-2"></i>Create Order
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Manage Orders Card -->
+        <div class="col-lg-4 mb-4">
+            <div class="card border-left-primary shadow h-100">
+                <div class="card-header bg-primary text-white">
+                    <h6 class="m-0 font-weight-bold">
+                        <i class="fas fa-tasks mr-2"></i>Manage Orders
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <p>View, filter, and manage all existing orders in the system.</p>
+                    <div class="text-center mt-4">
+                        <a asp-action="ManageOrder" class="btn btn-primary btn-lg">
+                            <i class="fas fa-list mr-2"></i>View All Orders
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reports Card -->
+        <div class="col-lg-4 mb-4">
+            <div class="card border-left-info shadow h-100">
+                <div class="card-header bg-info text-white">
+                    <h6 class="m-0 font-weight-bold">
+                        <i class="fas fa-chart-bar mr-2"></i>Order Reports
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <p>Generate reports and analytics for orders and shipments.</p>
+                    <div class="text-center mt-4">
+                        <a asp-controller="Report" asp-action="Index" class="btn btn-info btn-lg">
+                            <i class="fas fa-chart-pie mr-2"></i>View Reports
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cancel Order Modal -->
+<div class="modal fade" id="cancelOrderModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">Cancel Order</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span class="text-white">&times;</span>
+                </button>
+            </div>
+            <form asp-action="Cancel" method="post">
+                <div class="modal-body">
+                    <input type="hidden" id="cancelOrderId" name="id" />
+                    <div class="form-group">
+                        <label for="cancelReason">Reason for Cancellation:</label>
+                        <textarea class="form-control" id="cancelReason" name="reason"
+                                  rows="3" required placeholder="Enter reason for cancellation..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Confirm Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Search Modal -->
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title">Search Orders</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span class="text-white">&times;</span>
+                </button>
+            </div>
+            <form asp-action="ManageOrder" method="get">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="searchStatus">Status:</label>
+                        <select class="form-control" id="searchStatus" name="status">
+                            <option value="">All Statuses</option>
+                            <option value="Pending">Pending</option>
+                            <option value="In Progress">In Progress</option>
+                            <option value="Completed">Completed</option>
+                            <option value="Cancelled">Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="searchCompany">Company:</label>
+                        <input type="text" class="form-control" id="searchCompany" name="company"
+                               placeholder="Company name...">
+                    </div>
+                    <div class="form-group">
+                        <label for="searchDateFrom">Date From:</label>
+                        <input type="date" class="form-control" id="searchDateFrom" name="dateFrom">
+                    </div>
+                    <div class="form-group">
+                        <label for="searchDateTo">Date To:</label>
+                        <input type="date" class="form-control" id="searchDateTo" name="dateTo">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Search</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        function showCancelModal(orderId) {
+            $('#cancelOrderId').val(orderId);
+            $('#cancelReason').val('');
+            $('#cancelOrderModal').modal('show');
+        }
+
+        // Initialize DataTable for recent orders
+        $(document).ready(function() {
+            $('#recentOrdersTable').DataTable({
+                pageLength: 5,
+                lengthMenu: [[5, 10, 25, 50, -1], [5, 10, 25, 50, "All"]],
+                order: [[0, 'desc']]
+            });
+        });
+    </script>
+}
+
+@functions {
+    public string GetStatusBadgeClass(string status)
+    {
+        return status switch
+        {
+            "Pending" => "warning",
+            "In Progress" => "info",
+            "Completed" => "success",
+            "Cancelled" => "danger",
+            _ => "secondary"
+        };
+    }
+}

@@ -20,10 +20,11 @@ namespace Vozila.DataAccess.Extensions
              new Company { Id = 3, CustomerName = "Logistika d.o.o.", ShipingAddress = "Ulica 3", City = City.Sofia, Country = Country.BG }
             );
 
+            // Note: Transporter passwords are SHA256 hashed. Plain text: trans123 = srtnHMMB9RVC7JR+iyMhp5DhcAhNa7nERsyVDRCrLZc=
             modelBuilder.Entity<Transporter>().HasData(
-             new Transporter { Id = 1, CompanyName = "TransLogistika DOOEL", ContactPerson = "Petar Petrovski", PhoneNumber = "+389 70 123 456", Email = "info@translogistika.mk", Password = "trans123" },
-             new Transporter { Id = 2, CompanyName = "Balkan Transport Group", ContactPerson = "Milan Jovanovic", PhoneNumber = "+381 64 987 6543", Email = "office@balkantransport.rs", Password = "trans123" },
-             new Transporter { Id = 3, CompanyName = "EuroCargo Solutions", ContactPerson = "Ivan Petrović", PhoneNumber = "+385 91 332 4422", Email = "contact@eurocargo.hr", Password = "trans123" }
+             new Transporter { Id = 1, CompanyName = "TransLogistika DOOEL", ContactPerson = "Petar Petrovski", PhoneNumber = "+389 70 123 456", Email = "info@translogistika.mk", Password = "srtnHMMB9RVC7JR+iyMhp5DhcAhNa7nERsyVDRCrLZc=" },
+             new Transporter { Id = 2, CompanyName = "Balkan Transport Group", ContactPerson = "Milan Jovanovic", PhoneNumber = "+381 64 987 6543", Email = "office@balkantransport.rs", Password = "srtnHMMB9RVC7JR+iyMhp5DhcAhNa7nERsyVDRCrLZc=" },
+             new Transporter { Id = 3, CompanyName = "EuroCargo Solutions", ContactPerson = "Ivan Petrović", PhoneNumber = "+385 91 332 4422", Email = "contact@eurocargo.hr", Password = "srtnHMMB9RVC7JR+iyMhp5DhcAhNa7nERsyVDRCrLZc=" }
             );
 
             modelBuilder.Entity<PriceOil>().HasData(
@@ -32,16 +33,17 @@ namespace Vozila.DataAccess.Extensions
             );
 
             // 2. Seed Users (depends on Role and Transporter)
+            // Note: Passwords are SHA256 hashed. Plain text: admin123 = JAvlGPq9JyTdtvBO6x2llnRI1+gxwIyPqCKAn3THIKk=, trans123 = srtnHMMB9RVC7JR+iyMhp5DhcAhNa7nERsyVDRCrLZc=
             modelBuilder.Entity<User>().HasData(
-                new User { Id = 1, FullName = "System Admin", Email = "admin@liberty.com", Password = "admin123", RoleId = 1, IsActive = true, CreatedDate = new DateTime(2025, 1, 1, 10, 0, 0), TransporterId = null },
-                new User { Id = 2, FullName = "Transporter User", Email = "transporter@liberty.com", Password = "trans123", RoleId = 2, IsActive = true, CreatedDate = new DateTime(2025, 1, 2, 12, 0, 0), TransporterId = 1 }
+                new User { Id = 1, FullName = "System Admin", Email = "admin@liberty.com", Password = "JAvlGPq9JyTdtvBO6x2llnRI1+gxwIyPqCKAn3THIKk=", RoleId = 1, IsActive = true, CreatedDate = new DateTime(2025, 1, 1, 10, 0, 0), TransporterId = null },
+                new User { Id = 2, FullName = "Transporter User", Email = "transporter@liberty.com", Password = "srtnHMMB9RVC7JR+iyMhp5DhcAhNa7nERsyVDRCrLZc=", RoleId = 2, IsActive = true, CreatedDate = new DateTime(2025, 1, 2, 12, 0, 0), TransporterId = 1 }
             );
 
             // 3. Seed Contracts (depends on Transporter)
             modelBuilder.Entity<Contract>().HasData(
-                new Contract { Id = 1, ContractNumber = "CTR-2025-001", TransporterId = 1, ValueEUR = 50000.00m, ContractOilPrice = 1.50m, CreatedDate = new DateTime(2025, 1, 1, 10, 0, 0), ValidUntil = new DateTime(2026, 1, 1, 0, 0, 0) },
-                new Contract { Id = 2, ContractNumber = "CTR-2025-002", TransporterId = 2, ValueEUR = 40000.00m, ContractOilPrice = 1.45m, CreatedDate = new DateTime(2025, 1, 2, 10, 0, 0), ValidUntil = new DateTime(2026, 1, 2, 0, 0, 0) },
-                new Contract { Id = 3, ContractNumber = "CTR-2025-003", TransporterId = 3, ValueEUR = 60000.00m, ContractOilPrice = 1.55m, CreatedDate = new DateTime(2025, 1, 3, 10, 0, 0), ValidUntil = new DateTime(2026, 1, 3, 0, 0, 0) }
+                new Contract { Id = 1, ContractNumber = "CTR-2025-001", TransporterId = 1, ContractOilPrice = 1.50m, CreatedDate = new DateTime(2025, 1, 1, 10, 0, 0), ValidUntil = new DateTime(2026, 1, 1, 0, 0, 0) },
+                new Contract { Id = 2, ContractNumber = "CTR-2025-002", TransporterId = 2, ContractOilPrice = 1.45m, CreatedDate = new DateTime(2025, 1, 2, 10, 0, 0), ValidUntil = new DateTime(2026, 1, 2, 0, 0, 0) },
+                new Contract { Id = 3, ContractNumber = "CTR-2025-003", TransporterId = 3, ContractOilPrice = 1.55m, CreatedDate = new DateTime(2025, 1, 3, 10, 0, 0), ValidUntil = new DateTime(2026, 1, 3, 0, 0, 0) }
             );
 
             // 5. Seed Destinations (depends on Contract)

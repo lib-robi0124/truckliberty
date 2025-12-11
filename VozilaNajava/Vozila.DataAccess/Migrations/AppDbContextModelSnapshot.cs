@@ -81,48 +81,6 @@ namespace Vozila.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Vozila.Domain.Models.Condition", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ContractId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("ContractOilPrice")
-                        .HasPrecision(18, 4)
-                        .HasColumnType("decimal(18,4)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ContractId");
-
-                    b.ToTable("Conditions");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            ContractId = 1,
-                            ContractOilPrice = 70.5m
-                        },
-                        new
-                        {
-                            Id = 2,
-                            ContractId = 2,
-                            ContractOilPrice = 69.0m
-                        },
-                        new
-                        {
-                            Id = 3,
-                            ContractId = 3,
-                            ContractOilPrice = 71.2m
-                        });
-                });
-
             modelBuilder.Entity("Vozila.Domain.Models.Contract", b =>
                 {
                     b.Property<int>("Id")
@@ -136,6 +94,10 @@ namespace Vozila.DataAccess.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<decimal>("ContractOilPrice")
+                        .HasPrecision(18, 2)
+                        .HasColumnType("decimal(18,2)");
+
                     b.Property<DateTime>("CreatedDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
@@ -146,10 +108,6 @@ namespace Vozila.DataAccess.Migrations
 
                     b.Property<DateTime>("ValidUntil")
                         .HasColumnType("datetime2");
-
-                    b.Property<decimal>("ValueEUR")
-                        .HasPrecision(18, 2)
-                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
@@ -162,28 +120,28 @@ namespace Vozila.DataAccess.Migrations
                         {
                             Id = 1,
                             ContractNumber = "CTR-2025-001",
+                            ContractOilPrice = 1.50m,
                             CreatedDate = new DateTime(2025, 1, 1, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TransporterId = 1,
-                            ValidUntil = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValueEUR = 15000.00m
+                            ValidUntil = new DateTime(2026, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 2,
                             ContractNumber = "CTR-2025-002",
+                            ContractOilPrice = 1.45m,
                             CreatedDate = new DateTime(2025, 1, 2, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TransporterId = 2,
-                            ValidUntil = new DateTime(2026, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValueEUR = 12000.00m
+                            ValidUntil = new DateTime(2026, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             Id = 3,
                             ContractNumber = "CTR-2025-003",
+                            ContractOilPrice = 1.55m,
                             CreatedDate = new DateTime(2025, 1, 3, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             TransporterId = 3,
-                            ValidUntil = new DateTime(2026, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            ValueEUR = 18000.00m
+                            ValidUntil = new DateTime(2026, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
 
@@ -200,10 +158,7 @@ namespace Vozila.DataAccess.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
-                    b.Property<int>("ConditionId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("ContractId")
+                    b.Property<int>("ContractId")
                         .HasColumnType("int");
 
                     b.Property<string>("Country")
@@ -219,11 +174,14 @@ namespace Vozila.DataAccess.Migrations
                         .HasPrecision(18, 4)
                         .HasColumnType("decimal(18,4)");
 
+                    b.Property<int?>("TransporterId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("ConditionId");
-
                     b.HasIndex("ContractId");
+
+                    b.HasIndex("TransporterId");
 
                     b.ToTable("Destinations");
 
@@ -232,7 +190,7 @@ namespace Vozila.DataAccess.Migrations
                         {
                             Id = 1,
                             City = "Ljubljana",
-                            ConditionId = 1,
+                            ContractId = 1,
                             Country = "Slo",
                             DailyPricePerLiter = 70.0m,
                             DestinationContractPrice = 150m
@@ -241,7 +199,7 @@ namespace Vozila.DataAccess.Migrations
                         {
                             Id = 2,
                             City = "Zagreb",
-                            ConditionId = 1,
+                            ContractId = 1,
                             Country = "HR",
                             DailyPricePerLiter = 70.0m,
                             DestinationContractPrice = 120m
@@ -250,7 +208,7 @@ namespace Vozila.DataAccess.Migrations
                         {
                             Id = 3,
                             City = "Belgrade",
-                            ConditionId = 2,
+                            ContractId = 2,
                             Country = "SRB",
                             DailyPricePerLiter = 68.5m,
                             DestinationContractPrice = 180m
@@ -259,7 +217,7 @@ namespace Vozila.DataAccess.Migrations
                         {
                             Id = 4,
                             City = "Bucharest",
-                            ConditionId = 2,
+                            ContractId = 2,
                             Country = "RO",
                             DailyPricePerLiter = 68.5m,
                             DestinationContractPrice = 200m
@@ -268,7 +226,7 @@ namespace Vozila.DataAccess.Migrations
                         {
                             Id = 5,
                             City = "Sofia",
-                            ConditionId = 3,
+                            ContractId = 3,
                             Country = "BG",
                             DailyPricePerLiter = 71.0m,
                             DestinationContractPrice = 175m
@@ -277,7 +235,7 @@ namespace Vozila.DataAccess.Migrations
                         {
                             Id = 6,
                             City = "Thessaloniki",
-                            ConditionId = 3,
+                            ContractId = 3,
                             Country = "GR",
                             DailyPricePerLiter = 71.0m,
                             DestinationContractPrice = 220m
@@ -286,7 +244,7 @@ namespace Vozila.DataAccess.Migrations
                         {
                             Id = 7,
                             City = "Prishtina",
-                            ConditionId = 1,
+                            ContractId = 1,
                             Country = "RKS",
                             DailyPricePerLiter = 70.0m,
                             DestinationContractPrice = 160m
@@ -295,7 +253,7 @@ namespace Vozila.DataAccess.Migrations
                         {
                             Id = 8,
                             City = "Skopje",
-                            ConditionId = 2,
+                            ContractId = 2,
                             Country = "MK",
                             DailyPricePerLiter = 68.5m,
                             DestinationContractPrice = 155m
@@ -505,7 +463,7 @@ namespace Vozila.DataAccess.Migrations
                             CompanyName = "TransLogistika DOOEL",
                             ContactPerson = "Petar Petrovski",
                             Email = "info@translogistika.mk",
-                            Password = "trans123",
+                            Password = "srtnHMMB9RVC7JR+iyMhp5DhcAhNa7nERsyVDRCrLZc=",
                             PhoneNumber = "+389 70 123 456"
                         },
                         new
@@ -514,7 +472,7 @@ namespace Vozila.DataAccess.Migrations
                             CompanyName = "Balkan Transport Group",
                             ContactPerson = "Milan Jovanovic",
                             Email = "office@balkantransport.rs",
-                            Password = "trans123",
+                            Password = "srtnHMMB9RVC7JR+iyMhp5DhcAhNa7nERsyVDRCrLZc=",
                             PhoneNumber = "+381 64 987 6543"
                         },
                         new
@@ -523,7 +481,7 @@ namespace Vozila.DataAccess.Migrations
                             CompanyName = "EuroCargo Solutions",
                             ContactPerson = "Ivan Petrović",
                             Email = "contact@eurocargo.hr",
-                            Password = "trans123",
+                            Password = "srtnHMMB9RVC7JR+iyMhp5DhcAhNa7nERsyVDRCrLZc=",
                             PhoneNumber = "+385 91 332 4422"
                         });
                 });
@@ -584,7 +542,7 @@ namespace Vozila.DataAccess.Migrations
                             Email = "admin@liberty.com",
                             FullName = "System Admin",
                             IsActive = true,
-                            Password = "admin123",
+                            Password = "JAvlGPq9JyTdtvBO6x2llnRI1+gxwIyPqCKAn3THIKk=",
                             RoleId = 1
                         },
                         new
@@ -594,21 +552,10 @@ namespace Vozila.DataAccess.Migrations
                             Email = "transporter@liberty.com",
                             FullName = "Transporter User",
                             IsActive = true,
-                            Password = "trans123",
+                            Password = "srtnHMMB9RVC7JR+iyMhp5DhcAhNa7nERsyVDRCrLZc=",
                             RoleId = 2,
                             TransporterId = 1
                         });
-                });
-
-            modelBuilder.Entity("Vozila.Domain.Models.Condition", b =>
-                {
-                    b.HasOne("Vozila.Domain.Models.Contract", "Contract")
-                        .WithMany("Conditions")
-                        .HasForeignKey("ContractId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Contract");
                 });
 
             modelBuilder.Entity("Vozila.Domain.Models.Contract", b =>
@@ -624,18 +571,16 @@ namespace Vozila.DataAccess.Migrations
 
             modelBuilder.Entity("Vozila.Domain.Models.Destination", b =>
                 {
-                    b.HasOne("Vozila.Domain.Models.Condition", "Condition")
-                        .WithMany("Destinations")
-                        .HasForeignKey("ConditionId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Vozila.Domain.Models.Contract", null)
+                    b.HasOne("Vozila.Domain.Models.Contract", "Contract")
                         .WithMany("Destinations")
                         .HasForeignKey("ContractId")
                         .OnDelete(DeleteBehavior.NoAction);
 
-                    b.Navigation("Condition");
+                    b.HasOne("Vozila.Domain.Models.Transporter", null)
+                        .WithMany("Destinations")
+                        .HasForeignKey("TransporterId");
+
+                    b.Navigation("Contract");
                 });
 
             modelBuilder.Entity("Vozila.Domain.Models.Order", b =>
@@ -695,15 +640,8 @@ namespace Vozila.DataAccess.Migrations
                     b.Navigation("Orders");
                 });
 
-            modelBuilder.Entity("Vozila.Domain.Models.Condition", b =>
-                {
-                    b.Navigation("Destinations");
-                });
-
             modelBuilder.Entity("Vozila.Domain.Models.Contract", b =>
                 {
-                    b.Navigation("Conditions");
-
                     b.Navigation("Destinations");
                 });
 
@@ -720,6 +658,8 @@ namespace Vozila.DataAccess.Migrations
             modelBuilder.Entity("Vozila.Domain.Models.Transporter", b =>
                 {
                     b.Navigation("Contracts");
+
+                    b.Navigation("Destinations");
 
                     b.Navigation("Orders");
                 });

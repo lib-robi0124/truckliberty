@@ -35,23 +35,6 @@ namespace Vozila.Services.Implementations
             });
         }
         // ------------------------------------------------------------
-        // BY CONDITION
-        // ------------------------------------------------------------
-        public async Task<IEnumerable<DestinationListVM>> GetDestinationsByConditionAsync(int conditionId)
-        {
-            var list = await _destinationRepo.GetActiveDestinationsByContractAsync(conditionId);
-
-            return list.Select(d => new DestinationListVM
-            {
-                Id = d.Id,
-                CityName = d.City.ToString(),
-                CountryName = d.Country.ToString(),
-                DestinationContractPrice = d.DestinationContractPrice,
-                CalculatedPrice = d.DestinationPriceFromFormula,
-                OrderCount = d.Orders?.Count ?? 0
-            });
-        }
-        // ------------------------------------------------------------
         // BY CONTRACT
         // ------------------------------------------------------------
         public async Task<IEnumerable<DestinationListVM>> GetByContractAsync(int contractId)
@@ -93,7 +76,7 @@ namespace Vozila.Services.Implementations
             var dest = await _destinationRepo.GetDestinationWithFullDetailsAsync(id);
             if (dest == null) return null;
 
-            var contract = dest.Condition?.Contract;
+            var contract = dest.Contract;
             var transporter = contract?.Transporter;
 
             return new DestinationDetailsVM
@@ -128,7 +111,7 @@ namespace Vozila.Services.Implementations
                 CountryName = dest.Country.ToString(),
                 DestinationContractPrice = dest.DestinationContractPrice,
                 DailyPricePerLiter = dest.DailyPricePerLiter,
-                ConditionId = dest.ConditionId,
+                ContractId = dest.ContractId,
                 ContractOilPrice = dest.ContractOilPrice,
                 CalculatedPrice = dest.DestinationPriceFromFormula
             };
@@ -145,7 +128,7 @@ namespace Vozila.Services.Implementations
                 Country = model.Country,
                 DestinationContractPrice = model.DestinationContractPrice,
                 DailyPricePerLiter = model.DailyPricePerLiter,
-                ConditionId = model.ConditionId
+                ContractId = model.ContractId
             };
 
             await _destinationRepo.AddAsync(entity);
@@ -168,7 +151,7 @@ namespace Vozila.Services.Implementations
             entity.Country = model.Country;
             entity.DestinationContractPrice = model.DestinationContractPrice;
             entity.DailyPricePerLiter = model.DailyPricePerLiter;
-            entity.ConditionId = model.ConditionId;
+            entity.ContractId = model.ContractId;
 
             await _destinationRepo.UpdateAsync(entity);
         }

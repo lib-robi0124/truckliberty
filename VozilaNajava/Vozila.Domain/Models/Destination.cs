@@ -12,7 +12,6 @@ namespace Vozila.Domain.Models
         public int ContractId { get; set; }
         public Contract Contract { get; set; } = default!;
         public decimal ContractOilPrice => Contract?.ContractOilPrice ?? 0;
-
         public decimal DestinationPriceFromFormula
         {
             get

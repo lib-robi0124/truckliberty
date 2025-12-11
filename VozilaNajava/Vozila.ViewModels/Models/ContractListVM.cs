@@ -9,6 +9,6 @@
         public DateTime CreatedDate { get; set; }
         public DateTime ValidUntil { get; set; }
         public bool IsActive { get; set; }
-        public int ConditionCount { get; set; }
+        public int DestrinationCount { get; set; }
     }
 }
