@@ -1,0 +1,206 @@
+﻿@using Vozila.ViewModels.ModelsOrder
+@using Vozila.Domain.Enums
+@model EditOrderVM
+@{
+    ViewData["Title"] = "Edit Order";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-edit mr-2"></i>Edit Order #@Model.Id
+        </h1>
+        <a asp-action="Index" class="btn btn-secondary">
+            <i class="fas fa-arrow-left mr-2"></i>Back to Dashboard
+        </a>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="card shadow mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h6 class="m-0 font-weight-bold">
+                        <i class="fas fa-edit mr-2"></i>Edit Order Details
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit" method="post">
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="CompanyId"></label>
+                                    <select asp-for="CompanyId" asp-items="ViewBag.Companies" class="form-control">
+                                        <option value="">-- Select Company --</option>
+                                    </select>
+                                    <span asp-validation-for="CompanyId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="TransporterId"></label>
+                                    <select asp-for="TransporterId" asp-items="ViewBag.Transporters" class="form-control">
+                                        <option value="">-- Select Transporter --</option>
+                                    </select>
+                                    <span asp-validation-for="TransporterId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="DestinationId"></label>
+                                    <select asp-for="DestinationId" asp-items="ViewBag.Destinations" class="form-control">
+                                        <option value="">-- Select Destination --</option>
+                                    </select>
+                                    <span asp-validation-for="DestinationId" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="TruckPlateNo"></label>
+                                    <input asp-for="TruckPlateNo" class="form-control" placeholder="Enter truck plate number" />
+                                    <span asp-validation-for="TruckPlateNo" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="DateForLoadingFrom"></label>
+                                    <input asp-for="DateForLoadingFrom" type="datetime-local" class="form-control" />
+                                    <span asp-validation-for="DateForLoadingFrom" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="DateForLoadingTo"></label>
+                                    <input asp-for="DateForLoadingTo" type="datetime-local" class="form-control" />
+                                    <span asp-validation-for="DateForLoadingTo" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="ContractOilPrice"></label>
+                                    <input asp-for="ContractOilPrice" class="form-control" />
+                                    <span asp-validation-for="ContractOilPrice" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Status"></label>
+                                    <select asp-for="Status" class="form-control">
+                                        <option value="@OrderStatus.Pending">Pending</option>
+                                        <option value="@OrderStatus.Approved">Approved</option>
+                                        <option value="@OrderStatus.Finished">Finished</option>
+                                        <option value="@OrderStatus.Cancelled">Cancelled</option>
+                                    </select>
+                                    <span asp-validation-for="Status" class="text-danger"></span>
+                                    <small class="form-text text-muted">
+                                        Current status: <span class="font-weight-bold">@Model.Status</span>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group mt-4">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save mr-2"></i>Save Changes
+                            </button>
+                            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <!-- Quick Actions Card -->
+            <div class="card shadow mb-4">
+                <div class="card-header bg-info text-white">
+                    <h6 class="m-0 font-weight-bold">
+                        <i class="fas fa-bolt mr-2"></i>Quick Actions
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <div class="d-grid gap-2">
+                        @if (Model.CurrentStatus == OrderStatus.Pending || Model.CurrentStatus == OrderStatus.Approved)
+                        {
+                            <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#cancelModal">
+                                <i class="fas fa-times mr-2"></i>Cancel Order
+                            </button>
+                        }
+                        @if (Model.CurrentStatus == OrderStatus.Approved)
+                        {
+                            <button type="button" class="btn btn-success btn-block" data-toggle="modal" data-target="#finishModal">
+                                <i class="fas fa-flag-checkered mr-2"></i>Mark as Finished
+                            </button>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Cancel Modal -->
+<div class="modal fade" id="cancelModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title">Cancel Order #@Model.Id</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span class="text-white">&times;</span>
+                </button>
+            </div>
+            <form asp-action="Cancel" method="post">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="reason">Reason for Cancellation:</label>
+                        <textarea class="form-control" id="reason" name="reason"
+                                  rows="3" required placeholder="Enter reason for cancellation..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger">Confirm Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Finish Modal -->
+<div class="modal fade" id="finishModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-success text-white">
+                <h5 class="modal-title">Finish Order #@Model.Id</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span class="text-white">&times;</span>
+                </button>
+            </div>
+            <form asp-action="Finish" method="post">
+                <input type="hidden" name="id" value="@Model.Id" />
+                <div class="modal-body">
+                    <p>Are you sure you want to mark this order as Finished?</p>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i> This action cannot be undone.
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Mark as Finished</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

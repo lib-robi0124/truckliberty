@@ -19,7 +19,7 @@ namespace Vozila.Controllers
         private readonly IContractService _contractService;
         private readonly ICompanyService _companyService;
         private readonly IDestinationService _destinationService;
-        private readonly ITansporterService _transporterService;
+        private readonly ITransporterService _transporterService;
         private readonly IPriceOilService _priceOilService;
         private readonly AppDbContext _context;
         private readonly ILogger<AdminController> _logger;
@@ -29,7 +29,7 @@ namespace Vozila.Controllers
             IContractService contractService,
             ICompanyService companyService,
             IDestinationService destinationService,
-            ITansporterService transporterService,
+            ITransporterService transporterService,
             IPriceOilService priceOilService,
             AppDbContext context,
             ILogger<AdminController> logger)

@@ -19,9 +19,6 @@ namespace Vozila.DataAccess.Implementations
                 .Include(o => o.Company)
                 .Include(o => o.Transporter)
                 .Include(o => o.Destination)
-                    .ThenInclude(d => d.City)
-                .Include(o => o.Destination)
-                    .ThenInclude(d => d.Country)
                 .Include(o => o.CancelledByUser)
                 .FirstOrDefaultAsync(o => o.Id == id);
         }
@@ -53,7 +50,6 @@ namespace Vozila.DataAccess.Implementations
                 .Include(o => o.Company)
                 .Include(o => o.Transporter)
                 .Include(o => o.Destination)
-                    .ThenInclude(d => d.City)
                 .Where(o => o.Status != OrderStatus.Cancelled)
                 .OrderByDescending(o => o.CreatedDate)
                 .ToListAsync();
@@ -264,7 +260,6 @@ namespace Vozila.DataAccess.Implementations
             return await _entities
                 .Include(o => o.Company)
                 .Include(o => o.Destination)
-                    .ThenInclude(d => d.City)
                 .Where(o => o.TransporterId == transporterId &&
                        o.Status == OrderStatus.Pending)
                 .OrderBy(o => o.DateForLoadingFrom)
@@ -276,7 +271,6 @@ namespace Vozila.DataAccess.Implementations
             return await _entities
                 .Include(o => o.Company)
                 .Include(o => o.Destination)
-                    .ThenInclude(d => d.City)
                 .Where(o => o.TransporterId == transporterId &&
                        o.Status == OrderStatus.Approved)
                 .OrderBy(o => o.TruckSubmittedDate)
@@ -288,7 +282,6 @@ namespace Vozila.DataAccess.Implementations
             return await _entities
                 .Include(o => o.Company)
                 .Include(o => o.Destination)
-                    .ThenInclude(d => d.City)
                 .Where(o => o.TransporterId == transporterId &&
                        o.Status == OrderStatus.Finished)
                 .OrderByDescending(o => o.FinishedDate)
@@ -300,7 +293,6 @@ namespace Vozila.DataAccess.Implementations
             return await _entities
                 .Include(o => o.Company)
                 .Include(o => o.Destination)
-                    .ThenInclude(d => d.City)
                 .Where(o => o.TransporterId == transporterId &&
                        o.Status != OrderStatus.Cancelled)
                 .OrderByDescending(o => o.CreatedDate)
@@ -320,7 +312,6 @@ namespace Vozila.DataAccess.Implementations
             return await _entities
                 .Include(o => o.Company)
                 .Include(o => o.Destination)
-                    .ThenInclude(d => d.City)
                 .Where(o => o.TransporterId == transporterId &&
                        o.Status == OrderStatus.Pending &&
                        o.DateForLoadingFrom >= DateTime.Now)
@@ -334,9 +325,7 @@ namespace Vozila.DataAccess.Implementations
                 .Include(o => o.Company)
                 .Include(o => o.Transporter)
                 .Include(o => o.Destination)
-                    .ThenInclude(d => d.City)
-                .Include(o => o.Destination)
-                    .ThenInclude(d => d.Country)
+                .Include(o => o.CancelledByUser)
                 .FirstOrDefaultAsync(o => o.Id == orderId);
         }
 
@@ -429,8 +418,8 @@ namespace Vozila.DataAccess.Implementations
         {
             var query = _entities
                 .Include(o => o.Company)
+                .Include(o => o.Transporter)
                 .Include(o => o.Destination)
-                    .ThenInclude(d => d.City)
                 .Where(o => o.TransporterId == transporterId);
 
             if (criteria.Status.HasValue)

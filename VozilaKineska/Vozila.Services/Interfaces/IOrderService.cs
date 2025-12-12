@@ -15,7 +15,7 @@ namespace Vozila.Services.Interfaces
         Task<bool> CancelOrderAsync(int orderId, string reason, int userId);
         Task<bool> FinishOrderAsync(int orderId, int adminUserId);
 
-        Task<IEnumerable<OrderListVM>> SearchAsync(int transporterId, OrderSearchCriteria criteria);
+        Task<IEnumerable<OrderListVM>> SearchAsync(int transporterId, Domain.Models.OrderSearchCriteria criteria);
         Task<int> AutoCancelExpiredOrderAsync(int daysExpired = 3);
 
         Task<TransporterOrderStats> GetTransporterStatsAsync(int transporterId);

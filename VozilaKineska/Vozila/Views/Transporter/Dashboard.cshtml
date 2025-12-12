@@ -1,0 +1,250 @@
+﻿@using Vozila.Domain.Enums
+@model TransporterDashboardVM
+
+@{
+    ViewData["Title"] = "Transporter Dashboard";
+    Layout = "_Layout";
+}
+
+<div class="container-fluid">
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">
+            <i class="fas fa-truck mr-2"></i>Transporter Dashboard
+        </h1>
+        <div>
+            <span class="mr-3">Welcome, @User.Identity.Name</span>
+            <a asp-action="Profile" class="btn btn-outline-primary btn-sm">
+                <i class="fas fa-user mr-1"></i>My Profile
+            </a>
+        </div>
+    </div>
+
+    <!-- Stats Cards -->
+    <div class="row">
+        <!-- Pending Orders Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-warning shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                Pending Orders
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                @Model.Stats.PendingOrders
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-clock fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Approved Orders Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-success shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                Approved Orders
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                @Model.Stats.ApprovedOrders
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-check-circle fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Finished Orders Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-info shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                Finished Orders
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                @Model.Stats.FinishedOrders
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-flag-checkered fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Contracts Card -->
+        <div class="col-xl-3 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                    <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                Active Contracts
+                            </div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                @Model.Stats.ActiveContracts
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i class="fas fa-file-contract fa-2x text-gray-300"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Recent Orders Table -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <h6 class="m-0 font-weight-bold text-primary">
+                <i class="fas fa-history mr-2"></i>Recent Orders
+            </h6>
+            <a asp-action="ManageOrder" class="btn btn-sm btn-primary">
+                View All <i class="fas fa-arrow-right ml-1"></i>
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" id="recentOrdersTable" width="100%" cellspacing="0">
+                    <thead class="thead-light">
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Company</th>
+                            <th>Transporter</th>
+                            <th>Destination</th>
+                            <th>Loading Date</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.RecentOrders.Any())
+                        {
+                            foreach (var order in Model.RecentOrders)
+                            {
+                                <tr>
+                                    <td>#@order.Id</td>
+                                    <td>@order.CompanyName</td>
+                                    <td>@order.TransporterName</td>
+                                    <td>@order.DestinationCity</td>
+                                    <td>@order.DateForLoadingFrom.ToString("dd/MM/yyyy")</td>
+                                    <td>
+                                        <span class="badge badge-@GetStatusBadgeClass(order.Status)">
+                                            @order.Status.ToString()
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <div class="d-flex flex-column" style="min-width: 90px;">
+                                            @if (order.Status == OrderStatus.Approved || order.Status == OrderStatus.Pending)
+                                            {
+                                                <a asp-action="Edit" asp-route-id="@order.Id"
+                                                   class="btn btn-warning btn-sm mb-1 text-left"
+                                                   title="Submit Truck Plate">
+                                                    <i class="fas fa-truck mr-1"></i>Submit Truck
+                                                </a>
+                                            }
+                                            @if (order.Status == OrderStatus.Pending || order.Status == OrderStatus.Approved)
+                                            {
+                                                <button type="button" class="btn btn-danger btn-sm text-left"
+                                                        title="Cancel Order" onclick="showCancelModal(@order.Id)">
+                                                    <i class="fas fa-times mr-1"></i>Cancel
+                                                </button>
+                                            }
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="7" class="text-center">No recent orders found</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Cancel Modal *@
+<div class="modal fade" id="cancelModal" tabindex="-1" role="dialog" aria-labelledby="cancelModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="cancelModalLabel">Cancel Order</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to cancel this order?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+                <button type="button" class="btn btn-danger" id="confirmCancel">Yes, Cancel Order</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    var cancelOrderId = 0;
+
+        function showCancelModal(orderId) {
+            cancelOrderId = orderId;
+            $('#cancelModal').modal('show');
+        }
+
+        $('#confirmCancel').click(function() {
+            $.ajax({
+                url: '@Url.Action("Cancel", "Transporter")',
+                type: 'POST',
+                data: { id: cancelOrderId },
+                headers: {
+                    'RequestVerificationToken': $('input[name="__RequestVerificationToken"]').val()
+                },
+                success: function(response) {
+                    if (response.success) {
+                        location.reload();
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function() {
+                    alert('An error occurred while cancelling the order.');
+                }
+            });
+        });
+
+    @functions {
+            public string GetStatusBadgeClass(OrderStatus status)
+            {
+                    return status switch
+                    {
+                            OrderStatus.Pending => "warning",
+                            OrderStatus.Approved => "success",
+                            OrderStatus.Finished => "primary",
+                            OrderStatus.Cancelled => "danger",
+                            _ => "secondary"
+                    };
+            }
+    }
+</script>
+}

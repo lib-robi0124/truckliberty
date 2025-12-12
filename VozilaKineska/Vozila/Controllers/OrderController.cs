@@ -6,7 +6,9 @@ using Vozila.Domain.Enums;
 using Vozila.Domain.Models;
 using Vozila.Filters;
 using Vozila.Services.Interfaces;
+using Vozila.ViewModels.Models;
 using Vozila.ViewModels.ModelsOrder;
+using Vozila.ViewModels.ModelsTransporter;
 
 namespace Vozila.Controllers
 {
@@ -83,32 +85,46 @@ namespace Vozila.Controllers
         }
         // GET: Order/Details - Accessible by Admin and Transporter (for their own orders)
         [HttpGet]
-        public async Task<IActionResult> Details(int id, int userId)
+        public async Task<IActionResult> Details(int id)
         {
+            // Get user info from Session (not from Claims)
             var userRole = HttpContext.Session.GetString("Role");
             var userType = HttpContext.Session.GetString("UserType");
             var transporterId = HttpContext.Session.GetInt32("TransporterId");
+            var userId = HttpContext.Session.GetInt32("UserId");
 
             // For transporter, ensure they can only access their own orders
             if (userRole == "Transporter" || userType == "Transporter")
             {
+                if (!transporterId.HasValue)
+                {
+                    TempData["ErrorMessage"] = "Access denied.";
+                    return RedirectToAction("Index", "Home");
+                }
+
                 // Get order and verify transporter owns it
-                var order = await _orderService.GetOrderDetailsAsync(id, userId);
+                var order = await _orderService.GetOrderDetailsAsync(id, userId ?? 0);
                 if (order == null || order.TransporterId != transporterId)
                 {
                     TempData["ErrorMessage"] = "Access denied to this order.";
                     return RedirectToAction("Index", "Home");
                 }
+
+                return View("OrderDetails", order);
             }
 
-            // For admin, we need to get user ID from logged-in user
-            var currentUserId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value);
-            var orderDetails = await _orderService.GetOrderDetailsAsync(id, userId);
+            // For admin, get full order details
+            if (userRole == "Admin" || userType == "Admin")
+            {
+                var orderDetails = await _orderService.GetOrderDetailsAsync(id, userId ?? 0);
+                if (orderDetails == null)
+                    return NotFound();
 
-            if (orderDetails == null)
-                return NotFound();
+                return View("OrderDetails", orderDetails);
+            }
 
-            return View("OrderDetails", orderDetails);
+            TempData["ErrorMessage"] = "Access denied.";
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: Order/Create - Admin only
@@ -178,64 +194,76 @@ namespace Vozila.Controllers
 
         // GET: Order/Edit - Accessible by Admin and Transporter (limited access)
         [HttpGet]
-        public async Task<IActionResult> Edit(int id, int userId)
+        public async Task<IActionResult> Edit(int id)
         {
             var userRole = HttpContext.Session.GetString("Role");
             var userType = HttpContext.Session.GetString("UserType");
             var transporterId = HttpContext.Session.GetInt32("TransporterId");
+            var userId = HttpContext.Session.GetInt32("UserId") ?? 0;
 
-            // For transporter, ensure they can only access their own orders
-            if (userRole == "Transporter" || userType == "Transporter")
+            // Get order details
+            var order = await _orderService.GetOrderDetailsAsync(id, userId);
+            if (order == null)
             {
-                var order = await _orderService.GetOrderDetailsAsync(id, userId);
-                if (order == null || order.TransporterId != transporterId)
-                {
-                    TempData["ErrorMessage"] = "Access denied to this order.";
-                    return RedirectToAction("Index", "Home");
-                }
+                TempData["ErrorMessage"] = "Order not found.";
+                return RedirectToAction("Index");
+            }
 
-                // Transporter can only edit TruckPlateNo
-                var limitedModel = new EditOrderVM
+            // ADMIN: Full edit access
+            if (userRole == "Admin" || userType == "Admin")
+            {
+                var model = new EditOrderVM
                 {
                     Id = order.Id,
-                    TruckPlateNo = order.TruckPlateNo,
-                    // Set other fields as read-only or hidden
                     CompanyId = order.CompanyId,
                     TransporterId = order.TransporterId,
                     DestinationId = order.DestinationId,
                     DateForLoadingFrom = order.DateForLoadingFrom,
                     DateForLoadingTo = order.DateForLoadingTo,
                     ContractOilPrice = order.ContractOilPrice,
-                    Status = order.Status
-                };
-
-                ViewBag.IsTransporter = true; // Flag for view to disable fields
-                return View("OrderEditTransporter", limitedModel);
-            }
-
-                // For admin, full access
-                var currentUserId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value);
-                var adminOrder = await _orderService.GetOrderDetailsAsync(id, userId);
-
-                if (adminOrder == null)
-                    return NotFound();
-
-                var model = new EditOrderVM
-                {
-                    Id = adminOrder.Id,
-                    CompanyId = adminOrder.CompanyId,
-                    TransporterId = adminOrder.TransporterId,
-                    DestinationId = adminOrder.DestinationId,
-                    DateForLoadingFrom = adminOrder.DateForLoadingFrom,
-                    DateForLoadingTo = adminOrder.DateForLoadingTo,
-                    ContractOilPrice = adminOrder.ContractOilPrice,
-                    Status = adminOrder.Status,
-                    TruckPlateNo = adminOrder.TruckPlateNo
+                    Status = order.Status,
+                    TruckPlateNo = order.TruckPlateNo,
+                    CurrentStatus = order.Status
                 };
 
                 await PopulateOrderDropdowns(model.CompanyId, model.TransporterId, model.DestinationId);
-                ViewBag.IsTransporter = false;
-                return View("OrderEdit", model);
+                return View("AdminOrderEdit", model);
+            }
+
+            // TRANSPORTER: Can only submit truck plate number
+            else if ((userRole == "Transporter" || userType == "Transporter") && transporterId.HasValue)
+            {
+                // Verify transporter owns this order
+                if (order.TransporterId != transporterId.Value)
+                {
+                    TempData["ErrorMessage"] = "Access denied to this order.";
+                    return RedirectToAction("Index", "Home");
+                }
+
+                // Transporter can only edit if order is Pending
+                if (order.Status != OrderStatus.Pending)
+                {
+                    TempData["ErrorMessage"] = $"Cannot edit order. Current status: {order.Status}";
+                    return RedirectToAction("Index", "Home");
+                }
+
+                var model = new TransporterEditOrderVM
+                {
+                    Id = order.Id,
+                    TruckPlateNo = order.TruckPlateNo,
+                    CompanyName = order.CompanyName,
+                    TransporterName = order.TransporterName,
+                    DestinationCity = order.DestinationCity,
+                    DateForLoadingFrom = order.DateForLoadingFrom,
+                    DateForLoadingTo = order.DateForLoadingTo,
+                    CurrentStatus = order.Status
+                };
+
+                return View("TransporterOrderEdit", model);
+            }
+
+            TempData["ErrorMessage"] = "Access denied.";
+            return RedirectToAction("Index", "Home");
         }
         // In OrderController.cs
         [HttpGet]
@@ -295,72 +323,39 @@ namespace Vozila.Controllers
         {
             var userRole = HttpContext.Session.GetString("Role");
             var userType = HttpContext.Session.GetString("UserType");
-            var transporterId = HttpContext.Session.GetInt32("TransporterId");
 
-            // Transporter can only update TruckPlateNo
-            if (userRole == "Transporter" || userType == "Transporter")
+            if (userRole != "Admin" && userType != "Admin")
             {
-                // Verify transporter owns this order
-                var existingOrder = await _orderService.GetOrderDetailsAsync(model.Id, 0);
-                if (existingOrder == null || existingOrder.TransporterId != transporterId)
-                {
-                    TempData["ErrorMessage"] = "Access denied to this order.";
-                    return RedirectToAction("Index", "Home");
-                }
-
-                // Update only TruckPlateNo
-                var updateResult = await _orderService.SubmitTruckAsync(model.Id, model.TruckPlateNo, model.TransporterId);
-
-                if (updateResult)
-                {
-                    TempData["SuccessMessage"] = "Truck plate number updated successfully!";
-                    return RedirectToAction("Details", new { id = model.Id, userId = 0 });
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Failed to update truck plate number.");
-                    ViewBag.IsTransporter = true;
-                    return View("OrderEditTransporter", model);
-                }
+                TempData["ErrorMessage"] = "Access denied. Admin role required.";
+                return RedirectToAction("Index");
             }
 
-            // Admin - full update
             if (!ModelState.IsValid)
             {
                 await PopulateOrderDropdowns(model.CompanyId, model.TransporterId, model.DestinationId);
-                ViewBag.IsTransporter = false;
-                return View("OrderEdit", model);
-            }
-
-            if (model.DateForLoadingFrom >= model.DateForLoadingTo)
-            {
-                ModelState.AddModelError("", "Loading 'From' date must be before 'To' date.");
-                await PopulateOrderDropdowns(model.CompanyId, model.TransporterId, model.DestinationId);
-                ViewBag.IsTransporter = false;
-                return View("OrderEdit", model);
+                return View("AdminOrderEdit", model);
             }
 
             try
             {
+                // Admin can update everything
                 var result = await _orderService.UpdateOrderAsync(model);
                 if (result)
                 {
                     TempData["SuccessMessage"] = "Order updated successfully!";
-                    return RedirectToAction("Details", new { id = model.Id, userId = 0 });
+                    return RedirectToAction("Index");
                 }
 
                 ModelState.AddModelError("", "Failed to update order.");
                 await PopulateOrderDropdowns(model.CompanyId, model.TransporterId, model.DestinationId);
-                ViewBag.IsTransporter = false;
-                return View("OrderEdit", model);
+                return View("AdminOrderEdit", model);
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError("", $"Error updating order: {ex.Message}");
                 _logger.LogError(ex, "Error updating order");
                 await PopulateOrderDropdowns(model.CompanyId, model.TransporterId, model.DestinationId);
-                ViewBag.IsTransporter = false;
-                return View("OrderEdit", model);
+                return View("AdminOrderEdit", model);
             }
         }
 
@@ -380,8 +375,8 @@ namespace Vozila.Controllers
 
             try
             {
-                var currentUserId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value);
-                var result = await _orderService.CancelOrderAsync(id, reason, currentUserId);
+                var userId = HttpContext.Session.GetInt32("UserId") ?? 0;
+                var result = await _orderService.CancelOrderAsync(id, reason, userId);
 
                 if (result)
                 {
@@ -418,8 +413,8 @@ namespace Vozila.Controllers
 
             try
             {
-                var currentUserId = int.Parse(User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value);
-                var result = await _orderService.FinishOrderAsync(id, currentUserId);
+                var userId = HttpContext.Session.GetInt32("UserId") ?? 0;
+                var result = await _orderService.FinishOrderAsync(id, userId);
 
                 if (result)
                 {
@@ -439,7 +434,6 @@ namespace Vozila.Controllers
                 return RedirectToAction("Details", new { id });
             }
         }
-
         // Helper method to populate dropdowns
         private async Task PopulateOrderDropdowns(int? selectedCompanyId = null, int? selectedTransporterId = null, int? selectedDestinationId = null)
         {

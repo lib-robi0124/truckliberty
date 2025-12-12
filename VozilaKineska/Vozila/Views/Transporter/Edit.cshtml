@@ -1,0 +1,125 @@
+﻿@using Vozila.Domain.Enums
+@model TransporterEditOrderVM
+
+@{
+    ViewData["Title"] = "Submit Truck Plate";
+    Layout = "_Layout";
+}
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">
+                        <i class="fas fa-truck mr-2"></i>Submit Truck Plate Number - Order #@Model.Id
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <form asp-action="Edit" method="post">
+                        <input type="hidden" asp-for="Id" />
+
+                        <!-- Order Information -->
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Current Status:</label>
+                            <div class="col-sm-9">
+                                <span class="badge badge-@GetStatusBadgeClass(Model.CurrentStatus)">
+                                    @Model.CurrentStatus.ToString()
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Company:</label>
+                            <div class="col-sm-9">
+                                <p class="form-control-plaintext">@Model.CompanyName</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Transporter:</label>
+                            <div class="col-sm-9">
+                                <p class="form-control-plaintext">@Model.TransporterName</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Destination:</label>
+                            <div class="col-sm-9">
+                                <p class="form-control-plaintext">@Model.DestinationCity</p>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-3 col-form-label">Loading Date:</label>
+                            <div class="col-sm-9">
+                                <p class="form-control-plaintext">
+                                    @Model.DateForLoadingFrom.ToString("dd/MM/yyyy HH:mm")
+                                    to
+                                    @Model.DateForLoadingTo.ToString("dd/MM/yyyy HH:mm")
+                                </p>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <!-- Truck Plate Input -->
+                        <div class="form-group row">
+                            <label asp-for="TruckPlateNo" class="col-sm-3 col-form-label"></label>
+                            <div class="col-sm-9">
+                                <input asp-for="TruckPlateNo" class="form-control"
+                                       placeholder="Enter truck plate number" />
+                                <span asp-validation-for="TruckPlateNo" class="text-danger"></span>
+                                <small class="form-text text-muted">
+                                    Please enter the actual truck plate number that will be used for this delivery.
+                                </small>
+                            </div>
+                        </div>
+
+                        <!-- Submit & Cancel -->
+                        <div class="form-group row">
+                            <div class="col-sm-9 offset-sm-3">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="fas fa-save mr-1"></i>Submit Truck Plate
+                                </button>
+                                <a asp-action="ManageOrder" class="btn btn-secondary">
+                                    <i class="fas fa-times mr-1"></i>Cancel
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $(document).ready(function() {
+            // Auto-format truck plate (optional)
+            $('#TruckPlateNo').on('input', function() {
+                var value = $(this).val().toUpperCase().replace(/\s+/g, '');
+                $(this).val(value);
+            });
+        });
+    </script>
+}
+
+@functions {
+    public string GetStatusBadgeClass(OrderStatus status)
+    {
+        return status switch
+        {
+            OrderStatus.Pending => "warning",
+            OrderStatus.Approved => "success",
+            OrderStatus.Finished => "primary",
+            OrderStatus.Cancelled => "danger",
+            _ => "secondary"
+        };
+    }
+}

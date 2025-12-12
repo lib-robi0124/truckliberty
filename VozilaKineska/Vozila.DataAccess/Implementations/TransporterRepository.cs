@@ -17,17 +17,19 @@ namespace Vozila.DataAccess.Implementations
         public async Task<Transporter?> GetWithDetailsAsync(int id)
         {
             return await _context.Transporters
-                .Include(t => t.Contracts)
-                .Include(t => t.Orders)
-                .FirstOrDefaultAsync(t => t.Id == id);
+            .Include(t => t.Destinations)
+            .Include(t => t.Contracts)
+            .Include(t => t.Orders)
+            .FirstOrDefaultAsync(t => t.Id == id);
         }
 
         public async Task<IEnumerable<Transporter>> GetAllWithDetailsAsync()
         {
             return await _context.Transporters
-                .Include(t => t.Contracts)
-                .Include(t => t.Orders)
-                .ToListAsync();
+            .Include(t => t.Destinations)
+            .Include(t => t.Contracts)
+            .Include(t => t.Orders)
+            .ToListAsync();
         }
 
         public async Task<IEnumerable<Contract>> GetActiveContractsAsync(int transporterId)
@@ -35,6 +37,11 @@ namespace Vozila.DataAccess.Implementations
             return await _context.Contracts
                 .Where(c => c.TransporterId == transporterId)
                 .ToListAsync();
+        }
+        public async Task<Transporter?> GetByEmailAsync(string email)
+        {
+            return await _context.Transporters
+                .FirstOrDefaultAsync(t => t.Email.ToLower() == email.ToLower());
         }
 
         public async Task SubmitTruckPlateAsync(int orderId, string truckPlateNo)

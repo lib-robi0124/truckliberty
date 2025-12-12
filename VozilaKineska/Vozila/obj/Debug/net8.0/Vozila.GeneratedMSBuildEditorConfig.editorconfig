@@ -9,85 +9,101 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Vozila
 build_property.RootNamespace = Vozila
-build_property.ProjectDir = C:\qinshift\truckliberty\VozilaKineska\Vozila\
+build_property.ProjectDir = D:\proekt-office\vozila\truckliberty\VozilaKineska\Vozila\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\qinshift\truckliberty\VozilaKineska\Vozila
+build_property.MSBuildProjectDirectory = D:\proekt-office\vozila\truckliberty\VozilaKineska\Vozila
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/qinshift/truckliberty/VozilaKineska/Vozila/Views/Admin/Index.cshtml]
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Admin/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/qinshift/truckliberty/VozilaKineska/Vozila/Views/Admin/ManageContract.cshtml]
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Admin/ManageContract.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFuYWdlQ29udHJhY3QuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/qinshift/truckliberty/VozilaKineska/Vozila/Views/Admin/ManagePriceOil.cshtml]
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Admin/ManagePriceOil.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFuYWdlUHJpY2VPaWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/qinshift/truckliberty/VozilaKineska/Vozila/Views/Home/Index.cshtml]
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/qinshift/truckliberty/VozilaKineska/Vozila/Views/Home/Login.cshtml]
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Home/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/qinshift/truckliberty/VozilaKineska/Vozila/Views/Home/Privacy.cshtml]
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/qinshift/truckliberty/VozilaKineska/Vozila/Views/Order/AdminOrderDashboard.cshtml]
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Order/AdminOrderDashboard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcQWRtaW5PcmRlckRhc2hib2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/qinshift/truckliberty/VozilaKineska/Vozila/Views/Order/ManageOrder.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcTWFuYWdlT3JkZXIuY3NodG1s
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Order/AdminOrderEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcQWRtaW5PcmRlckVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/qinshift/truckliberty/VozilaKineska/Vozila/Views/Order/OrderCreate.cshtml]
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Order/OrderCreate.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcT3JkZXJDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/qinshift/truckliberty/VozilaKineska/Vozila/Views/Order/OrderDetails.cshtml]
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Order/OrderDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcT3JkZXJEZXRhaWxzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/qinshift/truckliberty/VozilaKineska/Vozila/Views/Order/OrderEdit.cshtml]
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Order/OrderEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcT3JkZXJFZGl0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/qinshift/truckliberty/VozilaKineska/Vozila/Views/Report/Index.cshtml]
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Order/TransporterOrderEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcT3JkZXJcVHJhbnNwb3J0ZXJPcmRlckVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Report/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVwb3J0XEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/qinshift/truckliberty/VozilaKineska/Vozila/Views/Shared/Error.cshtml]
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/qinshift/truckliberty/VozilaKineska/Vozila/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Shared/ManageOrder.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXE1hbmFnZU9yZGVyLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/qinshift/truckliberty/VozilaKineska/Vozila/Views/Transporter/Index.cshtml]
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Transporter/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNwb3J0ZXJcRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Transporter/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNwb3J0ZXJcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Transporter/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVHJhbnNwb3J0ZXJcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/qinshift/truckliberty/VozilaKineska/Vozila/Views/_ViewImports.cshtml]
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/qinshift/truckliberty/VozilaKineska/Vozila/Views/_ViewStart.cshtml]
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/qinshift/truckliberty/VozilaKineska/Vozila/Views/Shared/_Layout.cshtml]
+[D:/proekt-office/vozila/truckliberty/VozilaKineska/Vozila/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-gbb6gu49c5

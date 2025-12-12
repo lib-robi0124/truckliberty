@@ -1,0 +1,86 @@
+﻿@model TransporterEditOrderVM
+@{
+    ViewData["Title"] = "Submit Truck Details";
+}
+
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card shadow mb-4">
+                <div class="card-header bg-warning text-white">
+                    <h4 class="m-0 font-weight-bold">
+                        <i class="fas fa-truck mr-2"></i>Submit Truck Details - Order #@Model.Id
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <!-- Read-only Order Info -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-light">
+                            <h6 class="m-0 font-weight-bold">Order Information</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p><strong>Company:</strong> @Model.CompanyName</p>
+                                    <p><strong>Transporter:</strong> @Model.TransporterName</p>
+                                    <p><strong>Destination:</strong> @Model.DestinationCity</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p><strong>Loading From:</strong> @Model.DateForLoadingFrom.ToString("dd/MM/yyyy HH:mm")</p>
+                                    <p><strong>Loading To:</strong> @Model.DateForLoadingTo.ToString("dd/MM/yyyy HH:mm")</p>
+                                    <p>
+                                        <strong>Status:</strong>
+                                        <span class="badge badge-warning">@Model.CurrentStatus</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Truck Details Form -->
+                    <form asp-action="TransporterEdit" method="post">
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="card">
+                            <div class="card-header bg-info text-white">
+                                <h6 class="m-0 font-weight-bold">
+                                    <i class="fas fa-truck mr-2"></i>Truck Information
+                                </h6>
+                            </div>
+                            <div class="card-body">
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle"></i>
+                                    Please enter your truck plate number. Once submitted, the order status will change to <strong>Approved</strong>.
+                                </div>
+
+                                <div class="form-group">
+                                    <label asp-for="TruckPlateNo"></label>
+                                    <input asp-for="TruckPlateNo" class="form-control form-control-lg"
+                                           placeholder="Enter truck plate number (e.g., ABC-123)" />
+                                    <span asp-validation-for="TruckPlateNo" class="text-danger"></span>
+                                    <small class="form-text text-muted">
+                                        Example: ABC-123, XYZ-789, etc.
+                                    </small>
+                                </div>
+
+                                <div class="alert alert-warning mt-3">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <strong>Important:</strong> Once you submit the truck plate number, you cannot change it.
+                                    The order will be marked as <strong>Approved</strong> and will proceed to the next stage.
+                                </div>
+                            </div>
+                            <div class="card-footer">
+                                <button type="submit" class="btn btn-success btn-lg">
+                                    <i class="fas fa-check-circle mr-2"></i>Submit Truck Details
+                                </button>
+                                <a asp-controller="Home" asp-action="Index" class="btn btn-secondary">
+                                    <i class="fas fa-times mr-2"></i>Cancel
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

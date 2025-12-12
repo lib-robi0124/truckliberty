@@ -8,6 +8,5 @@
         public string Email { get; set; } = string.Empty;
         public int DestinationCount { get; set; }
         public int ActiveOrderCount { get; set; }
-
     }
 }

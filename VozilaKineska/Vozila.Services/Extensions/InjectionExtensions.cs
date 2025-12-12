@@ -33,7 +33,7 @@ namespace Vozila.Services.Extensions
             services.AddScoped<Interfaces.IContractService, Implementations.ContractService>();
             services.AddScoped<Interfaces.ICompanyService, Implementations.CompanyService>();
             services.AddScoped<Interfaces.IDestinationService, Implementations.DestinationService>();
-            services.AddScoped<Interfaces.ITansporterService, Implementations.TransporterService>();
+            services.AddScoped<Interfaces.ITransporterService, Implementations.TransporterService>();
             services.AddScoped<Interfaces.IPriceOilService, Implementations.PriceOilService>();
         }
 

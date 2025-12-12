@@ -156,12 +156,12 @@ namespace Vozila.Services.Implementations
             {
                 Id = entity.Id,
                 CompanyId = entity.CompanyId,
-                CompanyName = entity.Company.CustomerName,
+                CompanyName = entity.Company?.CustomerName ?? string.Empty,
                 TransporterId = entity.TransporterId,
-                TransporterName = entity.Transporter.CompanyName,
+                TransporterName = entity.Transporter?.CompanyName ?? string.Empty,
                 DestinationId = entity.DestinationId,
-                DestinationCity = entity.Destination.City.ToString(),
-                DestinationCountry = entity.Destination.Country.ToString(),
+                DestinationCity = entity.Destination?.City.ToString() ?? string.Empty,
+                DestinationCountry = entity.Destination?.Country.ToString() ?? string.Empty,
                 TruckPlateNo = entity.TruckPlateNo,
                 DateForLoadingFrom = entity.DateForLoadingFrom,
                 DateForLoadingTo = entity.DateForLoadingTo,
@@ -174,8 +174,8 @@ namespace Vozila.Services.Implementations
                 CancelledDate = entity.CancelledDate,
                 CancelledReason = entity.CancelledReason,
                 CancelledByUserName = entity.CancelledByUser?.FullName,
-                DestinationPrice = entity.Destination.DestinationContractPrice,
-                CanSubmitTruck = entity.TransporterId == entity.TransporterId && entity.Status == OrderStatus.Pending,
+                DestinationPrice = entity.Destination?.DestinationContractPrice ?? 0,
+                CanSubmitTruck = entity.TransporterId == userId && entity.Status == OrderStatus.Pending,
                 CanCancel = entity.Status == OrderStatus.Pending || entity.Status == OrderStatus.Approved,
                 CanFinish = entity.Status == OrderStatus.Approved
             };
@@ -238,16 +238,16 @@ namespace Vozila.Services.Implementations
         // ---------------------------------------------------------------------------------------
         // SEARCH
         // ---------------------------------------------------------------------------------------
-        public async Task<IEnumerable<OrderListVM>> SearchAsync(int transporterId, OrderSearchCriteria criteria)
+        public async Task<IEnumerable<OrderListVM>> SearchAsync(int transporterId, Domain.Models.OrderSearchCriteria criteria)
         {
             var orders = await _orderRepository.SearchOrdersForTransporterAsync(transporterId, criteria);
 
             return orders.Select(o => new OrderListVM
             {
                 Id = o.Id,
-                CompanyName = o.Company.CustomerName,
-                TransporterName = o.Transporter.CompanyName,
-                DestinationCity = o.Destination.City.ToString(),
+                CompanyName = o.Company?.CustomerName ?? "N/A",
+                TransporterName = o.Transporter?.CompanyName ?? "N/A",
+                DestinationCity = o.Destination?.City.ToString() ?? "N/A",
                 DateForLoadingFrom = o.DateForLoadingFrom,
                 DateForLoadingTo = o.DateForLoadingTo,
                 Status = o.Status,

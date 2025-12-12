@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Vozila.DataAccess")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b775559dbc7a1f419c2088c31b7c19fde188edb6")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1f64ef2440a2a5ac56dd30b5a6a4e5d8b22a81f9")]
 [assembly: System.Reflection.AssemblyProductAttribute("Vozila.DataAccess")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Vozila.DataAccess")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

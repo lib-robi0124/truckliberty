@@ -9,5 +9,6 @@ namespace Vozila.ViewModels.ModelsOrder
 
         [Required]
         public OrderStatus Status { get; set; }
+        public OrderStatus CurrentStatus { get; set; }
     }
 }

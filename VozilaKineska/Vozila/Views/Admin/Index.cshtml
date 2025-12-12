@@ -92,22 +92,7 @@
     <div class="main-content">
         <!-- HEADER AREA WITH TABS + LOGOUT -->
         <div class="header-bar">
-            <div class="header-tabs">
-                <!-- PriceOil tab - points to PriceOilController -->
-                <a asp-controller="PriceOil" asp-action="Index" class="tab-btn">
-                    <i class="fa-solid fa-gas-pump"></i> PriceOil
-                </a>
-
-                <!-- Contract tab - points to ContractController -->
-                <a asp-controller="Contract" asp-action="Index" class="tab-btn">
-                    <i class="fa-solid fa-file-contract"></i> Contract
-                </a>
-
-                <!-- Order tab - points to OrderController -->
-                <a asp-controller="Order" asp-action="Index" class="tab-btn">
-                    <i class="fas fa-truck"></i> Order
-                </a>
-            </div>
+            
             <div class="header-tabs">
                 <a href="@Url.Action("Index", "PriceOil")" class="action-btn btn-info">
                     <i class="fa-solid fa-gas-pump"></i>

@@ -137,23 +137,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {},
+    "C:\\Users\\Robertr2\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\qinshift\\truckliberty\\VozilaKineska\\Vozila.ViewModels\\Vozila.ViewModels.csproj",
+      "projectUniqueName": "D:\\proekt-office\\vozila\\truckliberty\\VozilaKineska\\Vozila.ViewModels\\Vozila.ViewModels.csproj",
       "projectName": "Vozila.ViewModels",
-      "projectPath": "C:\\qinshift\\truckliberty\\VozilaKineska\\Vozila.ViewModels\\Vozila.ViewModels.csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\qinshift\\truckliberty\\VozilaKineska\\Vozila.ViewModels\\obj\\",
+      "projectPath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaKineska\\Vozila.ViewModels\\Vozila.ViewModels.csproj",
+      "packagesPath": "C:\\Users\\Robertr2\\.nuget\\packages\\",
+      "outputPath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaKineska\\Vozila.ViewModels\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Robertr2\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -168,8 +168,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\qinshift\\truckliberty\\VozilaKineska\\Vozila.Domain\\Vozila.Domain.csproj": {
-              "projectPath": "C:\\qinshift\\truckliberty\\VozilaKineska\\Vozila.Domain\\Vozila.Domain.csproj"
+            "D:\\proekt-office\\vozila\\truckliberty\\VozilaKineska\\Vozila.Domain\\Vozila.Domain.csproj": {
+              "projectPath": "D:\\proekt-office\\vozila\\truckliberty\\VozilaKineska\\Vozila.Domain\\Vozila.Domain.csproj"
             }
           }
         }

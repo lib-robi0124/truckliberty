@@ -1,6 +1,4 @@
-﻿using Vozila.Domain.Enums;
-
-namespace Vozila.Domain.Models
+﻿namespace Vozila.Domain.Models
 {
     public class Transporter
     {

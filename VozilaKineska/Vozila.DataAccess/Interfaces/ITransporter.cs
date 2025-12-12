@@ -8,5 +8,6 @@ namespace Vozila.DataAccess.Interfaces
         Task<IEnumerable<Transporter>> GetAllWithDetailsAsync();
         Task SubmitTruckPlateAsync(int orderId, string truckPlateNo);
         Task<IEnumerable<Contract>> GetActiveContractsAsync(int transporterId);
+        Task<Transporter?> GetByEmailAsync(string email);
     }
 }
